@@ -1,0 +1,46 @@
+---
+import "@fontsource/rubik";
+import "@fontsource/rubik-mono-one";
+import "@fontsource/rubik/700.css";
+import Card from "../components/card.svelte";
+import { projects } from "../constants";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Ephemurl</title>
+  </head>
+
+  <body
+    class="font-rubik p-12 bg-white text-black dark:bg-black dark:text-white flex flex-col gap-y-9"
+  >
+    <nav class="flex justify-between">
+      <div class="flex flex-col">
+        <h1 class="font-rubik-mono text-2xl lg:text-4xl">Ephemurl</h1>
+        <h2 class="lg:text-xl">: something that lasts for a very short time</h2>
+      </div>
+
+      <!-- TODO: implement theme selector -->
+      <!-- <div class="flex gap-x-3">
+        <NavButton />
+      </div> -->
+    </nav>
+
+    <div class="flex flex-wrap gap-8">
+      {
+        projects
+          .filter(({ inDevelopment }) => inDevelopment)
+          .map(({ name, icon, url }) => (
+            <Card {icon} {url} client:idle>
+              <p class="uppercase font-bold">{name}</p>
+              <p class="text-grey">{url}</p>
+            </Card>
+          ))
+      }
+    </div>
+  </body>
+</html>
