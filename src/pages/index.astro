@@ -2,11 +2,25 @@
 import "@fontsource/rubik";
 import "@fontsource/rubik-mono-one";
 import "@fontsource/rubik/700.css";
+import Html from "../components/Html.svelte";
 import Card from "../components/card.svelte";
+import NavButton from "../components/nav-button.svelte";
 import { projects } from "../constants";
+
+// let currentTheme = get(theme);
+// let isDark = get(prefersDark);
+
+// theme.subscribe((t) => {
+//   currentTheme = t;
+// });
+
+// prefersDark.subscribe((d) => {
+//   console.log("update just happened: ", d);
+//   isDark = d;
+// });
 ---
 
-<html lang="en">
+<Html client:only>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,19 +29,24 @@ import { projects } from "../constants";
     <title>Ephemurl</title>
   </head>
 
-  <body
-    class="font-rubik p-12 bg-white text-black dark:bg-black dark:text-white flex flex-col gap-y-9"
-  >
+  <!-- class="font-rubik p-12 bg-white text-black dark:bg-black dark:text-white flex flex-col gap-y-9" -->
+  <!-- <body
+    class:list={[
+      { dark: currentTheme === "system" && isDark },
+      // { dark: test },
+      "font-rubik p-12 bg-white text-black dark:bg-black dark:text-white flex flex-col gap-y-9",
+    ]}
+  > -->
+  <body class="font-rubik p-12 flex flex-col gap-y-9">
     <nav class="flex justify-between">
       <div class="flex flex-col">
         <h1 class="font-rubik-mono text-2xl lg:text-4xl">Ephemurl</h1>
         <h2 class="lg:text-xl">: something that lasts for a very short time</h2>
       </div>
 
-      <!-- TODO: implement theme selector -->
-      <!-- <div class="flex gap-x-3">
-        <NavButton />
-      </div> -->
+      <div class="flex gap-x-3">
+        <NavButton client:only />
+      </div>
     </nav>
 
     <div class="flex flex-wrap gap-8">
@@ -43,4 +62,4 @@ import { projects } from "../constants";
       }
     </div>
   </body>
-</html>
+</Html>
