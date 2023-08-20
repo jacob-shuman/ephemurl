@@ -2,7 +2,8 @@ export const projects = [
   {
     name: "countdown",
     icon: "IconClockHour7",
-    url: "https://countdown.ephm.ca",
+    url: "https://ephemurl-countdown.vercel.app",
+    // url: "https://countdown.ephm.ca",
     inDevelopment: true,
   },
   {
