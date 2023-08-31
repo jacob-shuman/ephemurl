@@ -7,5 +7,5 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   integrations: [tailwind(), svelte()],
   output: "hybrid",
-  adapter: vercel(),
+  adapter: vercel({ functionPerRoute: false }),
 });
