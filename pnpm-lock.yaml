@@ -20,9 +20,6 @@ dependencies:
   '@fontsource/rubik-mono-one':
     specifier: ^5.0.11
     version: 5.0.11
-  '@tabler/icons-svelte':
-    specifier: ^2.32.0
-    version: 2.32.0(svelte@4.2.0)
   astro:
     specifier: ^3.0.5
     version: 3.0.5
@@ -1098,19 +1095,6 @@ packages:
       vitefu: 0.2.4(vite@4.4.9)
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@tabler/icons-svelte@2.32.0(svelte@4.2.0):
-    resolution: {integrity: sha512-hqJnogb6uRuVdq6iVgaItR2+VRixtGgPHiLh/TSx7R1Uljz8VwL+CLibaAJkg53KZBhlTrq3nqpUvoAPJBJhPw==}
-    peerDependencies:
-      svelte: '>=3 <5'
-    dependencies:
-      '@tabler/icons': 2.32.0
-      svelte: 4.2.0
-    dev: false
-
-  /@tabler/icons@2.32.0:
-    resolution: {integrity: sha512-w1oNvrnqFipoBEy2/0X4/IHo2aLsijuz4QRi/HizxqiaoMfmWG5X2DpEYTw9WnGvFmixpu/rtQsQAr7Wr0Mc2w==}
     dev: false
 
   /@types/babel__core@7.20.1:
