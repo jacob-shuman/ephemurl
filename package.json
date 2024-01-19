@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^4.1.1",
     "@astrojs/svelte": "^4.0.0",
     "@astrojs/tailwind": "^5.0.0",
-    "@astrojs/vercel": "^4.0.2",
     "@fontsource/rubik": "^5.0.11",
     "@fontsource/rubik-mono-one": "^5.0.11",
     "@tabler/icons-svelte": "^2.32.0",
