@@ -57,7 +57,7 @@
         <a
           href={inDevelopment ? url : undefined}
           class={tw(
-            "flex gap-x-2 items-center group text-grey",
+            "flex gap-x-2 items-center group text-grey focus:outline-none",
             inDevelopment
               ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge focus:text-bauhaus focus:dark:text-tinge"
               : "cursor-not-allowed"
@@ -72,7 +72,7 @@
         <a
           href={inDevelopment ? `https://github.com/${repo}` : undefined}
           class={tw(
-            "flex gap-x-2 items-center group text-grey",
+            "flex gap-x-2 items-center group text-grey focus:outline-none",
             inDevelopment
               ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge focus:text-bauhaus focus:dark:text-tinge"
               : "cursor-not-allowed"
