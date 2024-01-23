@@ -59,7 +59,7 @@
           class={tw(
             "flex gap-x-2 items-center group text-grey",
             inDevelopment
-              ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge"
+              ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge focus:text-bauhaus focus:dark:text-tinge"
               : "cursor-not-allowed"
           )}
         >
@@ -74,7 +74,7 @@
           class={tw(
             "flex gap-x-2 items-center group text-grey",
             inDevelopment
-              ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge"
+              ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge focus:text-bauhaus focus:dark:text-tinge"
               : "cursor-not-allowed"
           )}
         >
