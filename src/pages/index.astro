@@ -2,8 +2,10 @@
 import "@fontsource/rubik";
 import "@fontsource/rubik-mono-one";
 import "@fontsource/rubik/700.css";
+import { Icon } from "astro-icon/components";
+import tw from "clsx";
 import Card from "../components/card.svelte";
-import { projects } from "../constants";
+import { games, modules, tools } from "../constants";
 ---
 
 <html lang="en">
@@ -16,12 +18,12 @@ import { projects } from "../constants";
   </head>
 
   <body
-    class="font-rubik p-12 bg-white text-black dark:bg-black dark:text-white flex flex-col gap-y-9"
+    class="font-rubik p-4 sm:p-8 lg:p-12 bg-white text-black dark:bg-black dark:text-white flex flex-col gap-y-9"
   >
     <nav class="flex justify-between">
       <div class="flex flex-col">
-        <h1 class="font-rubik-mono text-2xl lg:text-4xl">Ephemurl</h1>
-        <h2 class="lg:text-xl">: something that lasts for a very short time</h2>
+        <h1 class="font-rubik-mono text-4xl">EPHEMURL</h1>
+        <h2 class="text-xl">: something that lasts for a very short time</h2>
       </div>
 
       <!-- TODO: implement theme selector -->
@@ -30,17 +32,142 @@ import { projects } from "../constants";
       </div> -->
     </nav>
 
-    <div class="flex flex-wrap gap-8">
-      {
-        projects
-          .filter(({ inDevelopment }) => inDevelopment)
-          .map(({ name, icon, url }) => (
-            <Card {icon} {url} client:idle>
-              <p class="uppercase font-bold">{name}</p>
-              <p class="text-grey">{url}</p>
-            </Card>
-          ))
-      }
-    </div>
+    <section class="flex flex-col gap-y-3">
+      <h3
+        class={tw(
+          "font-bold text-lg",
+          tools.filter(({ inDevelopment }) => inDevelopment).length < 1 &&
+            "opacity-40"
+        )}
+      >
+        TOOLS
+      </h3>
+
+      <div class="flex flex-wrap gap-8">
+        {
+          tools
+            .sort(
+              (t1, t2) => Number(t2.inDevelopment) - Number(t1.inDevelopment)
+            )
+            .map(({ icon, ...t }) => (
+              <Card {...t} client:idle>
+                <Icon
+                  slot="icon"
+                  name={icon}
+                  class={tw(
+                    "w-12 h-12",
+                    t.inDevelopment &&
+                      "group-hover:text-tinge group-hover:dark:text-bauhaus"
+                  )}
+                />
+
+                <Icon
+                  slot="url-icon"
+                  name="tabler:link"
+                  class="min-w-min w-4 h-4"
+                />
+
+                <Icon
+                  slot="vcs-icon"
+                  name="tabler:brand-github"
+                  class="min-w-min w-4 h-4"
+                />
+              </Card>
+            ))
+        }
+      </div>
+    </section>
+
+    <section class="flex flex-col gap-y-3">
+      <h3
+        class={tw(
+          "font-bold text-lg",
+          games.filter(({ inDevelopment }) => inDevelopment).length < 1 &&
+            "opacity-40"
+        )}
+      >
+        GAMES
+      </h3>
+
+      <div class="flex flex-wrap gap-8">
+        {
+          games
+            .sort(
+              (g1, g2) => Number(g2.inDevelopment) - Number(g1.inDevelopment)
+            )
+            .map(({ icon, ...g }) => (
+              <Card {...g} client:idle>
+                <Icon
+                  slot="icon"
+                  name={icon}
+                  class={tw(
+                    "w-12 h-12",
+                    g.inDevelopment &&
+                      "group-hover:text-tinge group-hover:dark:text-bauhaus"
+                  )}
+                />
+
+                <Icon
+                  slot="url-icon"
+                  name="tabler:link"
+                  class="min-w-min w-4 h-4"
+                />
+
+                <Icon
+                  slot="vcs-icon"
+                  name="tabler:brand-github"
+                  class="min-w-min w-4 h-4"
+                />
+              </Card>
+            ))
+        }
+      </div>
+    </section>
+
+    <section class="flex flex-col gap-y-3">
+      <h3
+        class={tw(
+          "font-bold text-lg",
+          modules.filter(({ inDevelopment }) => inDevelopment).length < 1 &&
+            "opacity-40"
+        )}
+      >
+        MODULES
+      </h3>
+
+      <div class="flex flex-wrap gap-8">
+        {
+          modules
+            .sort(
+              (m1, m2) => Number(m2.inDevelopment) - Number(m1.inDevelopment)
+            )
+            .map(({ icon, ...m }) => (
+              <Card {...m} client:load>
+                <Icon
+                  slot="icon"
+                  name={icon}
+                  class={tw(
+                    "w-12 h-12",
+                    m.inDevelopment &&
+                      "group-hover:text-tinge group-hover:dark:text-bauhaus"
+                  )}
+                />
+
+                <Icon
+                  slot="url-icon"
+                  name="tabler:link"
+                  class="min-h-[1rem] min-w-[1rem] w-4 h-4"
+                />
+
+                <Icon
+                  slot="vcs-icon"
+                  name="tabler:brand-github"
+                  class="min-w-min w-4 h-4"
+                />
+              </Card>
+            ))
+        }
+      </div>
+    </section>
   </body>
 </html>
