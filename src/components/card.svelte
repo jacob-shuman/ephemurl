@@ -21,20 +21,6 @@
       "group focus:outline-none",
       inDevelopment ? "cursor-pointer" : "cursor-not-allowed"
     )}
-    on:mouseenter={() => {
-      if (inDevelopment) {
-        const audio = new Audio("audio/focus.ogg");
-        audio.volume = 0.25;
-        audio.play();
-      }
-    }}
-    on:focus={() => {
-      if (inDevelopment) {
-        const audio = new Audio("audio/focus.ogg");
-        audio.volume = 0.25;
-        audio.play();
-      }
-    }}
   >
     <div
       class={tw(
