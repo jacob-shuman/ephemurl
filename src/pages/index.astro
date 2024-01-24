@@ -5,6 +5,7 @@ import { Icon } from "astro-icon/components";
 import tw from "clsx";
 import Card from "../components/card.svelte";
 import { games, modules, tools } from "../constants";
+import packageJson from "../../package.json";
 // import { db } from "../db";
 
 // const {} = db();
@@ -21,6 +22,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
+  <meta name="description" content={packageJson.description} />
   <title>ephemurl</title>
 
   <AstroFont
