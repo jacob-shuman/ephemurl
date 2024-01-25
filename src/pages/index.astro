@@ -130,6 +130,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
       <div class="flex flex-wrap gap-8">
         {
           tools
+            .sort((t1, t2) => t1.name.localeCompare(t2.name))
             .sort(
               (t1, t2) =>
                 Number(t2.status === "ready") - Number(t1.status === "ready")
@@ -177,6 +178,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
       <div class="flex flex-wrap gap-8">
         {
           games
+            .sort((g1, g2) => g1.name.localeCompare(g2.name))
             .sort(
               (g1, g2) =>
                 Number(g2.status === "ready") - Number(g1.status === "ready")
@@ -224,6 +226,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
       <div class="flex flex-wrap gap-8">
         {
           modules
+            .sort((m1, m2) => m1.name.localeCompare(m2.name))
             .sort(
               (m1, m2) =>
                 Number(m2.status === "ready") - Number(m1.status === "ready")
