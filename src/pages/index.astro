@@ -120,7 +120,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
       <h3
         class={tw(
           "font-bold text-lg",
-          tools.filter(({ inDevelopment }) => inDevelopment).length < 1 &&
+          tools.filter(({ status }) => status === "ready").length < 1 &&
             "opacity-40"
         )}
       >
@@ -131,7 +131,8 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
         {
           tools
             .sort(
-              (t1, t2) => Number(t2.inDevelopment) - Number(t1.inDevelopment)
+              (t1, t2) =>
+                Number(t2.status === "ready") - Number(t1.status === "ready")
             )
             .map(({ icon, ...t }) => (
               <Card {...t} client:idle>
@@ -140,7 +141,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
                   name={icon}
                   class={tw(
                     "w-12 h-12",
-                    t.inDevelopment &&
+                    t.status === "ready" &&
                       "group-hover:text-tinge group-hover:dark:text-bauhaus"
                   )}
                 />
@@ -166,7 +167,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
       <h3
         class={tw(
           "font-bold text-lg",
-          games.filter(({ inDevelopment }) => inDevelopment).length < 1 &&
+          games.filter(({ status }) => status === "ready").length < 1 &&
             "opacity-40"
         )}
       >
@@ -177,7 +178,8 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
         {
           games
             .sort(
-              (g1, g2) => Number(g2.inDevelopment) - Number(g1.inDevelopment)
+              (g1, g2) =>
+                Number(g2.status === "ready") - Number(g1.status === "ready")
             )
             .map(({ icon, ...g }) => (
               <Card {...g} client:idle>
@@ -186,7 +188,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
                   name={icon}
                   class={tw(
                     "w-12 h-12",
-                    g.inDevelopment &&
+                    g.status === "ready" &&
                       "group-hover:text-tinge group-hover:dark:text-bauhaus"
                   )}
                 />
@@ -212,7 +214,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
       <h3
         class={tw(
           "font-bold text-lg",
-          modules.filter(({ inDevelopment }) => inDevelopment).length < 1 &&
+          modules.filter(({ status }) => status === "ready").length < 1 &&
             "opacity-40"
         )}
       >
@@ -223,7 +225,8 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
         {
           modules
             .sort(
-              (m1, m2) => Number(m2.inDevelopment) - Number(m1.inDevelopment)
+              (m1, m2) =>
+                Number(m2.status === "ready") - Number(m1.status === "ready")
             )
             .map(({ icon, ...m }) => (
               <Card {...m} client:load>
@@ -232,7 +235,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
                   name={icon}
                   class={tw(
                     "w-12 h-12",
-                    m.inDevelopment &&
+                    m.status === "ready" &&
                       "group-hover:text-tinge group-hover:dark:text-bauhaus"
                   )}
                 />

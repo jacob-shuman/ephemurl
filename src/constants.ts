@@ -1,7 +1,7 @@
 export interface Project {
   name: string;
   icon: string;
-  inDevelopment: boolean;
+  status: "ready" | "planned";
   url?: string;
   repo?: string;
 }
@@ -12,63 +12,63 @@ export const tools: Project[] = [
     icon: "tabler:time-duration-30",
     url: "https://countdown.ephm.app",
     repo: "jacob-shuman/ephemurl-countdown",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "clock",
     icon: "tabler:clock-hour-7",
     url: "https://clock.ephm.app",
     repo: "jacob-shuman/ephemurl-clock",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "stopwatch",
     icon: "tabler:alarm",
     url: "https://stopwatch.ephm.app",
     repo: "jacob-shuman/ephemurl-stopwatch",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "tracker",
     icon: "tabler:clipboard-list",
     url: "https://tracker.ephm.app",
     repo: "jacob-shuman/ephemurl-tracker",
-    inDevelopment: false,
+    status: "ready",
   },
   {
     name: "weather",
     icon: "tabler:cloud",
     url: "https://weather.ephm.app",
     repo: "jacob-shuman/ephemurl-weather",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "notes",
     icon: "tabler:pencil",
     url: "https://notes.ephm.app",
     repo: "jacob-shuman/ephemurl-notes",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "todo",
     icon: "tabler:list",
     url: "https://todo.ephm.app",
     repo: "jacob-shuman/ephemurl-todo",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "calculator",
     icon: "tabler:calculator",
     url: "https://calculator.ephm.app",
     repo: "jacob-shuman/ephemurl-calculator",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "spreadsheet",
     icon: "tabler:file-spreadsheet",
     url: "https://spreadsheet.ephm.app",
     repo: "jacob-shuman/ephemurl-spreadsheet",
-    inDevelopment: false,
+    status: "planned",
   },
 ];
 
@@ -78,77 +78,77 @@ export const games: Project[] = [
     icon: "tabler:grid-3x3",
     url: "https://tictactoe.ephm.app",
     repo: "jacob-shuman/ephemurl-tictactoe",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "connect_4",
     icon: "tabler:circle",
     url: "https://connect4.ephm.app",
     repo: "jacob-shuman/ephemurl-connect4",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "battleship",
     icon: "tabler:ship",
     url: "https://battleship.ephm.app",
     repo: "jacob-shuman/ephemurl-battleship",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "forehead_game",
     icon: "tabler:mood-smile",
     url: "https://foreheadgame.ephm.app",
     repo: "jacob-shuman/ephemurl-foreheadgame",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "mastermind",
     icon: "tabler:password",
     url: "https://mastermind.ephm.app",
     repo: "jacob-shuman/ephemurl-mastermind",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "wordle",
     icon: "tabler:book-2",
     url: "https://wordle.ephm.app",
     repo: "jacob-shuman/ephemurl-wordle",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "chess",
     icon: "tabler:chess-knight",
     url: "https://chess.ephm.app",
     repo: "jacob-shuman/ephemurl-chess",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "checkers",
     icon: "tabler:coins",
     url: "https://checkers.ephm.app",
     repo: "jacob-shuman/ephemurl-checkers",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "memory",
     icon: "tabler:layout-grid",
     url: "https://memory.ephm.app",
     repo: "jacob-shuman/ephemurl-memory",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "minesweeper",
     icon: "tabler:bomb",
     url: "https://minesweeper.ephm.app",
     repo: "jacob-shuman/ephemurl-minesweeper",
-    inDevelopment: false,
+    status: "planned",
   },
   {
     name: "sudoku",
     icon: "tabler:grid-4x4",
     url: "https://minesweeper.ephm.app",
     repo: "jacob-shuman/ephemurl-minesweeper",
-    inDevelopment: false,
+    status: "planned",
   },
 ];
 
@@ -157,6 +157,6 @@ export const modules: Project[] = [
     name: "db",
     icon: "tabler:database",
     repo: "jacob-shuman/ephemurl-db",
-    inDevelopment: true,
+    status: "planned",
   },
 ];
