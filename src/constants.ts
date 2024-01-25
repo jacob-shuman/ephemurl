@@ -9,9 +9,23 @@ export interface Project {
 export const tools: Project[] = [
   {
     name: "countdown",
-    icon: "tabler:clock-hour-7",
+    icon: "tabler:time-duration-30",
     url: "https://countdown.ephm.app",
     repo: "jacob-shuman/ephemurl-countdown",
+    inDevelopment: true,
+  },
+  {
+    name: "clock",
+    icon: "tabler:clock-hour-7",
+    url: "https://clock.ephm.app",
+    repo: "jacob-shuman/ephemurl-clock",
+    inDevelopment: true,
+  },
+  {
+    name: "stopwatch",
+    icon: "tabler:alarm",
+    url: "https://stopwatch.ephm.app",
+    repo: "jacob-shuman/ephemurl-stopwatch",
     inDevelopment: true,
   },
   {
