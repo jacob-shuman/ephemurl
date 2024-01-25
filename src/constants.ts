@@ -9,9 +9,16 @@ export interface Project {
 export const tools: Project[] = [
   {
     name: "countdown",
-    icon: "tabler:time-duration-30",
+    icon: "tabler:time-duration-5",
     url: "https://countdown.ephm.app",
     repo: "jacob-shuman/ephemurl-countdown",
+    status: "planned",
+  },
+  {
+    name: "pomodoro",
+    icon: "tabler:time-duration-30",
+    url: "https://pomodoro.ephm.app",
+    repo: "jacob-shuman/ephemurl-pomodoro",
     status: "planned",
   },
   {
