@@ -101,6 +101,27 @@ export const games: Project[] = [
     repo: "jacob-shuman/ephemurl-wordle",
     inDevelopment: false,
   },
+  {
+    name: "chess",
+    icon: "tabler:chess-knight",
+    url: "https://chess.ephm.app",
+    repo: "jacob-shuman/ephemurl-chess",
+    inDevelopment: false,
+  },
+  {
+    name: "checkers",
+    icon: "tabler:coins",
+    url: "https://checkers.ephm.app",
+    repo: "jacob-shuman/ephemurl-checkers",
+    inDevelopment: false,
+  },
+  {
+    name: "memory",
+    icon: "tabler:layout-grid",
+    url: "https://memory.ephm.app",
+    repo: "jacob-shuman/ephemurl-memory",
+    inDevelopment: false,
+  },
 ];
 
 export const modules: Project[] = [

@@ -22,7 +22,6 @@
     "clsx": "^2.1.0",
     "nanostores": "^0.9.5",
     "svelte": "^4.2.0",
-    "svelte-floating-ui": "^1.5.8",
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
