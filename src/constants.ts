@@ -33,7 +33,7 @@ export const tools: Project[] = [
     icon: "tabler:clipboard-list",
     url: "https://tracker.ephm.app",
     repo: "jacob-shuman/ephemurl-tracker",
-    status: "ready",
+    status: "planned",
   },
   {
     name: "weather",
