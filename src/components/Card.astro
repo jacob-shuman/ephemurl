@@ -1,0 +1,99 @@
+---
+import { Icon } from "astro-icon/components";
+import tw from "clsx";
+import type { Project } from "../constants";
+
+const { name, status, icon, url, repo } = Astro.props as Project;
+---
+
+<div
+  class={tw(
+    "flex flex-col gap-y-2 w-full sm:max-w-[16rem]",
+    status === "planned" && "opacity-40"
+  )}
+>
+  <a
+    href={status === "ready"
+      ? url ?? (repo && `https://github.com/${repo}`) ?? undefined
+      : undefined}
+    class={tw(
+      "group focus:outline-none",
+      status === "ready" ? "cursor-pointer" : "cursor-not-allowed"
+    )}
+  >
+    <div
+      class={tw(
+        "text-grey bg-tinge dark:bg-bauhaus w-full sm:w-64 h-32 rounded-lg flex justify-center items-center",
+        status === "ready" &&
+          "group-hover:-translate-y-2 group-focus:-translate-y-2 scale transition-all duration-100 ease-out group-hover:bg-bauhaus group-hover:dark:bg-tinge group-focus:bg-bauhaus group-focus:dark:bg-tinge"
+      )}
+    >
+      <Icon
+        name={icon}
+        class={tw(
+          "w-12 h-12",
+          status === "ready" &&
+            "group-hover:text-tinge group-hover:dark:text-bauhaus"
+        )}
+      />
+    </div>
+  </a>
+
+  <div class="flex flex-col gap-y-1 break-words">
+    <div
+      class={tw(
+        "flex items-center justify-between gap-x-2",
+        status === "planned" && "text-grey"
+      )}
+    >
+      <p class="uppercase font-bold">
+        {name}
+      </p>
+
+      {
+        status !== "ready" && (
+          <p class="text-xs font-bold">{status.toUpperCase()}</p>
+        )
+      }
+    </div>
+
+    <div class="flex flex-col">
+      {
+        url && (
+          <a
+            href={status === "ready" ? url : undefined}
+            class={tw(
+              "flex gap-x-2 items-center group text-grey focus:outline-none",
+              status === "ready"
+                ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge focus:text-bauhaus focus:dark:text-tinge"
+                : "cursor-not-allowed"
+            )}
+          >
+            <Icon
+              name="tabler:link"
+              class="min-h-[1rem] min-w-[1rem] w-4 h-4"
+            />
+            <p class="line-clamp-1">{url}</p>
+          </a>
+        )
+      }
+
+      {
+        repo && (
+          <a
+            href={status === "ready" ? `https://github.com/${repo}` : undefined}
+            class={tw(
+              "flex gap-x-2 items-center group text-grey focus:outline-none",
+              status === "ready"
+                ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge focus:text-bauhaus focus:dark:text-tinge"
+                : "cursor-not-allowed"
+            )}
+          >
+            <Icon name="tabler:brand-github" class="min-w-min w-4 h-4" />
+            <p class="line-clamp-1">{repo}</p>
+          </a>
+        )
+      }
+    </div>
+  </div>
+</div>

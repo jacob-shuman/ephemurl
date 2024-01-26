@@ -164,6 +164,6 @@ export const modules: Project[] = [
     name: "db",
     icon: "tabler:database",
     repo: "jacob-shuman/ephemurl-db",
-    status: "planned",
+    status: "ready",
   },
 ];

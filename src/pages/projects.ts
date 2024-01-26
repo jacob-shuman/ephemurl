@@ -1,8 +1,17 @@
 import type { APIRoute } from "astro";
-import { tools } from "../constants";
+import { games, modules, tools } from "../constants";
 
-export const get: APIRoute = ({ params, request }) => {
-  return {
-    body: JSON.stringify(tools),
-  };
+export const GET: APIRoute = ({ params, request }) => {
+  return new Response(
+    JSON.stringify(
+      {
+        tools,
+        games,
+        modules,
+      },
+      null,
+      2
+    ),
+    { status: 200 }
+  );
 };

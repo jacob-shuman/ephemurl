@@ -1,119 +1,76 @@
 ---
-import { AstroFont } from "astro-font";
-import { join } from "node:path";
-import { Icon } from "astro-icon/components";
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import tw from "clsx";
-import Card from "../components/card.svelte";
-import { games, modules, tools } from "../constants";
 import packageJson from "../../package.json";
-// import { db } from "../db";
+import Card from "../components/Card.astro";
 
-// const {} = db();
+import { games, modules, tools } from "../constants";
 
-let theme = Astro.url.searchParams.get("theme") ?? "system";
+const theme = Astro.url.searchParams.get("theme") ?? "system";
 ---
 
 <html
   lang="en"
-  class={(theme === "dark" ? "dark" : "") +
-    " transition-all duration-300 ease-in-out"}
+  class={tw(
+    theme === "dark" && "dark",
+    " transition-all duration-300 ease-in-out"
+  )}
 >
-  <meta charset="utf-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width" />
-  <meta name="generator" content={Astro.generator} />
-  <meta name="description" content={packageJson.description} />
-  <title>ephemurl</title>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={packageJson.description} />
+    <title>ephemurl</title>
 
-  <AstroFont
-    config={[
-      {
-        name: "Rubik Mono One",
-        src: [
-          {
-            weight: "400",
-            style: "normal",
-            path: join(
-              process.cwd(),
-              "public",
-              "fonts",
-              "rubik-mono",
-              "RubikMonoOne-Regular.ttf"
-            ),
-          },
-        ],
-        preload: true,
-        display: "swap",
-        selector: "body",
-        fallback: "sans-serif",
-      },
-      {
-        name: "Rubik",
-        src: [
-          {
-            style: "normal",
-            path: join(
-              process.cwd(),
-              "public",
-              "fonts",
-              "rubik",
-              "Rubik-VariableFont_wght.ttf"
-            ),
-          },
-          {
-            style: "italic",
-            path: join(
-              process.cwd(),
-              "public",
-              "fonts",
-              "rubik",
-              "Rubik-Italic-VariableFont_wght.ttf"
-            ),
-          },
-        ],
-        preload: true,
-        display: "swap",
-        selector: "body",
-        fallback: "sans-serif",
-      },
-    ]}
-  />
-
-  <script type="module">
-    let theme = "system";
-
-    function refreshTheme() {
-      if (
-        theme === "dark" ||
-        (theme === "system" &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    }
-
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => refreshTheme());
-
-    refreshTheme();
-  </script>
+    <GoogleFontsOptimizer
+      url="https://fonts.bunny.net/css?family=rubik-mono-one:400"
+    />
+    <GoogleFontsOptimizer
+      url="https://fonts.bunny.net/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    />
+  </head>
 
   <body
     class="font-rubik p-4 sm:p-8 lg:p-12 bg-white text-black dark:bg-black dark:text-white flex flex-col gap-y-9 transition-all duration-300 ease-in-out"
   >
     <nav class="flex justify-between">
       <div class="flex flex-col">
-        <h1 class="font-rubik-mono text-4xl">EPHEMURL</h1>
-        <h2 class="text-xl">: something that lasts for a very short time</h2>
+        <h1 class="font-rubik-mono text-4xl">ephemurl</h1>
       </div>
 
       <!-- TODO: implement theme selector -->
-      <!-- <div class="flex gap-x-3">
-        <NavButton />
-      </div> -->
+      <div class="flex items-center gap-x-3">
+        <button
+          class={tw(
+            "cursor-pointer w-12 h-12 flex justify-center items-center rounded-lg text-grey focus:outline-none",
+            "scale transition-all duration-100 ease-out hover:bg-tinge hover:dark:bg-bauhaus focus:bg-tinge focus:dark:bg-bauhaus"
+          )}
+        >
+          <!-- {
+          theme === "system" && (
+            <Icon>
+              <Icon name="tabler:sun" class="w-6 h-6 dark:hidden" />
+              <Icon name="tabler:moon" class="w-6 h-6 hidden dark:block" />
+            </Icon>
+          )
+        } -->
+        </button>
+
+        <!-- <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus"></div>
+
+      <button
+        class={tw(
+          "cursor-pointer w-12 h-12 flex justify-center items-center rounded-lg text-grey focus:outline-none",
+          "scale transition-all duration-100 ease-out hover:bg-tinge hover:dark:bg-bauhaus focus:bg-tinge focus:dark:bg-bauhaus"
+        )}
+      >
+        <Icon name="tabler:question-mark" class="w-6 h-6" />
+      </button> -->
+        <!-- 
+        -->
+      </div>
     </nav>
 
     <section class="flex flex-col gap-y-3">
@@ -135,31 +92,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
               (t1, t2) =>
                 Number(t2.status === "ready") - Number(t1.status === "ready")
             )
-            .map(({ icon, ...t }) => (
-              <Card {...t} client:idle>
-                <Icon
-                  slot="icon"
-                  name={icon}
-                  class={tw(
-                    "w-12 h-12",
-                    t.status === "ready" &&
-                      "group-hover:text-tinge group-hover:dark:text-bauhaus"
-                  )}
-                />
-
-                <Icon
-                  slot="url-icon"
-                  name="tabler:link"
-                  class="min-w-min w-4 h-4"
-                />
-
-                <Icon
-                  slot="vcs-icon"
-                  name="tabler:brand-github"
-                  class="min-w-min w-4 h-4"
-                />
-              </Card>
-            ))
+            .map((t) => <Card {...t} />)
         }
       </div>
     </section>
@@ -183,31 +116,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
               (g1, g2) =>
                 Number(g2.status === "ready") - Number(g1.status === "ready")
             )
-            .map(({ icon, ...g }) => (
-              <Card {...g} client:idle>
-                <Icon
-                  slot="icon"
-                  name={icon}
-                  class={tw(
-                    "w-12 h-12",
-                    g.status === "ready" &&
-                      "group-hover:text-tinge group-hover:dark:text-bauhaus"
-                  )}
-                />
-
-                <Icon
-                  slot="url-icon"
-                  name="tabler:link"
-                  class="min-w-min w-4 h-4"
-                />
-
-                <Icon
-                  slot="vcs-icon"
-                  name="tabler:brand-github"
-                  class="min-w-min w-4 h-4"
-                />
-              </Card>
-            ))
+            .map((g) => <Card {...g} />)
         }
       </div>
     </section>
@@ -231,31 +140,7 @@ let theme = Astro.url.searchParams.get("theme") ?? "system";
               (m1, m2) =>
                 Number(m2.status === "ready") - Number(m1.status === "ready")
             )
-            .map(({ icon, ...m }) => (
-              <Card {...m} client:load>
-                <Icon
-                  slot="icon"
-                  name={icon}
-                  class={tw(
-                    "w-12 h-12",
-                    m.status === "ready" &&
-                      "group-hover:text-tinge group-hover:dark:text-bauhaus"
-                  )}
-                />
-
-                <Icon
-                  slot="url-icon"
-                  name="tabler:link"
-                  class="min-h-[1rem] min-w-[1rem] w-4 h-4"
-                />
-
-                <Icon
-                  slot="vcs-icon"
-                  name="tabler:brand-github"
-                  class="min-w-min w-4 h-4"
-                />
-              </Card>
-            ))
+            .map((m) => <Card {...m} />)
         }
       </div>
     </section>
