@@ -15,7 +15,6 @@
     "@astrojs/svelte": "^5.0.3",
     "@astrojs/tailwind": "^5.1.0",
     "@floating-ui/core": "^1.5.3",
-    "@iconify-json/tabler": "^1.1.104",
     "astro": "^4.2.1",
     "astro-google-fonts-optimizer": "^0.2.2",
     "astro-icon": "^1.0.2",
@@ -26,6 +25,9 @@
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "@iconify-json/tabler": "^1.1.104",
+    "@sveltejs/vite-plugin-svelte": "^3.0.1",
+    "typescript": "^5.2.2",
+    "unplugin-icons": "^0.18.2"
   }
 }

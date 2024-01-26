@@ -1,0 +1,12 @@
+<script lang="ts">
+  import tw from "clsx";
+</script>
+
+<button
+  class={tw(
+    "cursor-pointer w-12 h-12 flex justify-center items-center rounded-lg text-grey focus:outline-none",
+    "scale transition-all duration-100 ease-out hover:bg-tinge hover:dark:bg-bauhaus focus:bg-tinge focus:dark:bg-bauhaus"
+  )}
+>
+  <slot />
+</button>
