@@ -37,7 +37,7 @@ const theme = Astro.url.searchParams.get("theme") ?? "system";
   >
     <nav class="flex justify-between">
       <div class="flex flex-col">
-        <h1 class="font-rubik-mono text-4xl">{theme}</h1>
+        <h1 class="font-rubik-mono text-4xl">{Astro.url}</h1>
       </div>
 
       <!-- TODO: implement theme selector -->
