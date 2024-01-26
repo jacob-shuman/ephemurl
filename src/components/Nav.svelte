@@ -8,9 +8,10 @@
   export let theme: string = "system";
 </script>
 
-<nav class="flex justify-between">
-  <div class="flex flex-col">
+<nav class="flex flex-col gap-y-2 sm:flex-row sm:gap-y-0 justify-between">
+  <div class="flex flex-col gap-y-2">
     <h1 class="font-rubik-mono text-4xl">ephemurl</h1>
+    <div class="h-0.5 rounded bg-tinge dark:bg-bauhaus"></div>
   </div>
 
   <!-- TODO: implement theme selector -->
