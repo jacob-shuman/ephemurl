@@ -77,6 +77,34 @@ export const tools: Project[] = [
     repo: "jacob-shuman/ephemurl-spreadsheet",
     status: "planned",
   },
+  {
+    name: "bip39",
+    icon: "tabler:wall",
+    url: "https://bip39.ephm.app",
+    repo: "jacob-shuman/ephemurl-bip39",
+    status: "planned",
+  },
+  {
+    name: "speedometer",
+    icon: "tabler:car",
+    url: "https://speedometer.ephm.app",
+    repo: "jacob-shuman/ephemurl-speedometer",
+    status: "planned",
+  },
+  {
+    name: "compass",
+    icon: "tabler:compass",
+    url: "https://compass.ephm.app",
+    repo: "jacob-shuman/ephemurl-compass",
+    status: "planned",
+  },
+  {
+    name: "level",
+    icon: "tabler:scale",
+    url: "https:/level.ephm.app",
+    repo: "jacob-shuman/ephemurl-level",
+    status: "planned",
+  },
 ];
 
 export const games: Project[] = [
