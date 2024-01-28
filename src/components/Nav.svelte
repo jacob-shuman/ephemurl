@@ -1,11 +1,11 @@
 <script lang="ts">
   import DesktopIcon from "~icons/tabler/device-desktop";
   import MoonIcon from "~icons/tabler/moon";
-  import QuestionMarkIcon from "~icons/tabler/question-mark";
+  import PromptIcon from "~icons/tabler/prompt";
   import SunIcon from "~icons/tabler/sun";
   import Button from "./Button.svelte";
 
-  export let theme: string = "system";
+  export let theme: string = "system-dark";
 </script>
 
 <nav class="flex flex-col gap-y-2 sm:flex-row sm:gap-y-0 justify-between">
@@ -16,7 +16,7 @@
 
   <!-- TODO: implement theme selector -->
   <div class="flex items-center gap-x-3">
-    <Button>
+    <Button tooltip="Theme">
       {#if theme === "dark"}
         <MoonIcon class="w-6 h-6" />
       {:else if theme === "light"}
@@ -26,10 +26,10 @@
       {/if}
     </Button>
 
-    <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus"></div>
+    <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus" />
 
-    <Button>
-      <QuestionMarkIcon class="w-6 h-6" />
+    <Button tooltip="Command Palette">
+      <PromptIcon class="w-6 h-6" />
     </Button>
   </div>
 </nav>
