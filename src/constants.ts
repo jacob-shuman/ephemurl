@@ -105,6 +105,20 @@ export const tools: Project[] = [
     repo: "jacob-shuman/ephemurl-level",
     status: "planned",
   },
+  {
+    name: "dice",
+    icon: "tabler:dice",
+    url: "https:/dice.ephm.app",
+    repo: "jacob-shuman/ephemurl-dice",
+    status: "planned",
+  },
+  {
+    name: "calendar_event",
+    icon: "tabler:calendar-event",
+    url: "https:/calendar_event.ephm.app",
+    repo: "jacob-shuman/ephemurl-calendar_event",
+    status: "planned",
+  },
 ];
 
 export const games: Project[] = [
