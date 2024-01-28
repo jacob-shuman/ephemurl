@@ -115,8 +115,8 @@ export const tools: Project[] = [
   {
     name: "calendar_event",
     icon: "tabler:calendar-event",
-    url: "https:/calendar_event.ephm.app",
-    repo: "jacob-shuman/ephemurl-calendar_event",
+    url: "https:/calendarevent.ephm.app",
+    repo: "jacob-shuman/ephemurl-calendarevent",
     status: "planned",
   },
 ];
