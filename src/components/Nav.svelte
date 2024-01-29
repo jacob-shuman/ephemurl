@@ -4,9 +4,14 @@
   import PromptIcon from "~icons/tabler/prompt";
   import SunIcon from "~icons/tabler/sun";
   import Button from "./Button.svelte";
+  import Palette from "./Palette.svelte";
 
   export let theme: string = "system-dark";
+
+  let open = false;
 </script>
+
+<Palette bind:open />
 
 <nav class="flex flex-col gap-y-2 sm:flex-row sm:gap-y-0 justify-between">
   <div class="flex flex-col gap-y-2">
@@ -28,7 +33,7 @@
 
     <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus" />
 
-    <Button tooltip="Command Palette">
+    <Button tooltip="Command Palette" click={() => (open = !open)}>
       <PromptIcon class="w-6 h-6" />
     </Button>
   </div>
