@@ -26,7 +26,7 @@ export const tools: Project[] = [
     icon: "tabler:clock-hour-7",
     url: "https://clock.ephm.app",
     repo: "jacob-shuman/ephemurl-clock",
-    status: "planned",
+    status: "ready",
   },
   {
     name: "stopwatch",
@@ -206,6 +206,6 @@ export const modules: Project[] = [
     name: "db",
     icon: "tabler:database",
     repo: "jacob-shuman/ephemurl-db",
-    status: "ready",
+    status: "planned",
   },
 ];

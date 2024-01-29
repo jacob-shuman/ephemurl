@@ -1,26 +1,34 @@
 <script lang="ts">
   import { Tooltip } from "bits-ui";
+  import { onMount } from "svelte";
   import { fade } from "svelte/transition";
+
+  let isMounted = false;
+  onMount(() => (isMounted = true));
 
   export let message: string;
 </script>
 
-<Tooltip.Root>
-  <Tooltip.Trigger>
+<Tooltip.Root openDelay={250}>
+  {#if isMounted}
+    <Tooltip.Trigger>
+      <slot />
+    </Tooltip.Trigger>
+  {:else}
     <slot />
-  </Tooltip.Trigger>
+  {/if}
 
-  <Tooltip.Content
-    transition={fade}
-    transitionConfig={{ duration: 150 }}
-    sideOffset={8}
-  >
-    <Tooltip.Arrow class="rounded-[2px] border-l border-t border-dark-10" />
-
-    <div
-      class="flex items-center justify-center rounded-input border border-dark-10 bg-background p-3 text-sm font-medium shadow-popover outline-none"
+  {#if isMounted}
+    <Tooltip.Content
+      transition={fade}
+      transitionConfig={{ duration: 100 }}
+      sideOffset={8}
     >
-      {message}
-    </div>
-  </Tooltip.Content>
+      <div
+        class="rounded-lg p-3 font-medium text-sm bg-tinge dark:bg-bauhaus outline-none"
+      >
+        {message}
+      </div>
+    </Tooltip.Content>
+  {/if}
 </Tooltip.Root>

@@ -1,17 +1,69 @@
 <script lang="ts">
-  import DesktopIcon from "~icons/tabler/device-desktop";
-  import MoonIcon from "~icons/tabler/moon";
-  import PromptIcon from "~icons/tabler/prompt";
-  import SunIcon from "~icons/tabler/sun";
+  import {
+    IconDeviceDesktop,
+    IconMoon,
+    IconPrompt,
+    IconSun,
+  } from "@tabler/icons-svelte";
   import Button from "./Button.svelte";
-  import Palette from "./Palette.svelte";
+
+  import { toast } from "svelte-sonner";
 
   export let theme: string = "system-dark";
-
   let open = false;
+  let mounted = false;
+
+  type Params = {
+    theme: "dark" | "light" | "system" | "system-dark";
+  };
+
+  // const { params, url, update } = db<Params>(
+  //   { theme: "system-dark" },
+  //   {
+  //     parse: (p) => {
+  //       console.log("parsed");
+  //       return { theme: p.theme ?? "system-dark" } as Params;
+  //     },
+  //     // getUrl: () => {
+  //     //   if (mounted) return new URL(window.location.href);
+
+  //     //   return new URL("");
+  //     // },
+  //     canUpdate: () => mounted,
+  //     updateUrl: (url) => {
+  //       console.log("updating URL ", url);
+  //       window.history.pushState({}, "", url);
+  //     },
+  //   }
+  // );
+
+  // function cycleTheme() {
+  //   switch ($params?.theme ?? "system") {
+  //     case "dark":
+  //       console.log("updating to light");
+  //       update({ theme: "light" });
+  //     case "light":
+  //       console.log("updating to system");
+  //       update({
+  //         theme: window.matchMedia("(prefers-color-scheme: dark)").matches
+  //           ? "system-dark"
+  //           : "system",
+  //       });
+  //       break;
+  //     default:
+  //       console.log("updating to dark");
+  //       update({ theme: "dark" });
+  //       break;
+  //   }
+  // }
+
+  // onMount(() => {
+  //   mounted = true;
+  //   url.set(new URL(window.location.href));
+  // });
 </script>
 
-<Palette bind:open />
+<!-- <Palette bind:open /> -->
 
 <nav class="flex flex-col gap-y-2 sm:flex-row sm:gap-y-0 justify-between">
   <div class="flex flex-col gap-y-2">
@@ -21,20 +73,25 @@
 
   <!-- TODO: implement theme selector -->
   <div class="flex items-center gap-x-3">
-    <Button tooltip="Theme">
+    <Button
+      tooltip="Theme"
+      onclick={() => {
+        toast("testing");
+      }}
+    >
       {#if theme === "dark"}
-        <MoonIcon class="w-6 h-6" />
+        <IconMoon class="w-6 h-6" />
       {:else if theme === "light"}
-        <SunIcon class="w-6 h-6" />
+        <IconSun class="w-6 h-6" />
       {:else}
-        <DesktopIcon class="w-6 h-6" />
+        <IconDeviceDesktop class="w-6 h-6" />
       {/if}
     </Button>
 
     <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus" />
 
-    <Button tooltip="Command Palette" click={() => (open = !open)}>
-      <PromptIcon class="w-6 h-6" />
+    <Button tooltip="Command Palette" onclick={() => (open = !open)}>
+      <IconPrompt class="w-6 h-6" />
     </Button>
   </div>
 </nav>

@@ -7,18 +7,17 @@ export const db = <Params extends Record<string, string>>(
     getUrl?: () => URL;
     updateUrl?: (url: URL) => void;
     canUpdate?: () => boolean;
-  },
+  }
 ) => {
   const parse = options?.parse ?? ((p) => p as Params);
-  const getUrl = options?.getUrl ??
+  const getUrl =
+    options?.getUrl ??
     (() =>
       typeof window === "object" ? new URL(window.location.href) : undefined);
   const updateUrl = options?.updateUrl;
   const canUpdate = options?.canUpdate ?? (() => false);
 
-  const url = atom<URL | undefined>(
-    getUrl(),
-  );
+  const url = atom<URL | undefined>(getUrl());
   const params = computed<Params | undefined, typeof url>(url, (url) => {
     if (url) {
       const updatedParams = {
@@ -27,10 +26,12 @@ export const db = <Params extends Record<string, string>>(
       };
 
       // update browser url
+
+      console.log("can", canUpdate());
+      console.log("will", canUpdate() && updateUrl);
+
       if (canUpdate() && updateUrl) {
-        const searchParams = getSearchParams(
-          updatedParams,
-        );
+        const searchParams = getSearchParams(updatedParams);
         const updatedUrl = new URL(window.location.href);
 
         updatedUrl.search = searchParams.toString();
@@ -49,7 +50,7 @@ export const db = <Params extends Record<string, string>>(
       ...Object.fromEntries(
         Object.entries(params)
           .filter(([_, v]) => v !== undefined)
-          .map(([k, v]) => [k, v?.toString()]),
+          .map(([k, v]) => [k, v?.toString()])
       ),
     });
   };
