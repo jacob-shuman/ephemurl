@@ -6,14 +6,20 @@
   export let onclick: () => any = () => {};
 </script>
 
-<Tooltip message={tooltip}>
-  <button
-    on:click={onclick}
+{#if tooltip}
+  <Tooltip
+    message={tooltip}
+    {onclick}
     class={tw(
-      "cursor-pointer w-12 h-12 flex justify-center items-center rounded-lg text-grey focus:outline-none",
-      "scale transition-all duration-100 ease-out hover:bg-tinge hover:dark:bg-bauhaus focus:bg-tinge focus:dark:bg-bauhaus"
+      "cursor-pointer w-12 h-12 flex justify-center items-center rounded-lg text-grey",
+      "transition-all duration-100 ease-in-out hover:bg-tinge hover:dark:bg-bauhaus",
+      "focus:outline-none border-2 border-transparent focus:border-black dark:border-white"
     )}
   >
     <slot />
+  </Tooltip>
+{:else}
+  <button on:click={onclick} class="focus:outline-none">
+    <slot />
   </button>
-</Tooltip>
+{/if}
