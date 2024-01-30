@@ -1,74 +1,63 @@
 <script lang="ts">
-  import {
-    IconDeviceDesktop,
-    IconMoon,
-    IconPrompt,
-    IconSun,
-  } from "@tabler/icons-svelte";
+  import { IconDeviceDesktop, IconMoon, IconSun } from "@tabler/icons-svelte";
+  import { onMount } from "svelte";
+  import { db } from "../db";
   import Button from "./Button.svelte";
 
-  import { toast } from "svelte-sonner";
-
   export let theme: string = "system-dark";
-  let open = false;
-  let mounted = false;
+  let isMounted = false;
 
   type Params = {
     theme: "dark" | "light" | "system" | "system-dark";
   };
 
-  // const { params, url, update } = db<Params>(
-  //   { theme: "system-dark" },
-  //   {
-  //     parse: (p) => {
-  //       console.log("parsed");
-  //       return { theme: p.theme ?? "system-dark" } as Params;
-  //     },
-  //     // getUrl: () => {
-  //     //   if (mounted) return new URL(window.location.href);
+  const { url, params, update } = db<Params>(
+    (p) => ({ theme: p?.theme ?? "system-dark" }) as Params
+  );
 
-  //     //   return new URL("");
-  //     // },
-  //     canUpdate: () => mounted,
-  //     updateUrl: (url) => {
-  //       console.log("updating URL ", url);
-  //       window.history.pushState({}, "", url);
-  //     },
-  //   }
+  // const { url, params, update } = db<Params>(
+  //   { theme: "system-dark" },
+  //   { parse: (p) => ({ theme: p?.theme ?? "system-dark" }) as Params }
   // );
 
-  // function cycleTheme() {
-  //   switch ($params?.theme ?? "system") {
-  //     case "dark":
-  //       console.log("updating to light");
-  //       update({ theme: "light" });
-  //     case "light":
-  //       console.log("updating to system");
-  //       update({
-  //         theme: window.matchMedia("(prefers-color-scheme: dark)").matches
-  //           ? "system-dark"
-  //           : "system",
-  //       });
-  //       break;
-  //     default:
-  //       console.log("updating to dark");
-  //       update({ theme: "dark" });
-  //       break;
-  //   }
-  // }
+  function cycleTheme(theme: Params["theme"]): Params["theme"] {
+    switch (theme) {
+      case "dark":
+        return "light";
+      case "light":
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "system-dark"
+          : "system";
+      default:
+        return "dark";
+    }
+  }
 
-  // onMount(() => {
-  //   mounted = true;
-  //   url.set(new URL(window.location.href));
-  // });
+  onMount(() => {
+    isMounted = true;
+
+    url.set(new URL(window.location.href));
+
+    if (
+      $params.theme === "system" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      update({ theme: "system-dark" });
+    } else if (
+      $params.theme === "system-dark" &&
+      !window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      update({ theme: "system" });
+    }
+  });
 </script>
 
 <!-- <Palette bind:open /> -->
 
-<nav class="flex flex-col gap-y-2 sm:flex-row sm:gap-y-0 justify-between">
+<nav class="flex flex-col justify-between gap-y-2 sm:flex-row sm:gap-y-0">
   <div class="flex flex-col gap-y-2">
     <h1 class="font-rubik-mono text-4xl">ephemurl</h1>
-    <div class="h-0.5 rounded bg-tinge dark:bg-bauhaus"></div>
+    <div class="bg-tinge dark:bg-bauhaus h-0.5 rounded"></div>
   </div>
 
   <!-- TODO: implement theme selector -->
@@ -76,22 +65,22 @@
     <Button
       tooltip="Theme"
       onclick={() => {
-        toast("testing");
+        update({ theme: cycleTheme($params.theme) });
       }}
     >
-      {#if theme === "dark"}
-        <IconMoon class="w-6 h-6" />
-      {:else if theme === "light"}
-        <IconSun class="w-6 h-6" />
+      {#if ($params.theme ?? theme) === "dark"}
+        <IconMoon class="h-6 w-6" />
+      {:else if ($params.theme ?? theme) === "light"}
+        <IconSun class="h-6 w-6" />
       {:else}
-        <IconDeviceDesktop class="w-6 h-6" />
+        <IconDeviceDesktop class="h-6 w-6" />
       {/if}
     </Button>
 
-    <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus" />
-
-    <Button tooltip="Command Palette" onclick={() => (open = !open)}>
-      <IconPrompt class="w-6 h-6" />
-    </Button>
+    <!-- <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus" /> -->
+    <!--  -->
+    <!-- <Button tooltip="Command Palette" onclick={() => (open = !open)}> -->
+    <!-- <IconPrompt class="w-6 h-6" /> -->
+    <!-- </Button> -->
   </div>
 </nav>

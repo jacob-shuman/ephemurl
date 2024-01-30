@@ -1,3 +1,11 @@
+export const PARAM_UPDATE_EVENT = "ephemurl:param-update";
+
+export type Params = {
+  theme: "dark" | "light" | "system" | "system-dark";
+};
+
+export type ParamUpdateEventDetail<Params> = { url: string; params: Params };
+
 export interface Project {
   name: string;
   icon: string;
@@ -26,7 +34,7 @@ export const tools: Project[] = [
     icon: "tabler:clock-hour-7",
     url: "https://clock.ephm.app",
     repo: "jacob-shuman/ephemurl-clock",
-    status: "ready",
+    status: "planned",
   },
   {
     name: "stopwatch",
@@ -169,6 +177,13 @@ export const games: Project[] = [
     icon: "tabler:chess-knight",
     url: "https://chess.ephm.app",
     repo: "jacob-shuman/ephemurl-chess",
+    status: "planned",
+  },
+  {
+    name: "chess_clock",
+    icon: "tabler:chess-queen",
+    url: "https://chessclock.ephm.app",
+    repo: "jacob-shuman/ephemurl-chessclock",
     status: "planned",
   },
   {

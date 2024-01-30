@@ -1,51 +1,47 @@
 import { atom, computed } from "nanostores";
+import { PARAM_UPDATE_EVENT, type ParamUpdateEventDetail } from "./constants";
 
-export const db = <Params extends Record<string, string>>(
-  baseParams: Params,
-  options?: {
-    parse?: (params: Record<string, string>) => Params;
-    getUrl?: () => URL;
-    updateUrl?: (url: URL) => void;
-    canUpdate?: () => boolean;
-  }
-) => {
-  const parse = options?.parse ?? ((p) => p as Params);
-  const getUrl =
-    options?.getUrl ??
-    (() =>
-      typeof window === "object" ? new URL(window.location.href) : undefined);
-  const updateUrl = options?.updateUrl;
-  const canUpdate = options?.canUpdate ?? (() => false);
+export function db<Params extends Record<string, string>>(
+  parse: (params: Record<string, string>) => Params = (p) => p as Params
+) {
+  const url = atom<URL | undefined>(
+    typeof window === "object" ? new URL(window.location.href) : undefined
+  );
 
-  const url = atom<URL | undefined>(getUrl());
-  const params = computed<Params | undefined, typeof url>(url, (url) => {
+  const push = atom(false);
+
+  const params = computed<Params, typeof url>(url, (url) => {
     if (url) {
-      const updatedParams = {
-        ...baseParams,
-        ...parse(Object.fromEntries(url.searchParams.entries())),
-      };
+      const updatedParams = parse(
+        Object.fromEntries(url.searchParams.entries())
+      );
 
       // update browser url
-
-      console.log("can", canUpdate());
-      console.log("will", canUpdate() && updateUrl);
-
-      if (canUpdate() && updateUrl) {
+      if (push.get() && typeof window === "object") {
         const searchParams = getSearchParams(updatedParams);
         const updatedUrl = new URL(window.location.href);
 
         updatedUrl.search = searchParams.toString();
 
-        updateUrl(updatedUrl);
+        window.history.pushState({ test: Math.random() }, "", updatedUrl);
+
+        window.dispatchEvent(
+          new CustomEvent<ParamUpdateEventDetail<Params>>(PARAM_UPDATE_EVENT, {
+            detail: {
+              url: url.href,
+              params: updatedParams,
+            },
+          })
+        );
       }
 
       return updatedParams;
     }
 
-    return parse(baseParams);
+    return parse({});
   });
 
-  const getSearchParams = (params: Params): URLSearchParams => {
+  function getSearchParams(params: Params): URLSearchParams {
     return new URLSearchParams({
       ...Object.fromEntries(
         Object.entries(params)
@@ -53,10 +49,10 @@ export const db = <Params extends Record<string, string>>(
           .map(([k, v]) => [k, v?.toString()])
       ),
     });
-  };
+  }
 
   const update = (updates: Partial<Params>) => {
-    const updatedUrl = url.get() ?? new URL(window.location.href);
+    const updatedUrl = new URL(url.get()?.href ?? window.location.href);
     const currentParams = params.get();
 
     if (currentParams) {
@@ -66,8 +62,10 @@ export const db = <Params extends Record<string, string>>(
       }).toString();
     }
 
+    push.set(true);
     url.set(updatedUrl);
+    push.set(false);
   };
 
-  return { url, params, update };
-};
+  return { url, params, push, update };
+}
