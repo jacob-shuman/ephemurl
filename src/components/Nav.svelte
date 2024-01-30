@@ -1,8 +1,14 @@
 <script lang="ts">
-  import { IconDeviceDesktop, IconMoon, IconSun } from "@tabler/icons-svelte";
+  import {
+    IconBrandGithub,
+    IconDeviceDesktop,
+    IconMoon,
+    IconSun,
+  } from "@tabler/icons-svelte";
   import { onMount } from "svelte";
   import { db } from "../db";
   import Button from "./Button.svelte";
+  import LinkButton from "./LinkButton.svelte";
 
   export let theme: string = "system-dark";
   let isMounted = false;
@@ -77,10 +83,19 @@
       {/if}
     </Button>
 
+    <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus" />
+
+    <LinkButton
+      tooltip="GitHub Repo"
+      href="https://github.com/jacob-shuman/ephemurl-site"
+    >
+      <IconBrandGithub class="w-6 h-6" />
+    </LinkButton>
+
     <!-- <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus" /> -->
     <!--  -->
-    <!-- <Button tooltip="Command Palette" onclick={() => (open = !open)}> -->
-    <!-- <IconPrompt class="w-6 h-6" /> -->
-    <!-- </Button> -->
+    <!-- <Button tooltip="Command Palette" onclick={() => (open = !open)}>
+      <IconBrandGithub class="w-6 h-6" />
+    </Button> -->
   </div>
 </nav>
