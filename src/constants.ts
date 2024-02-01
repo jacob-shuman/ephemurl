@@ -46,13 +46,13 @@ export const RawParamsSchema = v.transform(
 
     "theme-dark-bg": v.fallback(v.string(), "#000000"),
     "theme-dark-text": v.fallback(v.string(), "#FFFFFF"),
-    "theme-dark-accent": v.fallback(v.string(), "#FFFFFF"),
+    "theme-dark-accent": v.fallback(v.string(), "#808080"),
     "theme-dark-hover": v.fallback(v.string(), "#808080"),
     "theme-dark-focus": v.fallback(v.string(), "#FFFFFF"),
 
     "theme-light-bg": v.fallback(v.string(), "#FFFFFF"),
     "theme-light-text": v.fallback(v.string(), "#000000"),
-    "theme-light-accent": v.fallback(v.string(), "#000000"),
+    "theme-light-accent": v.fallback(v.string(), "#808080"),
     "theme-light-hover": v.fallback(v.string(), "#808080"),
     "theme-light-focus": v.fallback(v.string(), "#000000"),
   }),
