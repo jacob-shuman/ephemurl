@@ -53,7 +53,7 @@
 <nav class="flex flex-col justify-between gap-y-2 sm:flex-row sm:gap-y-0">
   <div class="flex flex-col gap-y-2">
     <h1 class="font-rubik-mono text-4xl">ephemurl</h1>
-    <div class="bg-tinge dark:bg-bauhaus h-0.5 rounded"></div>
+    <div class="bg-accent dark:bg-accent-dark h-0.5 rounded"></div>
   </div>
 
   <div class="flex items-center gap-x-3">
