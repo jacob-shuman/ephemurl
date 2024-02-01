@@ -8,6 +8,18 @@ module.exports = {
         tinge: "#E6E6E6",
         bauhaus: "#404040",
         grey: "#808080",
+
+        bg: "var(--theme-bg)",
+        text: "var(--theme-text)",
+        accent: "var(--theme-accent)",
+        hover: "var(--theme-hover)",
+        focus: "var(--theme-focus)",
+
+        "bg-dark": "var(--theme-bg-dark)",
+        "text-dark": "var(--theme-text-dark)",
+        "accent-dark": "var(--theme-accent-dark)",
+        "hover-dark": "var(--theme-hover-dark)",
+        "focus-dark": "var(--theme-focus-dark)",
       },
       fontFamily: {
         rubik: ["Rubik"],

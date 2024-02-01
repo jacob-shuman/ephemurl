@@ -1,15 +1,17 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { PARAM_UPDATE_EVENT } from "../constants";
+  import * as v from "valibot";
+  import {
+    PARAM_UPDATE_EVENT,
+    RawParamsSchema,
+    type Params,
+    type ThemeMode,
+  } from "../constants";
   import { db } from "../db";
 
-  export let theme = "system-dark";
+  export let searchParams: Params;
 
-  type Params = {
-    theme: "dark" | "light" | "system" | "system-dark";
-  };
-
-  function refreshTheme(theme: "dark" | "light" | "system" | "system-dark") {
+  function refreshTheme(theme: ThemeMode) {
     if (
       theme === "dark" ||
       ((theme === "system" || theme === "system-dark") &&
@@ -21,11 +23,11 @@
     }
   }
 
-  const { url, params, push, update } = db<Params>(
-    (p) => ({ theme: p?.theme ?? "system-dark" }) as Params
+  const { url, params, push, update } = db<Params>((p) =>
+    v.parse(RawParamsSchema, p)
   );
 
-  $: if (typeof window === "object") refreshTheme($params.theme);
+  $: if (typeof window === "object") refreshTheme($params.theme.mode);
 
   onMount(() => {
     url.set(new URL(window.location.href));
@@ -42,15 +44,15 @@
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", ({ matches }) => {
         if (
-          ($params.theme === "system" && matches) ||
-          ($params.theme === "system-dark" && !matches)
+          ($params.theme.mode === "system" && matches) ||
+          ($params.theme.mode === "system-dark" && !matches)
         ) {
-          update({ theme: matches ? "system-dark" : "system" });
+          update({ theme: { mode: matches ? "system-dark" : "system" } });
         }
 
-        refreshTheme($params.theme ?? (theme as Params["theme"]));
+        refreshTheme($params.theme.mode ?? searchParams.theme.mode);
       });
 
-    refreshTheme($params.theme ?? (theme as Params["theme"]));
+    refreshTheme($params.theme.mode ?? searchParams.theme.mode);
   });
 </script>

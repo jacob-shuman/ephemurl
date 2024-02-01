@@ -25,7 +25,9 @@
       <slot />
     </Tooltip.Trigger>
   {:else}
-    <slot />
+    <button class={tw($$restProps.class)} bind:this={button}>
+      <slot />
+    </button>
   {/if}
 
   {#if isMounted && message}

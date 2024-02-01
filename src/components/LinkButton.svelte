@@ -6,6 +6,8 @@
   export let href: string | undefined = undefined;
 </script>
 
+<!-- TODO: fix tooltip focus styles -->
+
 <Tooltip message={tooltip}>
   <a
     {href}

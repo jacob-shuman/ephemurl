@@ -1,21 +1,64 @@
 ---
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import tw from "clsx";
+import * as v from "valibot";
 import packageJson from "../../package.json";
 import Card from "../components/Card.astro";
 import Nav from "../components/Nav.svelte";
 import Utils from "../components/Utils.svelte";
-import { games, modules, tools } from "../constants";
+import {
+  RawParamsSchema,
+  ThemeModeSchema,
+  games,
+  modules,
+  tools,
+  type Params,
+} from "../constants";
 
-const theme = Astro.url.searchParams.get("theme") ?? "system-dark";
+const themeMode = v.parse(
+  ThemeModeSchema,
+  Astro.url.searchParams.get("theme-mode")
+);
+
+const searchParams: Params = v.parse(
+  RawParamsSchema,
+  Object.fromEntries(Astro.url.searchParams.entries())
+);
+
+function buildTheme() {
+  return {
+    "--theme-bg": searchParams.theme.bg ?? searchParams?.theme?.light?.bg,
+    "--theme-bg-dark": searchParams.theme.bg ?? searchParams?.theme?.dark?.bg,
+
+    "--theme-text": searchParams.theme.text ?? searchParams?.theme?.light?.text,
+    "--theme-text-dark":
+      searchParams.theme.text ?? searchParams?.theme?.dark?.text,
+
+    "--theme-accent":
+      searchParams.theme.accent ?? searchParams?.theme?.light?.accent,
+    "--theme-accent-dark":
+      searchParams.theme.accent ?? searchParams?.theme?.dark?.accent,
+
+    "--theme-hover":
+      searchParams.theme.hover ?? searchParams?.theme?.light?.hover,
+    "--theme-hover-dark":
+      searchParams.theme.hover ?? searchParams?.theme?.dark?.hover,
+
+    "--theme-focus":
+      searchParams.theme.focus ?? searchParams?.theme?.light?.focus,
+    "--theme-focus-dark":
+      searchParams.theme.focus ?? searchParams?.theme?.dark?.focus,
+  };
+}
 ---
 
 <html
   lang="en"
+  style={buildTheme()}
   class={tw(
-    (theme === "dark" || theme === "system-dark") && "dark",
+    (themeMode === "dark" || themeMode === "system-dark") && "dark",
     "transition-all duration-300 ease-in-out",
-    "overflow-y-scroll scrollbar scrollbar-track-transparent scrollbar-thumb-grey/50"
+    "overflow-y-scroll scrollbar scrollbar-track-transparent scrollbar-thumb-grey/50 bg-transparent"
   )}
 >
   <head>
@@ -35,12 +78,11 @@ const theme = Astro.url.searchParams.get("theme") ?? "system-dark";
   </head>
 
   <body
-    class="font-rubik p-4 sm:p-8 lg:p-12 bg-white text-black dark:bg-black dark:text-white flex flex-col gap-y-9 transition-all duration-300 ease-in-out"
+    class="font-rubik p-4 sm:p-8 lg:p-12 flex flex-col gap-y-9 transition-all duration-300 ease-in-out bg-bg text-text dark:bg-bg-dark dark:text-text-dark"
   >
-    <Utils client:load {theme} />
+    <Utils client:load {searchParams} />
 
-    <!-- TODO: i shouldnt need to pass theme eventually -->
-    <Nav client:load {theme} />
+    <Nav client:load {themeMode} />
 
     <section class="flex flex-col gap-y-3">
       <h3

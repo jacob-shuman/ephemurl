@@ -1,7 +1,12 @@
 import { atom, computed } from "nanostores";
+import { assign, crush, mapKeys } from "radash";
 import { PARAM_UPDATE_EVENT, type ParamUpdateEventDetail } from "./constants";
 
-export function db<Params extends Record<string, string>>(
+type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>;
+};
+
+export function db<Params extends object>(
   parse: (params: Record<string, string>) => Params = (p) => p as Params
 ) {
   const url = atom<URL | undefined>(
@@ -23,7 +28,7 @@ export function db<Params extends Record<string, string>>(
 
         updatedUrl.search = searchParams.toString();
 
-        window.history.pushState({ test: Math.random() }, "", updatedUrl);
+        window.history.pushState({}, "", updatedUrl);
 
         window.dispatchEvent(
           new CustomEvent<ParamUpdateEventDetail<Params>>(PARAM_UPDATE_EVENT, {
@@ -42,24 +47,19 @@ export function db<Params extends Record<string, string>>(
   });
 
   function getSearchParams(params: Params): URLSearchParams {
-    return new URLSearchParams({
-      ...Object.fromEntries(
-        Object.entries(params)
-          .filter(([_, v]) => v !== undefined)
-          .map(([k, v]) => [k, v?.toString()])
-      ),
-    });
+    return new URLSearchParams(
+      mapKeys(crush({ ...params }), (k) => String(k).replaceAll(".", "-"))
+    );
   }
 
-  const update = (updates: Partial<Params>) => {
+  const update = (updates: DeepPartial<Params>) => {
     const updatedUrl = new URL(url.get()?.href ?? window.location.href);
     const currentParams = params.get();
 
     if (currentParams) {
-      updatedUrl.search = getSearchParams({
-        ...currentParams,
-        ...updates,
-      }).toString();
+      updatedUrl.search = getSearchParams(
+        assign(currentParams, updates) as Params
+      ).toString();
     }
 
     push.set(true);

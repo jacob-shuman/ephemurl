@@ -6,28 +6,20 @@
     IconSun,
   } from "@tabler/icons-svelte";
   import { onMount } from "svelte";
+  import * as v from "valibot";
+  import { RawParamsSchema, type Params, type ThemeMode } from "../constants";
   import { db } from "../db";
   import Button from "./Button.svelte";
   import LinkButton from "./LinkButton.svelte";
 
-  export let theme: string = "system-dark";
-  let isMounted = false;
+  export let themeMode: ThemeMode = "system-dark";
 
-  type Params = {
-    theme: "dark" | "light" | "system" | "system-dark";
-  };
-
-  const { url, params, update } = db<Params>(
-    (p) => ({ theme: p?.theme ?? "system-dark" }) as Params
+  const { url, params, update } = db<Params>((p) =>
+    v.parse(RawParamsSchema, p)
   );
 
-  // const { url, params, update } = db<Params>(
-  //   { theme: "system-dark" },
-  //   { parse: (p) => ({ theme: p?.theme ?? "system-dark" }) as Params }
-  // );
-
-  function cycleTheme(theme: Params["theme"]): Params["theme"] {
-    switch (theme) {
+  function cycleTheme(mode: ThemeMode): ThemeMode {
+    switch (mode) {
       case "dark":
         return "light";
       case "light":
@@ -40,20 +32,18 @@
   }
 
   onMount(() => {
-    isMounted = true;
-
     url.set(new URL(window.location.href));
 
     if (
-      $params.theme === "system" &&
+      $params.theme.mode === "system" &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
-      update({ theme: "system-dark" });
+      update({ theme: { mode: "system-dark" } });
     } else if (
-      $params.theme === "system-dark" &&
+      $params.theme.mode === "system-dark" &&
       !window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
-      update({ theme: "system" });
+      update({ theme: { mode: "system" } });
     }
   });
 </script>
@@ -66,17 +56,16 @@
     <div class="bg-tinge dark:bg-bauhaus h-0.5 rounded"></div>
   </div>
 
-  <!-- TODO: implement theme selector -->
   <div class="flex items-center gap-x-3">
     <Button
       tooltip="Theme"
       onclick={() => {
-        update({ theme: cycleTheme($params.theme) });
+        update({ theme: { mode: cycleTheme($params.theme.mode) } });
       }}
     >
-      {#if ($params.theme ?? theme) === "dark"}
+      {#if ($params.theme.mode ?? themeMode) === "dark"}
         <IconMoon class="h-6 w-6" />
-      {:else if ($params.theme ?? theme) === "light"}
+      {:else if ($params.theme.mode ?? themeMode) === "light"}
         <IconSun class="h-6 w-6" />
       {:else}
         <IconDeviceDesktop class="h-6 w-6" />

@@ -1,11 +1,79 @@
-export const PARAM_UPDATE_EVENT = "ephemurl:param-update";
+import { construct } from "radash";
+// TODO: consider replacing valibot with typebox for performance (https://github.com/sinclairzx81/typebox?tab=readme-ov-file)
+import * as v from "valibot";
 
-export type Params = {
-  theme: "dark" | "light" | "system" | "system-dark";
-};
+export const ThemeModeSchema = v.fallback(
+  v.picklist(["dark", "light", "system", "system-dark"] as const),
+  "system-dark"
+);
+
+export const ThemePropsSchema = v.object({
+  bg: v.fallback(v.string(), "#000000"),
+  text: v.fallback(v.string(), "#FFFFFF"),
+  accent: v.fallback(v.string(), "#FFFFFF"),
+  hover: v.fallback(v.string(), "#808080"),
+  focus: v.fallback(v.string(), "#FFFFFF"),
+});
+
+export const ThemeSchema = v.object({
+  mode: ThemeModeSchema,
+  dark: ThemePropsSchema,
+  light: ThemePropsSchema,
+
+  bg: v.optional(v.string()),
+  text: v.optional(v.string()),
+  accent: v.optional(v.string()),
+  hover: v.optional(v.string()),
+  focus: v.optional(v.string()),
+});
+
+export const ParamsSchema = v.object({
+  theme: ThemeSchema,
+});
+
+export const RawParamsSchema = v.transform(
+  v.object({
+    "theme-mode": v.fallback(
+      v.picklist(["dark", "light", "system", "system-dark"] as const),
+      "system-dark"
+    ),
+
+    "theme-bg": v.optional(v.string()),
+    "theme-text": v.optional(v.string()),
+    "theme-accent": v.optional(v.string()),
+    "theme-hover": v.optional(v.string()),
+    "theme-focus": v.optional(v.string()),
+
+    "theme-dark-bg": v.fallback(v.string(), "#000000"),
+    "theme-dark-text": v.fallback(v.string(), "#FFFFFF"),
+    "theme-dark-accent": v.fallback(v.string(), "#FFFFFF"),
+    "theme-dark-hover": v.fallback(v.string(), "#808080"),
+    "theme-dark-focus": v.fallback(v.string(), "#FFFFFF"),
+
+    "theme-light-bg": v.fallback(v.string(), "#FFFFFF"),
+    "theme-light-text": v.fallback(v.string(), "#000000"),
+    "theme-light-accent": v.fallback(v.string(), "#000000"),
+    "theme-light-hover": v.fallback(v.string(), "#808080"),
+    "theme-light-focus": v.fallback(v.string(), "#000000"),
+  }),
+  (x) =>
+    construct(
+      Object.fromEntries(
+        Object.entries(x).map(([k, v]) => [k.replaceAll("-", "."), v])
+      )
+    ) as v.Input<typeof ParamsSchema>
+);
+
+export type ThemeMode = v.Input<typeof ThemeModeSchema>;
+export type ThemeProps = v.Input<typeof ThemePropsSchema>;
+export type Params = v.Input<typeof ParamsSchema>;
+
+// Custom Events
+export const PARAM_UPDATE_EVENT = "ephemurl:param-update";
 
 export type ParamUpdateEventDetail<Params> = { url: string; params: Params };
 
+// Projects
 export interface Project {
   name: string;
   icon: string;
