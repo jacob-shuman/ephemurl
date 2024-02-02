@@ -10,8 +10,8 @@ export const ThemeModeSchema = v.fallback(
 export const ThemePropsSchema = v.object({
   bg: v.fallback(v.string(), "#000000"),
   text: v.fallback(v.string(), "#FFFFFF"),
-  secondary: v.fallback(v.string(), "#808080"),
-  accent: v.fallback(v.string(), "#FFFFFF"),
+  secondary: v.fallback(v.string(), "#404040"),
+  accent: v.fallback(v.string(), "#808080"),
   focus: v.fallback(v.string(), "#FFFFFF"),
 });
 
@@ -46,14 +46,13 @@ export const RawParamsSchema = v.transform(
 
     "theme-dark-bg": v.fallback(v.string(), "#000000"),
     "theme-dark-text": v.fallback(v.string(), "#FFFFFF"),
-    "theme-dark-secondary": v.fallback(v.string(), "#808080"),
+    "theme-dark-secondary": v.fallback(v.string(), "#404040"),
     "theme-dark-accent": v.fallback(v.string(), "#808080"),
     "theme-dark-focus": v.fallback(v.string(), "#FFFFFF"),
 
     "theme-light-bg": v.fallback(v.string(), "#FFFFFF"),
     "theme-light-text": v.fallback(v.string(), "#000000"),
-    "theme-light-secondary": v.fallback(v.string(), "#808080"),
-    // "theme-light-secondary": v.fallback(v.string(), "#E6E6E6"),
+    "theme-light-secondary": v.fallback(v.string(), "#E6E6E6"),
     "theme-light-accent": v.fallback(v.string(), "#808080"),
     "theme-light-focus": v.fallback(v.string(), "#000000"),
   }),

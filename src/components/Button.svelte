@@ -11,7 +11,7 @@
     message={tooltip}
     {onclick}
     class={tw(
-      "cursor-pointer w-12 h-12 flex justify-center items-center rounded-lg text-grey",
+      "cursor-pointer w-12 h-12 flex justify-center items-center rounded-lg text-text dark:text-text-dark",
       "transition-all duration-100 ease-in-out hover:bg-accent hover:dark:bg-accent-dark",
       "focus:outline-none border-2 border-transparent focus:border-focus dark:focus:border-focus-dark"
     )}

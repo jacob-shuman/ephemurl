@@ -23,7 +23,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
   >
     <div
       class={tw(
-        "text-grey bg-tinge dark:bg-bauhaus w-full sm:w-64 h-32 rounded-lg flex justify-center items-center",
+        "bg-tinge dark:bg-bauhaus w-full sm:w-64 h-32 rounded-lg flex justify-center items-center text-accent dark:text-accent-dark",
         status === "ready" &&
           "group-hover:-translate-y-2 group-focus:-translate-y-2 scale transition-all duration-100 ease-out group-hover:bg-bauhaus group-hover:dark:bg-tinge group-focus:bg-bauhaus group-focus:dark:bg-tinge"
       )}
@@ -43,7 +43,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
     <div
       class={tw(
         "flex items-center justify-between gap-x-2",
-        status === "planned" && "text-grey"
+        status === "planned" && "text-secondary dark:text-secondary-dark"
       )}
     >
       <p class="uppercase font-bold">
@@ -63,7 +63,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
           <a
             href={status === "ready" ? url : undefined}
             class={tw(
-              "flex gap-x-2 items-center group text-grey focus:outline-none",
+              "flex gap-x-2 items-center group focus:outline-none text-secondary dark:text-secondary-dark",
               status === "ready"
                 ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge focus:text-bauhaus focus:dark:text-tinge"
                 : "cursor-not-allowed"
@@ -83,7 +83,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
           <a
             href={status === "ready" ? `https://github.com/${repo}` : undefined}
             class={tw(
-              "flex gap-x-2 items-center group text-grey focus:outline-none",
+              "flex gap-x-2 items-center group focus:outline-none text-secondary dark:text-secondary-dark",
               status === "ready"
                 ? "transition-colors duration-100 hover:text-bauhaus hover:dark:text-tinge focus:text-bauhaus focus:dark:text-tinge"
                 : "cursor-not-allowed"
