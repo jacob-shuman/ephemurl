@@ -11,14 +11,14 @@ module.exports = {
 
         bg: "var(--theme-bg)",
         text: "var(--theme-text)",
+        secondary: "var(--theme-secondary)",
         accent: "var(--theme-accent)",
-        hover: "var(--theme-hover)",
         focus: "var(--theme-focus)",
 
         "bg-dark": "var(--theme-bg-dark)",
         "text-dark": "var(--theme-text-dark)",
+        "secondary-dark": "var(--theme-secondary-dark)",
         "accent-dark": "var(--theme-accent-dark)",
-        "hover-dark": "var(--theme-hover-dark)",
         "focus-dark": "var(--theme-focus-dark)",
       },
       fontFamily: {

@@ -34,15 +34,15 @@ function buildTheme() {
     "--theme-text-dark":
       searchParams.theme.text ?? searchParams?.theme?.dark?.text,
 
+    "--theme-secondary":
+      searchParams.theme.secondary ?? searchParams?.theme?.light?.secondary,
+    "--theme-secondary-dark":
+      searchParams.theme.secondary ?? searchParams?.theme?.dark?.secondary,
+
     "--theme-accent":
       searchParams.theme.accent ?? searchParams?.theme?.light?.accent,
     "--theme-accent-dark":
       searchParams.theme.accent ?? searchParams?.theme?.dark?.accent,
-
-    "--theme-hover":
-      searchParams.theme.hover ?? searchParams?.theme?.light?.hover,
-    "--theme-hover-dark":
-      searchParams.theme.hover ?? searchParams?.theme?.dark?.hover,
 
     "--theme-focus":
       searchParams.theme.focus ?? searchParams?.theme?.light?.focus,
@@ -63,7 +63,7 @@ function buildTheme() {
 >
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={packageJson.description} />

@@ -10,8 +10,8 @@ export const ThemeModeSchema = v.fallback(
 export const ThemePropsSchema = v.object({
   bg: v.fallback(v.string(), "#000000"),
   text: v.fallback(v.string(), "#FFFFFF"),
+  secondary: v.fallback(v.string(), "#808080"),
   accent: v.fallback(v.string(), "#FFFFFF"),
-  hover: v.fallback(v.string(), "#808080"),
   focus: v.fallback(v.string(), "#FFFFFF"),
 });
 
@@ -22,8 +22,8 @@ export const ThemeSchema = v.object({
 
   bg: v.optional(v.string()),
   text: v.optional(v.string()),
+  secondary: v.optional(v.string()),
   accent: v.optional(v.string()),
-  hover: v.optional(v.string()),
   focus: v.optional(v.string()),
 });
 
@@ -40,20 +40,21 @@ export const RawParamsSchema = v.transform(
 
     "theme-bg": v.optional(v.string()),
     "theme-text": v.optional(v.string()),
+    "theme-secondary": v.optional(v.string()),
     "theme-accent": v.optional(v.string()),
-    "theme-hover": v.optional(v.string()),
     "theme-focus": v.optional(v.string()),
 
     "theme-dark-bg": v.fallback(v.string(), "#000000"),
     "theme-dark-text": v.fallback(v.string(), "#FFFFFF"),
+    "theme-dark-secondary": v.fallback(v.string(), "#808080"),
     "theme-dark-accent": v.fallback(v.string(), "#808080"),
-    "theme-dark-hover": v.fallback(v.string(), "#808080"),
     "theme-dark-focus": v.fallback(v.string(), "#FFFFFF"),
 
     "theme-light-bg": v.fallback(v.string(), "#FFFFFF"),
     "theme-light-text": v.fallback(v.string(), "#000000"),
+    "theme-light-secondary": v.fallback(v.string(), "#808080"),
+    // "theme-light-secondary": v.fallback(v.string(), "#E6E6E6"),
     "theme-light-accent": v.fallback(v.string(), "#808080"),
-    "theme-light-hover": v.fallback(v.string(), "#808080"),
     "theme-light-focus": v.fallback(v.string(), "#000000"),
   }),
   (x) =>
@@ -109,7 +110,7 @@ export const tools: Project[] = [
     icon: "tabler:alarm",
     url: "https://stopwatch.ephm.app",
     repo: "jacob-shuman/ephemurl-stopwatch",
-    status: "planned",
+    status: "ready",
   },
   {
     name: "tracker",
