@@ -56,3 +56,11 @@
     refreshTheme($params.theme.mode ?? searchParams.theme.mode);
   });
 </script>
+
+<svelte:head>
+  {#if $params.theme.mode === "system" || $params.theme.mode === "light"}
+    <link href="/favicon-light.svg" type="image/svg+xml" rel="icon" />
+  {:else}
+    <link href="/favicon-dark.svg" type="image/svg+xml" rel="icon" />
+  {/if}
+</svelte:head>
