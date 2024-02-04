@@ -91,6 +91,13 @@ export const tools: Project[] = [
     status: "planned",
   },
   {
+    name: "spotify_comparator",
+    icon: "tabler:brand-spotify",
+    url: "https://spotifycomparator.ephm.app",
+    repo: "jacob-shuman/ephemurl-spotifycomparator",
+    status: "planned",
+  },
+  {
     name: "pomodoro",
     icon: "tabler:time-duration-30",
     url: "https://pomodoro.ephm.app",
