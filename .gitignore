@@ -1,2 +1,9 @@
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+
 # macos files
 .DS_Store
