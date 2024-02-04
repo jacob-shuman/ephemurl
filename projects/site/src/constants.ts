@@ -116,7 +116,7 @@ export const tools: Project[] = [
     icon: "tabler:alarm",
     url: "https://stopwatch.ephm.app",
     repo: "jacob-shuman/ephemurl-stopwatch",
-    status: "ready",
+    status: "planned",
   },
   {
     name: "tracker",
