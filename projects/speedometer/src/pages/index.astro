@@ -1,0 +1,169 @@
+---
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+import tw from "clsx";
+// import * as v from "valibot";
+import packageJson from "../../package.json";
+import Speedometer from "../components/Speedometer.svelte";
+import Utils from "../components/Utils.svelte";
+// import Card from "../components/Card.astro";
+// import Nav from "../components/Nav.svelte";
+// import Utils from "../components/Utils.svelte";
+// import {
+//   RawParamsSchema,
+//   ThemeModeSchema,
+//   games,
+//   modules,
+//   tools,
+//   type Params,
+// } from "../constants";
+
+// const themeMode = v.parse(
+//   ThemeModeSchema,
+//   Astro.url.searchParams.get("theme-mode")
+// );
+
+// const searchParams: Params = v.parse(
+//   RawParamsSchema,
+//   Object.fromEntries(Astro.url.searchParams.entries())
+// );
+
+// function buildTheme() {
+//   return {
+//     "--theme-bg": searchParams.theme.bg ?? searchParams?.theme?.light?.bg,
+//     "--theme-bg-dark": searchParams.theme.bg ?? searchParams?.theme?.dark?.bg,
+
+//     "--theme-text": searchParams.theme.text ?? searchParams?.theme?.light?.text,
+//     "--theme-text-dark":
+//       searchParams.theme.text ?? searchParams?.theme?.dark?.text,
+
+//     "--theme-secondary":
+//       searchParams.theme.secondary ?? searchParams?.theme?.light?.secondary,
+//     "--theme-secondary-dark":
+//       searchParams.theme.secondary ?? searchParams?.theme?.dark?.secondary,
+
+//     "--theme-accent":
+//       searchParams.theme.accent ?? searchParams?.theme?.light?.accent,
+//     "--theme-accent-dark":
+//       searchParams.theme.accent ?? searchParams?.theme?.dark?.accent,
+
+//     "--theme-focus":
+//       searchParams.theme.focus ?? searchParams?.theme?.light?.focus,
+//     "--theme-focus-dark":
+//       searchParams.theme.focus ?? searchParams?.theme?.dark?.focus,
+//   };
+// }
+---
+
+<!-- style={buildTheme()} --><!-- (themeMode === "dark" || themeMode === "system-dark") && "dark", -->
+<html
+  lang="en"
+  class={tw(
+    "transition-all duration-300 ease-in-out",
+    "overflow-y-scroll scrollbar scrollbar-track-transparent scrollbar-thumb-grey/50 bg-transparent"
+  )}
+>
+  <head>
+    <meta charset="utf-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={packageJson.description} />
+    <title>ephemurl</title>
+
+    <GoogleFontsOptimizer
+      url="https://fonts.bunny.net/css?family=rubik-mono-one:400"
+    />
+    <GoogleFontsOptimizer
+      url="https://fonts.bunny.net/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    />
+  </head>
+
+  <body
+    class={tw(
+      "font-rubik p-4 sm:p-8 lg:p-12",
+      "grid items-center justify-center min-h-screen",
+      "transition-all duration-300 ease-in-out",
+      "bg-bg text-text dark:bg-bg-dark dark:text-text-dark"
+    )}
+  >
+    <Utils client:load />
+    <Speedometer client:load />
+
+    <!-- <Utils client:load {searchParams} />
+
+    <Nav client:load {themeMode} />
+
+    <section class="flex flex-col gap-y-3">
+      <h3
+        class={tw(
+          "font-bold text-lg",
+          tools.filter(({ status }) => status === "ready").length < 1 &&
+            "opacity-40"
+        )}
+      >
+        TOOLS
+      </h3>
+
+      <div class="flex flex-wrap gap-8">
+        {
+          tools
+            .sort((t1, t2) => t1.name.localeCompare(t2.name))
+            .sort(
+              (t1, t2) =>
+                Number(t2.status === "ready") - Number(t1.status === "ready")
+            )
+            .map((t) => <Card {...t} />)
+        }
+      </div>
+    </section>
+
+    <section class="flex flex-col gap-y-3">
+      <h3
+        class={tw(
+          "font-bold text-lg",
+          games.filter(({ status }) => status === "ready").length < 1 &&
+            "opacity-40"
+        )}
+      >
+        GAMES
+      </h3>
+
+      <div class="flex flex-wrap gap-8">
+        {
+          games
+            .sort((g1, g2) => g1.name.localeCompare(g2.name))
+            .sort(
+              (g1, g2) =>
+                Number(g2.status === "ready") - Number(g1.status === "ready")
+            )
+            .map((g) => <Card {...g} />)
+        }
+      </div>
+    </section>
+
+    <section class="flex flex-col gap-y-3">
+      <h3
+        class={tw(
+          "font-bold text-lg",
+          modules.filter(({ status }) => status === "ready").length < 1 &&
+            "opacity-40"
+        )}
+      >
+        MODULES
+      </h3>
+
+      <div class="flex flex-wrap gap-8">
+        {
+          modules
+            .sort((m1, m2) => m1.name.localeCompare(m2.name))
+            .sort(
+              (m1, m2) =>
+                Number(m2.status === "ready") - Number(m1.status === "ready")
+            )
+            .map((m) => <Card {...m} />)
+        }
+      </div>
+    </section>
+  </body> -->
+  </body>
+</html>

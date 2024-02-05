@@ -68,6 +68,66 @@ importers:
         specifier: ^0.27.1
         version: 0.27.1
 
+  projects/speedometer:
+    dependencies:
+      '@astrojs/netlify':
+        specifier: ^5.0.0
+        version: 5.0.1(astro@4.3.2)
+      '@astrojs/svelte':
+        specifier: ^5.0.3
+        version: 5.0.3(astro@4.3.2)(svelte@4.2.9)(typescript@5.3.3)(vite@5.0.12)
+      '@astrojs/tailwind':
+        specifier: ^5.1.0
+        version: 5.1.0(astro@4.3.2)(tailwindcss@3.4.1)
+      '@floating-ui/core':
+        specifier: ^1.5.3
+        version: 1.6.0
+      '@iconify-json/tabler':
+        specifier: ^1.1.104
+        version: 1.1.105
+      '@tabler/icons-svelte':
+        specifier: ^2.46.0
+        version: 2.47.0(svelte@4.2.9)
+      astro:
+        specifier: ^4.2.1
+        version: 4.3.2(typescript@5.3.3)
+      astro-google-fonts-optimizer:
+        specifier: ^0.2.2
+        version: 0.2.2
+      astro-icon:
+        specifier: ^1.0.2
+        version: 1.1.0
+      bits-ui:
+        specifier: ^0.16.0
+        version: 0.16.0(svelte@4.2.9)
+      clsx:
+        specifier: ^2.1.0
+        version: 2.1.0
+      colord:
+        specifier: ^2.9.3
+        version: 2.9.3
+      nanostores:
+        specifier: ^0.9.5
+        version: 0.9.5
+      radash:
+        specifier: ^11.0.0
+        version: 11.0.0
+      svelte:
+        specifier: ^4.2.0
+        version: 4.2.9
+      svelte-sonner:
+        specifier: ^0.3.11
+        version: 0.3.11(svelte@4.2.9)
+      tailwind-scrollbar:
+        specifier: ^3.0.5
+        version: 3.0.5(tailwindcss@3.4.1)
+      tailwindcss:
+        specifier: ^3.3.3
+        version: 3.4.1
+      valibot:
+        specifier: ^0.27.1
+        version: 0.27.1
+
 packages:
 
   /@alloc/quick-lru@5.2.0:
