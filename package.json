@@ -1,5 +1,6 @@
 {
   "name": "ephemurl",
+  "description": "Collection of FOSS tools",
   "version": "1.0.0",
   "private": true,
   "author": {
