@@ -1,0 +1,15 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# netlify
+.netlify/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
