@@ -25,7 +25,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
       class={tw(
         "bg-bg-400 dark:bg-bg-dark-400 w-full sm:w-64 h-32 rounded flex justify-center items-center text-bg-100 dark:text-bg-dark-100",
         status === "ready" &&
-          "group-hover:-translate-y-2 group-focus:-translate-y-2 scale transition-all duration-100 ease-out group-hover:bg-fg-500 group-hover:dark:bg-fg-dark-500 group-focus:bg-fg-500 group-focus:dark:bg-fg-dark-500"
+          "group-hover:-translate-y-2 group-focus:-translate-y-2 scale transition-all duration-100 ease-out group-hover:bg-fg-500 group-hover:dark:bg-fg-dark-500 group-focus:bg-fg-500 group-focus:dark:bg-fg-dark-500 border-2 border-transparent group-focus:border-bg-100 group-focus:dark:border-bg-dark-100"
       )}
     >
       <Icon
