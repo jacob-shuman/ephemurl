@@ -4,45 +4,36 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      borderRadius: {
+        DEFAULT: "var(--theme-border-radius)",
+      },
       colors: {
-        // tinge: "#E6E6E6",
-        // bauhaus: "#404040",
-        // grey: "#808080",
-
-        bg: "var(--theme-bg)",
-        text: "var(--theme-text)",
-        secondary: "var(--theme-secondary)",
-        accent: "var(--theme-accent)",
-        focus: "var(--theme-focus)",
-
-        "bg-dark": "var(--theme-bg-dark)",
-        "text-dark": "var(--theme-text-dark)",
-        "secondary-dark": "var(--theme-secondary-dark)",
-        "accent-dark": "var(--theme-accent-dark)",
-        "focus-dark": "var(--theme-focus-dark)",
-
-        new: {
-          primary: {
-            100: "var(--theme-primary-100)",
-            200: "var(--theme-primary-200)",
-            300: "var(--theme-primary-300)",
-            400: "var(--theme-primary-400)",
-            500: "var(--theme-primary-500)",
-            600: "var(--theme-primary-600)",
-            700: "var(--theme-primary-700)",
-            800: "var(--theme-primary-800)",
-            900: "var(--theme-primary-900)",
+        fg: {
+          100: "var(--theme-fg-100)",
+          200: "var(--theme-fg-200)",
+          300: "var(--theme-fg-300)",
+          400: "var(--theme-fg-400)",
+          500: "var(--theme-fg-500)",
+          dark: {
+            100: "var(--theme-fg-dark-100)",
+            200: "var(--theme-fg-dark-200)",
+            300: "var(--theme-fg-dark-300)",
+            400: "var(--theme-fg-dark-400)",
+            500: "var(--theme-fg-dark-500)",
           },
-          neutral: {
-            100: "var(--theme-neutral-100)",
-            200: "var(--theme-neutral-200)",
-            300: "var(--theme-neutral-300)",
-            400: "var(--theme-neutral-400)",
-            500: "var(--theme-neutral-500)",
-            600: "var(--theme-neutral-600)",
-            700: "var(--theme-neutral-700)",
-            800: "var(--theme-neutral-800)",
-            900: "var(--theme-neutral-900)",
+        },
+        bg: {
+          100: "var(--theme-bg-100)",
+          200: "var(--theme-bg-200)",
+          300: "var(--theme-bg-300)",
+          400: "var(--theme-bg-400)",
+          500: "var(--theme-bg-500)",
+          dark: {
+            100: "var(--theme-bg-dark-100)",
+            200: "var(--theme-bg-dark-200)",
+            300: "var(--theme-bg-dark-300)",
+            400: "var(--theme-bg-dark-400)",
+            500: "var(--theme-bg-dark-500)",
           },
         },
       },

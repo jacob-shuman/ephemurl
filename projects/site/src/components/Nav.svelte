@@ -48,14 +48,13 @@
   });
 </script>
 
-<!-- <Palette bind:open /> -->
-
 <nav class="flex flex-col justify-between gap-y-2 sm:flex-row sm:gap-y-0">
   <div class="flex flex-col gap-y-2">
     <h1 class="font-rubik-mono text-4xl">ephemurl</h1>
-    <div class="bg-secondary dark:bg-secondary-dark h-0.5 rounded"></div>
+    <div class="bg-bg-400 dark:bg-bg-dark-400 h-0.5 rounded"></div>
   </div>
 
+  <!-- TODO: fix color flashing issue when changing themes -->
   <div class="flex items-center gap-x-3">
     <Button
       tooltip="Theme"
@@ -72,7 +71,7 @@
       {/if}
     </Button>
 
-    <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus" />
+    <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
 
     <LinkButton
       tooltip="GitHub Repo"
@@ -80,11 +79,5 @@
     >
       <IconBrandGithub class="w-6 h-6" />
     </LinkButton>
-
-    <!-- <div class="h-4 w-0.5 rounded bg-tinge dark:bg-bauhaus" /> -->
-    <!--  -->
-    <!-- <Button tooltip="Command Palette" onclick={() => (open = !open)}>
-      <IconBrandGithub class="w-6 h-6" />
-    </Button> -->
   </div>
 </nav>

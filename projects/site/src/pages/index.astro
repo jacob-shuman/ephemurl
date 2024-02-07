@@ -14,6 +14,7 @@ import {
   tools,
   type Params,
 } from "../constants";
+import { buildTheme } from "../theme";
 
 const themeMode = v.parse(
   ThemeModeSchema,
@@ -24,46 +25,19 @@ const searchParams: Params = v.parse(
   RawParamsSchema,
   Object.fromEntries(Astro.url.searchParams.entries())
 );
-
-function buildTheme() {
-  return {
-    "--theme-bg": searchParams.theme.bg ?? searchParams?.theme?.light?.bg,
-    "--theme-bg-dark": searchParams.theme.bg ?? searchParams?.theme?.dark?.bg,
-
-    "--theme-text": searchParams.theme.text ?? searchParams?.theme?.light?.text,
-    "--theme-text-dark":
-      searchParams.theme.text ?? searchParams?.theme?.dark?.text,
-
-    "--theme-secondary":
-      searchParams.theme.secondary ?? searchParams?.theme?.light?.secondary,
-    "--theme-secondary-dark":
-      searchParams.theme.secondary ?? searchParams?.theme?.dark?.secondary,
-
-    "--theme-accent":
-      searchParams.theme.accent ?? searchParams?.theme?.light?.accent,
-    "--theme-accent-dark":
-      searchParams.theme.accent ?? searchParams?.theme?.dark?.accent,
-
-    "--theme-focus":
-      searchParams.theme.focus ?? searchParams?.theme?.light?.focus,
-    "--theme-focus-dark":
-      searchParams.theme.focus ?? searchParams?.theme?.dark?.focus,
-  };
-}
 ---
 
 <html
   lang="en"
-  style={buildTheme()}
+  style={buildTheme(searchParams)}
   class={tw(
     (themeMode === "dark" || themeMode === "system-dark") && "dark",
-    "transition-all duration-300 ease-in-out",
+    "transition-all duration-100 ease-out",
     "overflow-y-scroll scrollbar scrollbar-track-transparent scrollbar-thumb-grey/50 bg-transparent"
   )}
 >
   <head>
     <meta charset="utf-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={packageJson.description} />
@@ -78,7 +52,7 @@ function buildTheme() {
   </head>
 
   <body
-    class="font-rubik p-4 sm:p-8 lg:p-12 flex flex-col gap-y-9 transition-all duration-300 ease-in-out bg-bg text-text dark:bg-bg-dark dark:text-text-dark"
+    class="font-rubik p-4 sm:p-8 lg:p-12 flex flex-col gap-y-9 transition-all duration-100 ease-out bg-bg-500 text-bg-100 dark:bg-bg-dark-500 dark:text-bg-dark-100"
   >
     <Utils client:load {searchParams} />
 

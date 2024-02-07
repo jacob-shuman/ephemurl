@@ -1,5 +1,6 @@
 {
   "name": "ephemurl-site",
+  "description": "Collection of FOSS tools",
   "type": "module",
   "version": "0.0.1",
   "private": true,
