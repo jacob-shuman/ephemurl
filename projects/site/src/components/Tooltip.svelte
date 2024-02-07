@@ -22,7 +22,7 @@
       sideOffset={8}
     >
       <div
-        class="rounded p-3 font-medium text-sm bg-bg-300 dark:bg-bg-dark-300 focus:outline-none"
+        class="rounded p-3 font-medium text-sm bg-bg-400 text-bg-100 dark:bg-bg-dark-400 dark:text-bg-dark-100 focus:outline-none"
       >
         {message}
       </div>

@@ -1,7 +1,7 @@
 // import { construct } from "radash";
 // TODO: consider replacing valibot with typebox for performance (https://github.com/sinclairzx81/typebox?tab=readme-ov-file)
-import * as v from "valibot";
 import { buildPalette } from "./theme";
+import * as v from "valibot";
 
 export const ThemeModeSchema = v.fallback(
   v.picklist(["light", "dark", "system", "system-dark"] as const),
@@ -67,10 +67,10 @@ export const RawParamsSchema = v.transform(
     "theme-fg": v.optional(v.string()),
     "theme-bg": v.optional(v.string()),
 
-    "theme-fg-light": v.fallback(v.string(), "#007BFF"),
+    "theme-fg-light": v.fallback(v.string(), "#000000"),
     "theme-bg-light": v.fallback(v.string(), "#FFFFFF"),
 
-    "theme-fg-dark": v.fallback(v.string(), "#007BFF"),
+    "theme-fg-dark": v.fallback(v.string(), "#FFFFFF"),
     "theme-bg-dark": v.fallback(v.string(), "#000000"),
   }),
   (p) => {

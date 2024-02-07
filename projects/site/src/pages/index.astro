@@ -33,7 +33,7 @@ const searchParams: Params = v.parse(
   class={tw(
     (themeMode === "dark" || themeMode === "system-dark") && "dark",
     "transition-all duration-100 ease-out",
-    "overflow-y-scroll scrollbar scrollbar-track-transparent scrollbar-thumb-grey/50 bg-transparent"
+    "overflow-y-scroll scrollbar scrollbar-track-transparent bg-transparent"
   )}
 >
   <head>
@@ -52,7 +52,7 @@ const searchParams: Params = v.parse(
   </head>
 
   <body
-    class="font-rubik p-4 sm:p-8 lg:p-12 flex flex-col gap-y-9 transition-all duration-100 ease-out bg-bg-500 text-bg-100 dark:bg-bg-dark-500 dark:text-bg-dark-100"
+    class="font-rubik p-4 sm:p-8 lg:p-12 flex flex-col gap-y-9 transition-all duration-100 ease-out"
   >
     <Utils client:load {searchParams} />
 
@@ -129,5 +129,19 @@ const searchParams: Params = v.parse(
         }
       </div>
     </section>
+
+    <style is:global>
+      html {
+        @apply bg-bg-500 text-bg-100;
+        @apply scrollbar-thumb-bg-400;
+        @apply selection:bg-bg-300;
+        @apply selection:bg-bg-400;
+      }
+      html.dark {
+        @apply bg-bg-dark-500 text-bg-dark-100;
+        @apply scrollbar-thumb-bg-dark-400;
+        @apply selection:bg-bg-dark-400;
+      }
+    </style>
   </body>
 </html>
