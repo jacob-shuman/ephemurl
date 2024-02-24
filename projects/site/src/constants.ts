@@ -34,6 +34,13 @@ export const tools: Project[] = [
     status: "unplanned",
   },
   {
+    name: "teleprompter",
+    icon: "tabler:device-desktop",
+    url: "https://teleprompter.ephm.app",
+    repo: "jacob-shuman/ephemurl-teleprompter",
+    status: "unplanned",
+  },
+  {
     name: "pomodoro",
     icon: "tabler:time-duration-30",
     url: "https://pomodoro.ephm.app",
