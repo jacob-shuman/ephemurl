@@ -1,15 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import * as v from "valibot";
-  import {
-    PARAM_UPDATE_EVENT,
-    RawParamsSchema,
-    type Params,
-    type ThemeMode,
-  } from "../constants";
+  import { createConfig, type Config } from "../config";
+  import { PARAM_UPDATE_EVENT } from "../constants";
   import { db } from "../db";
+  import type { ThemeMode } from "../theme";
 
-  export let searchParams: Params;
+  export let config: Config;
 
   function refreshTheme(theme: ThemeMode) {
     if (
@@ -23,9 +19,7 @@
     }
   }
 
-  const { url, params, push, update } = db<Params>((p) =>
-    v.parse(RawParamsSchema, p)
-  );
+  const { url, params, push, update } = db<Config>((c) => createConfig(c));
 
   $: if (typeof window === "object") refreshTheme($params.theme.mode);
 
@@ -33,7 +27,7 @@
     url.set(new URL(window.location.href));
 
     window.addEventListener(PARAM_UPDATE_EVENT, (e) => {
-      const { detail } = e as CustomEvent<{ url: string; params: Params }>;
+      const { detail } = e as CustomEvent<{ url: string; params: Config }>;
 
       if (detail.url && !$push) {
         url.set(new URL(detail.url));
@@ -50,10 +44,10 @@
           update({ theme: { mode: matches ? "system-dark" : "system" } });
         }
 
-        refreshTheme($params.theme.mode ?? searchParams.theme.mode);
+        refreshTheme($params.theme.mode ?? config.theme.mode);
       });
 
-    refreshTheme($params.theme.mode ?? searchParams.theme.mode);
+    refreshTheme($params.theme.mode ?? config.theme.mode);
   });
 </script>
 

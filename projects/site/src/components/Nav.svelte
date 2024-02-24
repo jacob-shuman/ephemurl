@@ -6,17 +6,16 @@
     IconSun,
   } from "@tabler/icons-svelte";
   import { onMount } from "svelte";
-  import * as v from "valibot";
-  import { RawParamsSchema, type Params, type ThemeMode } from "../constants";
+  import { createConfig, type Config } from "../config";
+  import { PALETTE_TOGGLE_EVENT, type PaletteToggleEvent } from "../constants";
   import { db } from "../db";
+  import type { ThemeMode } from "../theme";
   import Button from "./Button.svelte";
   import LinkButton from "./LinkButton.svelte";
 
-  export let themeMode: ThemeMode = "system-dark";
+  export let config: Config;
 
-  const { url, params, update } = db<Params>((p) =>
-    v.parse(RawParamsSchema, p)
-  );
+  const { url, params, update } = db<Config>((c) => createConfig(c));
 
   function cycleTheme(mode: ThemeMode): ThemeMode {
     switch (mode) {
@@ -29,6 +28,16 @@
       default:
         return "dark";
     }
+  }
+
+  function togglePalette() {
+    window.dispatchEvent(
+      new CustomEvent<PaletteToggleEvent>(PALETTE_TOGGLE_EVENT, {
+        detail: {
+          opened: document.documentElement.classList.toggle("palette"),
+        },
+      })
+    );
   }
 
   onMount(() => {
@@ -62,9 +71,9 @@
         update({ theme: { mode: cycleTheme($params.theme.mode) } });
       }}
     >
-      {#if ($params.theme.mode ?? themeMode) === "dark"}
+      {#if ($params.theme.mode ?? config.theme.mode) === "dark"}
         <IconMoon class="h-6 w-6" />
-      {:else if ($params.theme.mode ?? themeMode) === "light"}
+      {:else if ($params.theme.mode ?? config.theme.mode) === "light"}
         <IconSun class="h-6 w-6" />
       {:else}
         <IconDeviceDesktop class="h-6 w-6" />
@@ -79,5 +88,11 @@
     >
       <IconBrandGithub class="w-6 h-6" />
     </LinkButton>
+
+    <!-- <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
+
+    <Button tooltip="Command Palette" onclick={togglePalette}>
+      <IconPrompt class="w-6 h-6" />
+    </Button> -->
   </div>
 </nav>

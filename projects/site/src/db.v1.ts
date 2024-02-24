@@ -27,8 +27,8 @@ export const db = <Params extends Record<string, string>>(
 
       // update browser url
 
-      console.log("can", canUpdate());
-      console.log("will", canUpdate() && updateUrl);
+      // console.log("can", canUpdate());
+      // console.log("will", canUpdate() && updateUrl);
 
       if (canUpdate() && updateUrl) {
         const searchParams = getSearchParams(updatedParams);

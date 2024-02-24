@@ -1,37 +1,28 @@
 ---
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import tw from "clsx";
-import * as v from "valibot";
 import packageJson from "../../package.json";
 import Card from "../components/Card.astro";
 import Nav from "../components/Nav.svelte";
 import Utils from "../components/Utils.svelte";
-import {
-  RawParamsSchema,
-  ThemeModeSchema,
-  games,
-  modules,
-  tools,
-  type Params,
-} from "../constants";
+import { createConfig } from "../config";
+import { games, modules, tools } from "../constants";
 import { buildTheme } from "../theme";
 
-const themeMode = v.parse(
-  ThemeModeSchema,
-  Astro.url.searchParams.get("theme-mode")
-);
-
-const searchParams: Params = v.parse(
-  RawParamsSchema,
+const config = createConfig(
   Object.fromEntries(Astro.url.searchParams.entries())
 );
+
+// console.log("raw config", Object.fromEntries(Astro.url.searchParams.entries()));
+// console.log("ssr config", config);
 ---
 
 <html
   lang="en"
-  style={buildTheme(searchParams)}
+  style={buildTheme(config)}
   class={tw(
-    (themeMode === "dark" || themeMode === "system-dark") && "dark",
+    (config.theme.mode === "dark" || config.theme.mode === "system-dark") &&
+      "dark",
     "transition-all duration-100 ease-out",
     "overflow-y-scroll scrollbar scrollbar-track-transparent bg-transparent"
   )}
@@ -54,9 +45,9 @@ const searchParams: Params = v.parse(
   <body
     class="font-rubik p-4 sm:p-8 lg:p-12 flex flex-col gap-y-9 transition-all duration-100 ease-out"
   >
-    <Utils client:load {searchParams} />
+    <Utils client:load ssrConfig={config} />
 
-    <Nav client:load {themeMode} />
+    <Nav client:load {config} />
 
     <section class="flex flex-col gap-y-3">
       <h3

@@ -1,107 +1,12 @@
-// import { construct } from "radash";
-// TODO: consider replacing valibot with typebox for performance (https://github.com/sinclairzx81/typebox?tab=readme-ov-file)
-import { buildPalette } from "./theme";
-import * as v from "valibot";
-
-export const ThemeModeSchema = v.fallback(
-  v.picklist(["light", "dark", "system", "system-dark"] as const),
-  "system-dark"
-);
-
-export type ThemeMode = v.Input<typeof ThemeModeSchema>;
-
-export const ThemePropsSchema = v.object({
-  fg: v.object({
-    100: v.string(),
-    200: v.string(),
-    300: v.string(),
-    400: v.string(),
-    500: v.string(),
-  }),
-  bg: v.object({
-    100: v.string(),
-    200: v.string(),
-    300: v.string(),
-    400: v.string(),
-    500: v.string(),
-  }),
-});
-
-export type ThemeProps = v.Input<typeof ThemePropsSchema>;
-
-export const ThemeSchema = v.object({
-  borderRadius: v.string(),
-  mode: ThemeModeSchema,
-  light: ThemePropsSchema,
-  dark: ThemePropsSchema,
-
-  fg: v.object({
-    100: v.string(),
-    200: v.string(),
-    300: v.string(),
-    400: v.string(),
-    500: v.string(),
-  }),
-  bg: v.object({
-    100: v.string(),
-    200: v.string(),
-    300: v.string(),
-    400: v.string(),
-    500: v.string(),
-  }),
-});
-
-export const ParamsSchema = v.object({
-  theme: ThemeSchema,
-});
-export type Params = v.Input<typeof ParamsSchema>;
-
-export const RawParamsSchema = v.transform(
-  v.object({
-    "theme-border-radius": v.fallback(v.string(), "0.5rem"),
-    "theme-mode": v.fallback(
-      v.picklist(["light", "dark", "system", "system-dark"] as const),
-      "system-dark"
-    ),
-
-    "theme-fg": v.optional(v.string()),
-    "theme-bg": v.optional(v.string()),
-
-    "theme-fg-light": v.fallback(v.string(), "#000000"),
-    "theme-bg-light": v.fallback(v.string(), "#FFFFFF"),
-
-    "theme-fg-dark": v.fallback(v.string(), "#FFFFFF"),
-    "theme-bg-dark": v.fallback(v.string(), "#000000"),
-  }),
-  (p) => {
-    const fg = buildPalette(p["theme-fg"] ?? p["theme-fg-light"], 5);
-    const fgDark = buildPalette(p["theme-fg"] ?? p["theme-fg-dark"], 5);
-
-    const bg = buildPalette(p["theme-bg"] ?? p["theme-bg-light"], 5);
-    const bgDark = buildPalette(p["theme-bg"] ?? p["theme-bg-dark"], 5);
-
-    return {
-      theme: {
-        borderRadius: p["theme-border-radius"],
-        mode: p["theme-mode"],
-        light: { fg: { ...fg }, bg: { ...bg } },
-        dark: { fg: { ...fgDark }, bg: { ...bgDark } },
-
-        fg,
-        bg,
-      },
-    } as Params;
-  }
-  // construct(
-  //   Object.fromEntries(
-  //     Object.entries(x).map(([k, v]) => [k.replaceAll("-", "."), v]),
-  //   ),
-  // ) as v.Input<typeof ParamsSchema>,
-);
-
 // Custom Events
-export const PARAM_UPDATE_EVENT = "ephemurl:param-update";
+export const URL_UPDATE_EVENT = "ephemurl:url-update";
+export type UrlUpdateEventDetail = { url: string };
 
+export const PALETTE_TOGGLE_EVENT = "ephemurl:palette-toggle";
+export type PaletteToggleEvent = { opened: boolean };
+
+// DEPRECRATED
+export const PARAM_UPDATE_EVENT = "ephemurl:param-update";
 export type ParamUpdateEventDetail<Params> = { url: string; params: Params };
 
 // Projects
@@ -140,6 +45,13 @@ export const tools: Project[] = [
     icon: "tabler:clock-hour-7",
     url: "https://clock.ephm.app",
     repo: "jacob-shuman/ephemurl-clock",
+    status: "unplanned",
+  },
+  {
+    name: "themes",
+    icon: "tabler:palette",
+    url: "https://themes.ephm.app",
+    repo: "jacob-shuman/ephemurl-themes",
     status: "unplanned",
   },
   {

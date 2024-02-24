@@ -28,8 +28,7 @@ export function db<Params extends object>(
 
         updatedUrl.search = searchParams.toString();
 
-        // TODO: for testing
-        // window.history.pushState({}, "", updatedUrl);
+        window.history.pushState({}, "", updatedUrl);
 
         window.dispatchEvent(
           new CustomEvent<ParamUpdateEventDetail<Params>>(PARAM_UPDATE_EVENT, {

@@ -6,5 +6,8 @@
   "author": {
     "name": "Jacob Shuman",
     "url": "https://jacob-shuman.ca"
+  },
+  "scripts": {
+    "site": "pnpm --filter ./projects/site run"
   }
 }
