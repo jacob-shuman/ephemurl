@@ -55,6 +55,13 @@ export const tools: Project[] = [
     status: "unplanned",
   },
   {
+    name: "hacker_news",
+    icon: "tabler:news",
+    url: "https://hackernews.ephm.app",
+    repo: "jacob-shuman/ephemurl-hackernews",
+    status: "unplanned",
+  },
+  {
     name: "themes",
     icon: "tabler:palette",
     url: "https://themes.ephm.app",
@@ -237,6 +244,13 @@ export const games: Project[] = [
     icon: "tabler:grid-4x4",
     url: "https://minesweeper.ephm.app",
     repo: "jacob-shuman/ephemurl-minesweeper",
+    status: "unplanned",
+  },
+  {
+    name: "virtualpet",
+    icon: "tabler:cat",
+    url: "https://virtualpet.ephm.app",
+    repo: "jacob-shuman/ephemurl-virtualpet",
     status: "unplanned",
   },
 ];
