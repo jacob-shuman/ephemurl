@@ -7,7 +7,7 @@ export default defineConfig({
   adapter: netlify(),
   integrations: [
     starlight({
-      title: "EPHEMURL",
+      title: "ephemurl",
       social: {
         github: "https://github.com/jacob-shuman/ephemurl",
       },
