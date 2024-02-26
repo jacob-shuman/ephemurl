@@ -8,6 +8,7 @@
     "url": "https://jacob-shuman.ca"
   },
   "scripts": {
-    "site": "pnpm --filter ./projects/site run"
+    "site": "pnpm --filter ./projects/site run",
+    "docs": "pnpm --filter ./projects/docs run"
   }
 }
