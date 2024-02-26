@@ -1,3 +1,8 @@
+---
+title: Principles
+description: What's unique about an ephemurl app?
+---
+
 **TL;DR: There are no accounts, no monetization schemes, no ads, all apps are FOSS.**
 
 # 🌎 Web Based
