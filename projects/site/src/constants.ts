@@ -247,7 +247,7 @@ export const games: Project[] = [
     status: "unplanned",
   },
   {
-    name: "virtualpet",
+    name: "virtual_pet",
     icon: "tabler:cat",
     url: "https://virtualpet.ephm.app",
     repo: "jacob-shuman/ephemurl-virtualpet",
