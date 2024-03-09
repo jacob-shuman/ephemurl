@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { Toaster } from "svelte-sonner";
+  import Palette from "../components/Palette.svelte";
   import Theme from "../components/Theme.svelte";
   import { type Config } from "../config";
   import { db as createDb } from "../db.v3";
@@ -17,6 +18,6 @@
 
 <div class="h-0 w-0 absolute">
   <Toaster />
-  <!-- <Palette /> -->
   <Theme {ssrConfig} {db} />
+  <Palette />
 </div>

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Command } from "cmdk-sv";
+  // import { Command } from "cmdk-sv";
 </script>
 
-<Command.Root label="Command Menu" class="cmdk-root:bg-blue-500">
+<!-- <Command.Root label="Command Menu" class="cmdk-root:bg-blue-500">
   <Command.Input class="bg-red-500" />
   <Command.List class="bg-green-500">
     <Command.Empty class="bg-green-500">No results found.</Command.Empty>
@@ -16,7 +16,7 @@
 
     <Command.Item>Apple</Command.Item>
   </Command.List>
-</Command.Root>
+</Command.Root> -->
 
 <!-- 
 <style>

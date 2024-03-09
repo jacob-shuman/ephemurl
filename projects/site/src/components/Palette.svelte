@@ -1,23 +1,28 @@
 <!-- https://www.bits-ui.com/docs/components/dialog -->
-<!-- https://www.npmjs.com/package/@nozbe/microfuzz -->
 <script lang="ts">
-  import { Dialog } from "bits-ui";
+  import { Drawer } from "vaul-svelte";
+
   import { onMount } from "svelte";
-  import { PALETTE_TOGGLE_EVENT, type PaletteToggleEvent } from "../constants";
+  import { PALETTE_TOGGLE_EVENT } from "../constants";
 
   export let open = false;
+  let query: string;
+
+  function togglePalette() {
+    // TODO: not sure if i should reset this on open
+    // if (!open) {
+    //   query = "";
+    // }
+
+    open = !open;
+  }
 
   function handleKeydown(e: KeyboardEvent) {
     if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
       e.preventDefault();
 
-      open = !open;
+      togglePalette();
     }
-  }
-
-  function togglePalette(e: Event) {
-    const { detail } = e as CustomEvent<PaletteToggleEvent>;
-    open = detail.opened;
   }
 
   onMount(() => {
@@ -31,21 +36,30 @@
   });
 </script>
 
-<Dialog.Root bind:open>
-  <!-- <Dialog.Portal class="absolute"> -->
-  <!-- <Dialog.Content
-      transition={fade}
-      transitionConfig={{ duration: 150 }}
-      class="absolute fixed left-[50%] top-[50%] z-50 w-full max-w-[94%] translate-x-[-50%] translate-y-[-50%] rounded border bg-bg-400 dark:bg-bg-dark-400 p-5 outline-none"
-    > -->
-  <!-- <Dialog.Close
-        class="absolute right-5 top-5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-98"
-      > -->
-  <!-- <div>
-          X
-          <span class="sr-only">Close</span>
-        </div> -->
-  <!-- </Dialog.Close> -->
-  <!-- </Dialog.Content> -->
-  <!-- </Dialog.Portal> -->
-</Dialog.Root>
+<Drawer.Root bind:open>
+  <!-- rounded bg-bg-500 dark:bg-bg-dark-500 border-t-2 border-bg-400 dark:border-bg-dark-400 -->
+  <Drawer.Portal>
+    <Drawer.Content
+      class="fixed bottom-0 left-0 right-0 mt-24 flex justify-center pt-4 px-4 sm:pt-8 sm:px-8 lg:pt-12 lg:px-12 focus:outline-none"
+    >
+      <div
+        class="rounded-t bg-bg-500 dark:bg-bg-dark-500 border-t-2 border-x-2 border-bg-400 dark:border-bg-dark-400 w-full pt-4 pb-8"
+      >
+        <!-- Pill -->
+        <div
+          class="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-bg-100 dark:bg-bg-dark-100"
+        />
+
+        <!-- placeholder="Search" -->
+        <input
+          disabled
+          class="focus:outline-none px-4 py-2 rounded text-xl bg-transparent w-full"
+          placeholder="🚧 Palette Under Construction 🚧"
+          bind:value={query}
+        />
+      </div>
+    </Drawer.Content>
+
+    <Drawer.Overlay />
+  </Drawer.Portal>
+</Drawer.Root>

@@ -3,7 +3,6 @@ export const URL_UPDATE_EVENT = "ephemurl:url-update";
 export type UrlUpdateEventDetail = { url: string };
 
 export const PALETTE_TOGGLE_EVENT = "ephemurl:palette-toggle";
-export type PaletteToggleEvent = { opened: boolean };
 
 export const DATABASE_UPDATE_EVENT = "ephemurl:database-update";
 

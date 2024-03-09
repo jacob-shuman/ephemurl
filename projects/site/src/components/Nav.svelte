@@ -3,10 +3,12 @@
     IconBrandGithub,
     IconDeviceDesktop,
     IconMoon,
+    IconPrompt,
     IconSun,
   } from "@tabler/icons-svelte";
   import { onMount } from "svelte";
   import { type Config } from "../config";
+  import { PALETTE_TOGGLE_EVENT } from "../constants";
   import { db as createDb } from "../db.v3";
   import type { ThemeMode } from "../theme";
   import Button from "./Button.svelte";
@@ -31,15 +33,9 @@
     }
   }
 
-  // function togglePalette() {
-  //   window.dispatchEvent(
-  //     new CustomEvent<PaletteToggleEvent>(PALETTE_TOGGLE_EVENT, {
-  //       detail: {
-  //         opened: document.documentElement.classList.toggle("palette"),
-  //       },
-  //     })
-  //   );
-  // }
+  function togglePalette() {
+    window.dispatchEvent(new CustomEvent(PALETTE_TOGGLE_EVENT));
+  }
 
   onMount(() => {
     // url.set(new URL(window.location.href));
@@ -67,6 +63,15 @@
 
   <!-- TODO: fix color flashing issue when changing themes -->
   <div class="flex items-center gap-x-3">
+    <LinkButton
+      tooltip="GitHub Repo"
+      href="https://github.com/jacob-shuman/ephemurl-site"
+    >
+      <IconBrandGithub class="w-6 h-6" />
+    </LinkButton>
+
+    <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
+
     <Button
       tooltip="Theme"
       onclick={() => {
@@ -86,17 +91,8 @@
 
     <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
 
-    <LinkButton
-      tooltip="GitHub Repo"
-      href="https://github.com/jacob-shuman/ephemurl-site"
-    >
-      <IconBrandGithub class="w-6 h-6" />
-    </LinkButton>
-
-    <!-- <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
-
     <Button tooltip="Command Palette" onclick={togglePalette}>
       <IconPrompt class="w-6 h-6" />
-    </Button> -->
+    </Button>
   </div>
 </nav>
