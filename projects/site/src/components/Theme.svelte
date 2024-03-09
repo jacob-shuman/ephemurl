@@ -1,11 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { createConfig, type Config } from "../config";
-  import { PARAM_UPDATE_EVENT } from "../constants";
-  import { db } from "../db";
-  import type { ThemeMode } from "../theme";
+  import { type Config } from "../config";
+  import { type Database } from "../db.v3";
+  import { buildTheme, type ThemeMode } from "../theme";
 
-  export let config: Config;
+  export let ssrConfig: Config;
+  export let db: Database;
+
+  const { update, config, url, mounted } = db;
 
   function refreshTheme(theme: ThemeMode) {
     if (
@@ -19,40 +21,53 @@
     }
   }
 
-  const { url, params, push, update } = db<Config>((c) => createConfig(c));
-
-  $: if (typeof window === "object") refreshTheme($params.theme.mode);
+  $: {
+    if (typeof window === "object") {
+      refreshTheme($config?.theme.mode ?? ssrConfig.theme.mode);
+    }
+  }
 
   onMount(() => {
-    url.set(new URL(window.location.href));
+    mounted.subscribe(() => {
+      const mountedConfig = $config;
 
-    window.addEventListener(PARAM_UPDATE_EVENT, (e) => {
-      const { detail } = e as CustomEvent<{ url: string; params: Config }>;
-
-      if (detail.url && !$push) {
-        url.set(new URL(detail.url));
+      if (mountedConfig) {
+        Object.entries(buildTheme(mountedConfig)).forEach(([k, v]) =>
+          document.documentElement.style.setProperty(k, v)
+        );
       }
     });
+
+    url.set(new URL(window.location.href));
+
+    // TODO:
+    // window.addEventListener(PARAM_UPDATE_EVENT, (e) => {
+    //   const { detail } = e as CustomEvent<{ url: string; params: Config }>;
+
+    //   if (detail.url && !$push) {
+    //     url.set(new URL(detail.url));
+    //   }
+    // });
 
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", ({ matches }) => {
         if (
-          ($params.theme.mode === "system" && matches) ||
-          ($params.theme.mode === "system-dark" && !matches)
+          (($config ?? ssrConfig).theme.mode === "system" && matches) ||
+          (($config ?? ssrConfig).theme.mode === "system-dark" && !matches)
         ) {
           update({ theme: { mode: matches ? "system-dark" : "system" } });
         }
 
-        refreshTheme($params.theme.mode ?? config.theme.mode);
+        refreshTheme(($config ?? ssrConfig).theme.mode);
       });
 
-    refreshTheme($params.theme.mode ?? config.theme.mode);
+    refreshTheme(($config ?? ssrConfig).theme.mode);
   });
 </script>
 
 <svelte:head>
-  {#if $params.theme.mode === "system" || $params.theme.mode === "light"}
+  {#if ($config ?? ssrConfig).theme.mode === "system" || ($config ?? ssrConfig).theme.mode === "light"}
     <link href="/favicon-light.svg" type="image/svg+xml" rel="icon" />
   {:else}
     <link href="/favicon-dark.svg" type="image/svg+xml" rel="icon" />

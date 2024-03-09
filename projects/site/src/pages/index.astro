@@ -9,22 +9,19 @@ import { createConfig } from "../config";
 import { games, modules, tools } from "../constants";
 import { buildTheme } from "../theme";
 
-const config = createConfig(
-  Object.fromEntries(Astro.url.searchParams.entries())
-);
-
-// console.log("raw config", Object.fromEntries(Astro.url.searchParams.entries()));
-// console.log("ssr config", config);
+const params = Object.fromEntries(Astro.url.searchParams.entries());
+const ssrConfig = createConfig(params);
 ---
 
 <html
   lang="en"
-  style={buildTheme(config)}
+  style={buildTheme(ssrConfig)}
   class={tw(
-    (config.theme.mode === "dark" || config.theme.mode === "system-dark") &&
+    (ssrConfig.theme.mode === "dark" ||
+      ssrConfig.theme.mode === "system-dark") &&
       "dark",
     "transition-all duration-100 ease-out",
-    "overflow-y-scroll scrollbar scrollbar-track-transparent bg-transparent"
+    "overflow-y-scroll scrollbar scrollbar-track-transparent"
   )}
 >
   <head>
@@ -45,9 +42,9 @@ const config = createConfig(
   <body
     class="font-rubik p-4 sm:p-8 lg:p-12 flex flex-col gap-y-9 transition-all duration-100 ease-out"
   >
-    <Utils client:load ssrConfig={config} />
+    <Utils client:load {params} {ssrConfig} />
 
-    <Nav client:load {config} />
+    <Nav client:load {ssrConfig} {params} />
 
     <section class="flex flex-col gap-y-3">
       <h3

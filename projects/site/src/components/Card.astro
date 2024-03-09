@@ -14,7 +14,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
 >
   <a
     href={status === "ready"
-      ? url ?? (repo && `https://github.com/${repo}`) ?? undefined
+      ? url ?? (repo && repo.url) ?? undefined
       : undefined}
     class={tw(
       "group focus:outline-none",
@@ -81,7 +81,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
       {
         repo && (
           <a
-            href={status === "ready" ? `https://github.com/${repo}` : undefined}
+            href={status === "ready" ? repo.url : undefined}
             class={tw(
               "flex gap-x-2 items-center group focus:outline-none text-bg-300 dark:text-bg-dark-300",
               status === "ready"
@@ -90,7 +90,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
             )}
           >
             <Icon name="tabler:brand-github" class="min-w-min w-4 h-4" />
-            <p class="line-clamp-1">{repo}</p>
+            <p class="line-clamp-1">{repo.label}</p>
           </a>
         )
       }

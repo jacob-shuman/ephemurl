@@ -6,16 +6,17 @@
     IconSun,
   } from "@tabler/icons-svelte";
   import { onMount } from "svelte";
-  import { createConfig, type Config } from "../config";
-  import { PALETTE_TOGGLE_EVENT, type PaletteToggleEvent } from "../constants";
-  import { db } from "../db";
+  import { type Config } from "../config";
+  import { db as createDb } from "../db.v3";
   import type { ThemeMode } from "../theme";
   import Button from "./Button.svelte";
   import LinkButton from "./LinkButton.svelte";
 
-  export let config: Config;
+  export let params: Record<string, string | object>;
+  export let ssrConfig: Config;
 
-  const { url, params, update } = db<Config>((c) => createConfig(c));
+  // const { url, params, update } = db<Config>((c) => createConfig(c));
+  const { config, update, mount } = createDb(params, { id: "nav" });
 
   function cycleTheme(mode: ThemeMode): ThemeMode {
     switch (mode) {
@@ -30,26 +31,27 @@
     }
   }
 
-  function togglePalette() {
-    window.dispatchEvent(
-      new CustomEvent<PaletteToggleEvent>(PALETTE_TOGGLE_EVENT, {
-        detail: {
-          opened: document.documentElement.classList.toggle("palette"),
-        },
-      })
-    );
-  }
+  // function togglePalette() {
+  //   window.dispatchEvent(
+  //     new CustomEvent<PaletteToggleEvent>(PALETTE_TOGGLE_EVENT, {
+  //       detail: {
+  //         opened: document.documentElement.classList.toggle("palette"),
+  //       },
+  //     })
+  //   );
+  // }
 
   onMount(() => {
-    url.set(new URL(window.location.href));
+    // url.set(new URL(window.location.href));
+    mount();
 
     if (
-      $params.theme.mode === "system" &&
+      ($config ?? ssrConfig).theme.mode === "system" &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
       update({ theme: { mode: "system-dark" } });
     } else if (
-      $params.theme.mode === "system-dark" &&
+      ($config ?? ssrConfig).theme.mode === "system-dark" &&
       !window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
       update({ theme: { mode: "system" } });
@@ -68,12 +70,14 @@
     <Button
       tooltip="Theme"
       onclick={() => {
-        update({ theme: { mode: cycleTheme($params.theme.mode) } });
+        update({
+          theme: { mode: cycleTheme(($config ?? ssrConfig).theme.mode) },
+        });
       }}
     >
-      {#if ($params.theme.mode ?? config.theme.mode) === "dark"}
+      {#if ($config ?? ssrConfig).theme.mode === "dark"}
         <IconMoon class="h-6 w-6" />
-      {:else if ($params.theme.mode ?? config.theme.mode) === "light"}
+      {:else if ($config ?? ssrConfig).theme.mode === "light"}
         <IconSun class="h-6 w-6" />
       {:else}
         <IconDeviceDesktop class="h-6 w-6" />

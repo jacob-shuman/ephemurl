@@ -1,46 +1,86 @@
 import { get, set } from "idb-keyval";
-import { atom } from "nanostores";
-import { assign, crush, mapKeys } from "radash";
-import { createConfig, type Config } from "./config";
-import { URL_UPDATE_EVENT, type UrlUpdateEventDetail } from "./constants";
+import { atom, type WritableAtom } from "nanostores";
+import { assign } from "radash";
+import { createConfig, type Config, type PartialConfig } from "./config";
+import {
+  DATABASE_UPDATE_EVENT,
+  URL_UPDATE_EVENT,
+  type UrlUpdateEventDetail,
+} from "./constants";
 import type { DeepPartial } from "./utils";
 
-// export function db(params: Record<string, string>) {
-export function db(ssrConfig: Config) {
+export interface Database {
+  mount: () => Promise<void>;
+  update: (updates: DeepPartial<Config> | PartialConfig) => Promise<Config>;
+
+  config: WritableAtom<Config | undefined>;
+  url: WritableAtom<URL | undefined>;
+  mounted: WritableAtom<boolean>;
+}
+
+export function db(
+  params: Record<string, string | object>,
+  options?: { id?: string }
+): Database {
   const mounted = atom(false);
+  const emitting = atom(false);
+  const config = atom<Config | undefined>();
   const url = atom<URL | undefined>();
-  const config = atom<Config | undefined>(ssrConfig);
 
-  async function update(updatedConfig: DeepPartial<Config>) {
-    // await set(
-    //   "config",
-    //   assign(createConfig(config.get() ?? {}), updatedConfig)
-    // );
-    config.set(
-      assign(createConfig(config.get() ?? {}), createConfig(updatedConfig))
+  async function update(
+    updates: DeepPartial<Config> | PartialConfig,
+    emit = true
+  ): Promise<Config> {
+    const updatedConfig = createConfig(
+      assign(createConfig(config.get() ?? {}), updates)
     );
-    // console.log("here");
+
+    config.set(updatedConfig);
+
+    if (emit) {
+      emitting.set(true);
+      document.dispatchEvent(new CustomEvent(DATABASE_UPDATE_EVENT, {}));
+      emitting.set(false);
+    }
+
+    return updatedConfig;
   }
 
-  function getSearchParams(): URLSearchParams {
-    return new URLSearchParams(
-      mapKeys(crush({ ...(config.get() ?? {}) }), (k) =>
-        String(k).replaceAll(".", "-")
-      )
-    );
-  }
-
-  // async function mount(ssrConfig: Config) {
   async function mount() {
-    if (typeof window === "object") {
-      url.set(new URL(window.location.href));
-      // console.log("saved config: ", await get("config"));
-      const updatedConfig = assign(
-        createConfig((await get("config")) ?? {}),
-        ssrConfig
+    if (typeof document === "object") {
+      document.addEventListener(DATABASE_UPDATE_EVENT, async () => {
+        if (!emitting.get()) {
+          if (options?.id) {
+            console.log(`db: "${options.id}" received DATABASE_UPDATE_EVENT`);
+          }
+
+          const storedConfig = await get("config");
+
+          if (storedConfig) {
+            config.set(createConfig(storedConfig));
+          }
+        }
+      });
+
+      if (mounted.get()) {
+        return;
+      }
+
+      console.log("ssr config: ", params);
+
+      console.log("existing idb config: ", await get("config"));
+      console.log(
+        "refreshed existing idb config: ",
+        createConfig((await get("config")) ?? {})
       );
 
-      config.set(updatedConfig);
+      if (!/^true$/i.test(String(params?.reset))) {
+        config.set(createConfig((await get("config")) ?? {}));
+      }
+
+      url.set(new URL(window.location.href));
+
+      const updatedConfig = await update(params, false);
 
       await set("config", updatedConfig);
 
@@ -48,7 +88,6 @@ export function db(ssrConfig: Config) {
     }
 
     config.subscribe(async (updatedConfig) => {
-      // console.log(mounted.get());
       if (mounted.get() && updatedConfig) {
         await set("config", config.get());
 
@@ -56,17 +95,10 @@ export function db(ssrConfig: Config) {
 
         if (updatedUrl) {
           updatedUrl = new URL(updatedUrl);
-          updatedUrl.search =
-            config.get()?.params === "show" ? getSearchParams().toString() : "";
+          updatedUrl.search = "";
 
           url.set(updatedUrl);
         }
-
-        // if (updatedUrl && !config.get()?.showParams) {
-        //   updatedUrl = new URL(updatedUrl);
-        //   updatedUrl.search = "";
-        // url.set(updatedUrl);
-        // }
       }
     });
 
@@ -85,7 +117,6 @@ export function db(ssrConfig: Config) {
     });
 
     mounted.set(true);
-    // await update(ssrConfig);
   }
 
   return {
@@ -94,5 +125,6 @@ export function db(ssrConfig: Config) {
 
     config,
     url,
+    mounted,
   };
 }

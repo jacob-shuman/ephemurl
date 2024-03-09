@@ -149,8 +149,8 @@ const SafeConfigSchema = coerce(ConfigSchema, object(), (c) => {
 });
 
 export type Config = Infer<typeof ConfigSchema>;
+export type PartialConfig = Infer<typeof PartialConfigSchema>;
 
-// TODO: make sure this works
 export const createConfig = (config: DeepPartial<Config>) =>
   mask(
     // TODO: replace construct with my own implementation that uses "-" instead of "." so periods can be included in search params
