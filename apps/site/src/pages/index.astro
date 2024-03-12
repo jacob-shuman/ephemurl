@@ -1,13 +1,12 @@
 ---
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import tw from "clsx";
+import { buildTheme, createConfig } from "ephemurl-db";
 import packageJson from "../../package.json";
 import Card from "../components/Card.astro";
 import Nav from "../components/Nav.svelte";
 import Utils from "../components/Utils.svelte";
-import { createConfig } from "../config";
 import { games, modules, tools } from "../constants";
-import { buildTheme } from "../theme";
 
 const params = Object.fromEntries(Astro.url.searchParams.entries());
 const ssrConfig = createConfig(params);
@@ -62,8 +61,16 @@ const ssrConfig = createConfig(params);
           tools
             .sort((t1, t2) => t1.name.localeCompare(t2.name))
             .sort(
-              (t1, t2) =>
-                Number(t2.status === "ready") - Number(t1.status === "ready")
+              (t1, t2) => {
+                const statusOrder = {
+                  ready: 0,
+                  planned: 1,
+                  unplanned: 2,
+                };
+                return statusOrder[t1.status] - statusOrder[t2.status];
+              }
+              // (t1, t2) =>
+              //   Number(t2.status === "ready") - Number(t1.status === "ready")
             )
             .map((t) => <Card {...t} />)
         }

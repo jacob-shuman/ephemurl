@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^9.1.0",
     "@astrojs/netlify": "^5.0.0",
     "@astrojs/svelte": "^5.0.3",
     "@astrojs/tailwind": "^5.1.0",
@@ -25,6 +26,7 @@
     "bits-ui": "^0.16.0",
     "clsx": "^2.1.0",
     "colord": "^2.9.3",
+    "ephemurl-db": "workspace:*",
     "idb-keyval": "^6.2.1",
     "nanostores": "^0.9.5",
     "radash": "^11.0.0",

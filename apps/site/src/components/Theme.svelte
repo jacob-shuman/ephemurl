@@ -1,8 +1,11 @@
 <script lang="ts">
+  import {
+    buildTheme,
+    type Config,
+    type Database,
+    type ThemeMode,
+  } from "ephemurl-db";
   import { onMount } from "svelte";
-  import { type Config } from "../config";
-  import { type Database } from "../db.v3";
-  import { buildTheme, type ThemeMode } from "../theme";
 
   export let ssrConfig: Config;
   export let db: Database;

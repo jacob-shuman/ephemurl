@@ -1,15 +1,6 @@
 // Custom Events
-export const URL_UPDATE_EVENT = "ephemurl:url-update";
-export type UrlUpdateEventDetail = { url: string };
-
 export const PALETTE_TOGGLE_EVENT = "ephemurl:palette-toggle";
 export type PaletteToggleEvent = { opened: boolean };
-
-export const DATABASE_UPDATE_EVENT = "ephemurl:database-update";
-
-// DEPRECRATED
-export const PARAM_UPDATE_EVENT = "ephemurl:param-update";
-export type ParamUpdateEventDetail<Params> = { url: string; params: Params };
 
 // Projects
 export interface Project {

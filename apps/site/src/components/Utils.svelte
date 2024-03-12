@@ -1,9 +1,8 @@
 <script lang="ts">
+  import { db as createDb, type Config } from "ephemurl-db";
   import { onMount } from "svelte";
   import { Toaster } from "svelte-sonner";
   import Theme from "../components/Theme.svelte";
-  import { type Config } from "../config";
-  import { db as createDb } from "../db.v3";
 
   export let params: Record<string, string | object>;
   export let ssrConfig: Config;

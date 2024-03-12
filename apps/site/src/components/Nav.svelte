@@ -5,10 +5,8 @@
     IconMoon,
     IconSun,
   } from "@tabler/icons-svelte";
+  import { db as createDb, type Config, type ThemeMode } from "ephemurl-db";
   import { onMount } from "svelte";
-  import { type Config } from "../config";
-  import { db as createDb } from "../db.v3";
-  import type { ThemeMode } from "../theme";
   import Button from "./Button.svelte";
   import LinkButton from "./LinkButton.svelte";
 
