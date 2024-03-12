@@ -8,7 +8,7 @@ RUN corepack enable
 # RUN pnpm install --frozen-lockfile
 # RUN pnpm build
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod
 
 FROM caddy:2-alpine
 
