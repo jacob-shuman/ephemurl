@@ -276,13 +276,13 @@ export const games: Project[] = [
     },
   },
   {
-    name: "wordle",
+    name: "word_game",
     icon: "tabler:book-2",
-    url: "https://wordle.ephm.app",
+    url: "https://wordgame.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/wordle",
-      label: "wordle",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/wordgame",
+      label: "word_game",
     },
   },
   {

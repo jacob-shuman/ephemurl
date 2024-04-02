@@ -1,5 +1,3 @@
-// const plugin = require("tailwindcss/plugin");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -45,21 +43,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("tailwind-scrollbar"),
-    // plugin(function ({ addVariant }) {
-    //   // addVariant("cmdk-group-heading", "&_[data-cmdk-group-heading]");
-    //   addVariant("cmdk-root", "& [data-cmdk-root]");
-    //   addVariant("cmdk-dialog", "& [data-cmdk-dialog]");
-    //   addVariant("cmdk-overlay", "& [data-cmdk-overlay]");
-    //   addVariant("cmdk-input", "& [data-cmdk-input]");
-    //   addVariant("cmdk-list", "& [data-cmdk-list]");
-    //   addVariant("cmdk-item", "& [data-cmdk-item]");
-    //   addVariant("cmdk-group", "& [data-cmdk-group]");
-    //   addVariant("cmdk-group-heading", "& [data-cmdk-group-heading]");
-    //   addVariant("cmdk-separator", "& [data-cmdk-separator]");
-    //   addVariant("cmdk-empty", "& [data-cmdk-empty]");
-    //   addVariant("cmdk-loading", "& [data-cmdk-loading]");
-    // }),
-  ],
+  plugins: [require("tailwind-scrollbar")],
 };

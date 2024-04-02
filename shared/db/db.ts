@@ -192,11 +192,20 @@ export function db(
         return;
       }
 
-      console.log("ssr config: ", params);
-
-      console.log("existing idb config: ", await get("config"));
       console.log(
-        "refreshed existing idb config: ",
+        `ssr config${options?.id ? ` (${options?.id})` : ""}: `,
+        params
+      );
+
+      console.log(
+        `existing idb config${options?.id ? ` (${options?.id})` : ""}: `,
+        await get("config")
+      );
+
+      console.log(
+        `refreshed existing idb config${
+          options?.id ? ` (${options?.id})` : ""
+        }: `,
         createConfig((await get("config")) ?? {})
       );
 
@@ -207,6 +216,11 @@ export function db(
       url.set(new URL(window.location.href));
 
       const updatedConfig = await update(params, false);
+
+      console.log(
+        `updated config${options?.id ? ` (${options?.id})` : ""}: `,
+        updatedConfig
+      );
 
       await set("config", updatedConfig);
 

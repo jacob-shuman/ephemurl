@@ -3,7 +3,7 @@
 <!-- Badges -->
 
 [![package manager](https://img.shields.io/badge/package--manager-pnpm-yellow?style=for-the-badge&labelColor=black)](https://pnpm.io/)
-[![netlify badge](https://img.shields.io/netlify/e6d5a4e0-dee1-4261-833e-2f47f509c68f?style=for-the-badge&labelColor=black)](https://ephm.app/)
+[![cloudflare badge](https://img.shields.io/badge/hosting-cloudflare-orange?style=for-the-badge&labelColor=black)](https://ephm.app/)
 [![license badge](https://img.shields.io/badge/license-mit-blue?style=for-the-badge&labelColor=black)](https://github.com/jacob-shuman/ephemurl/blob/main/LICENSE)
 
 > Collection of FOSS tools
@@ -47,4 +47,24 @@ All ephemurl apps are hosted using the free plan on netlify. I would love to pro
 
 **TL;DR: All apps have customizable themes, shortcuts, and app specific options. Configs can be set using URL parameters and are stored using IndexedDB.**
 
-For more information on configuration see [Config](https://www.notion.so/Config-d53ee9a229de497bbb496eeb410134d5?pvs=21).
+<!-- TODO: -->
+
+## Theme
+
+<!-- TODO: -->
+
+All ephemurl apps have a "theme" key in their config which is structured as:
+
+```json
+{ mode: 'light' | 'dark' | 'system' | 'system-dark', dark: {...} }
+```
+
+# Modes
+
+"light" - Light color palette will be used
+
+"dark" - dark color palette will be used
+
+"system" - page will load with the light color palette and switch to dark if the devices color preference is dark
+
+"system-dark" page will load dark and switch to light if the devices color preference is light

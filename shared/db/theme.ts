@@ -17,9 +17,11 @@ import { type Config } from "./config";
 extend([mixPlugin, a11yPlugin, namesPlugin]);
 
 export function buildPalette(base: string, count = 5) {
-  const color = colord(base);
+  const color = colord(
+    base.match(/^([0-9A-Fa-f]{3}){1,2}$/) ? `#${base}` : base
+  );
 
-  return (
+  const res = (
     color.isDark()
       ? color.tints(count).reverse()
       : color.shades(count).reverse()
@@ -36,6 +38,8 @@ export function buildPalette(base: string, count = 5) {
     400: string;
     500: string;
   };
+
+  return res;
 }
 
 const color = coerce(string(), string(), (value) => colord(value).toHex());
