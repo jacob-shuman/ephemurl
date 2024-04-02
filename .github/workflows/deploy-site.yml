@@ -1,4 +1,3 @@
-# TODO:
 name: Deploy Ephemurl Site
 
 on:
@@ -16,23 +15,9 @@ jobs:
       contents: read
       deployments: write
 
-    # strategy:
-    #   matrix:
-    #     include:
-    #       - projectName: "project-en"
-    #         googleAnalyticsId: "G-XXXXXXXXXX"
-    #       - projectName: "project-fr"
-    #         googleAnalyticsId: "G-XXXXXXXXXX"
-
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
-
-      # - name: Setup node env 🏗
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: lts/gallium
-      #     cache: "yarn"
 
       - name: Setup pnpm 🏗
         uses: pnpm/action-setup@v3
@@ -50,6 +35,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ephemurl-site
           directory: ./apps/site/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

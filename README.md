@@ -47,24 +47,15 @@ All ephemurl apps are hosted using the free plan on netlify. I would love to pro
 
 **TL;DR: All apps have customizable themes, shortcuts, and app specific options. Configs can be set using URL parameters and are stored using IndexedDB.**
 
-<!-- TODO: -->
+Ephemurl apps are configured using a predictable base structure that is shared across with extensions on a per-app basis. The configuration is validated at runtime using [superstruct](https://github.com/ianstormtaylor/superstruct).
 
 ## Theme
 
-<!-- TODO: -->
+All ephemurl apps are styled using a ["theme"](./shared/db/theme.ts) key in their config.
 
-All ephemurl apps have a "theme" key in their config which is structured as:
+### Modes
 
-```json
-{ mode: 'light' | 'dark' | 'system' | 'system-dark', dark: {...} }
-```
-
-# Modes
-
-"light" - Light color palette will be used
-
-"dark" - dark color palette will be used
-
-"system" - page will load with the light color palette and switch to dark if the devices color preference is dark
-
-"system-dark" page will load dark and switch to light if the devices color preference is light
+- `light`: light color palette will be used
+- `dark`: dark color palette will be used
+- `system`: page will load the light color palette and switch to dark if the device's color preference is dark
+- `system-dark`: page will load the dark color palette and switch to light if the device's color preference is light
