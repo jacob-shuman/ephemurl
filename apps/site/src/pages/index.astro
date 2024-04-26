@@ -60,18 +60,14 @@ const ssrConfig = createConfig(params);
         {
           tools
             .sort((t1, t2) => t1.name.localeCompare(t2.name))
-            .sort(
-              (t1, t2) => {
-                const statusOrder = {
-                  ready: 0,
-                  planned: 1,
-                  unplanned: 2,
-                };
-                return statusOrder[t1.status] - statusOrder[t2.status];
-              }
-              // (t1, t2) =>
-              //   Number(t2.status === "ready") - Number(t1.status === "ready")
-            )
+            .sort((t1, t2) => {
+              const statusOrder = {
+                ready: 0,
+                planned: 1,
+                unplanned: 2,
+              };
+              return statusOrder[t1.status] - statusOrder[t2.status];
+            })
             .map((t) => <Card {...t} />)
         }
       </div>

@@ -13,10 +13,20 @@ export interface Project {
 
 export const tools: Project[] = [
   {
+    name: "badge",
+    icon: "tabler:badge",
+    url: "https://badge.ephm.app",
+    status: "unplanned",
+    repo: {
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/badge",
+      label: "counter",
+    },
+  },
+  {
     name: "counter",
     icon: "tabler:plus-minus",
     url: "https://counter.ephm.app",
-    status: "planned",
+    status: "ready",
     repo: {
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/counter",
       label: "counter",

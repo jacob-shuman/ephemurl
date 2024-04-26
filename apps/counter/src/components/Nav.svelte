@@ -1,16 +1,13 @@
 <script lang="ts">
   import {
-    IconBrandGithub,
     IconDeviceDesktop,
     IconMoon,
-    IconPrompt,
+    IconReload,
     IconSun,
   } from "@tabler/icons-svelte";
   import { db as createDb, type Config, type ThemeMode } from "ephemurl-db";
+  import { Button } from "ephemurl-utils";
   import { onMount } from "svelte";
-  import { PALETTE_TOGGLE_EVENT } from "../constants";
-  import Button from "./Button.svelte";
-  import LinkButton from "./LinkButton.svelte";
 
   export let params: Record<string, string | object>;
   export let ssrConfig: Config;
@@ -30,13 +27,9 @@
     }
   }
 
-  function togglePalette() {
-    window.dispatchEvent(new CustomEvent(PALETTE_TOGGLE_EVENT));
-  }
-
-  onMount(() => {
+  onMount(async () => {
     // url.set(new URL(window.location.href));
-    mount();
+    await mount();
 
     if (
       ($config ?? ssrConfig).theme.mode === "system" &&
@@ -54,7 +47,7 @@
 
 <nav class="flex flex-col justify-between gap-y-2 sm:flex-row sm:gap-y-0">
   <div class="flex flex-col gap-y-2">
-    <h1 class="font-rubik-mono text-4xl">ephemurl</h1>
+    <h1 class="font-rubik-mono text-4xl">untitled counter</h1>
     <div class="bg-bg-400 dark:bg-bg-dark-400 h-0.5 rounded"></div>
   </div>
 
@@ -79,17 +72,13 @@
 
     <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
 
-    <LinkButton
-      tooltip="GitHub Repo"
-      href="https://github.com/jacob-shuman/ephemurl-site"
+    <Button
+      tooltip="Reset Counter"
+      onclick={() => {
+        // update({counter: {value:0}})
+      }}
     >
-      <IconBrandGithub class="w-6 h-6" />
-    </LinkButton>
-
-    <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
-
-    <Button tooltip="Command Palette" onclick={togglePalette}>
-      <IconPrompt class="w-6 h-6" />
+      <IconReload class="h-6 w-6" />
     </Button>
   </div>
 </nav>

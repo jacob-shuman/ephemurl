@@ -1,0 +1,60 @@
+---
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+import tw from "clsx";
+import { buildTheme, createConfig } from "ephemurl-db";
+import { Utils } from "ephemurl-utils";
+import packageJson from "../../package.json";
+import Badge from "../components/Badge.svelte";
+
+const params = Object.fromEntries(Astro.url.searchParams.entries());
+const ssrConfig = createConfig(params);
+---
+
+<html
+  lang="en"
+  style={buildTheme(ssrConfig)}
+  class={tw(
+    (ssrConfig.theme.mode === "dark" ||
+      ssrConfig.theme.mode === "system-dark") &&
+      "dark",
+    "transition-all duration-100 ease-out",
+    "overflow-y-scroll scrollbar scrollbar-track-transparent"
+  )}
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={packageJson.description} />
+    <title>badge</title>
+
+    <GoogleFontsOptimizer
+      url="https://fonts.bunny.net/css?family=rubik-mono-one:400"
+    />
+    <GoogleFontsOptimizer
+      url="https://fonts.bunny.net/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    />
+  </head>
+
+  <body
+    class="flex flex-col p-4 transition-all duration-100 ease-out sm:p-8 lg:p-12 gap-y-9 h-screen"
+  >
+    <Utils client:load {params} {ssrConfig} />
+
+    <Badge client:load {ssrConfig} {params} />
+
+    <style is:global>
+      html {
+        @apply bg-bg-500 text-bg-100;
+        @apply scrollbar-thumb-bg-400;
+        @apply selection:bg-bg-300;
+        @apply selection:bg-bg-400;
+      }
+      html.dark {
+        @apply bg-bg-dark-500 text-bg-dark-100;
+        @apply scrollbar-thumb-bg-dark-400;
+        @apply selection:bg-bg-dark-400;
+      }
+    </style>
+  </body>
+</html>
