@@ -8,6 +8,7 @@
   import { db as createDb, type Config, type ThemeMode } from "ephemurl-db";
   import { Button } from "ephemurl-utils";
   import { onMount } from "svelte";
+  // import Test from "./Test.svelte";
 
   export let params: Record<string, string | object>;
   export let ssrConfig: Config;
