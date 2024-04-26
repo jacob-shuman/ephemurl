@@ -18,7 +18,7 @@ export const tools: Project[] = [
     url: "https://badge.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/badge",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/badge",
       label: "counter",
     },
   },
@@ -28,7 +28,7 @@ export const tools: Project[] = [
     url: "https://counter.ephm.app",
     status: "ready",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/counter",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/counter",
       label: "counter",
     },
   },
@@ -38,7 +38,7 @@ export const tools: Project[] = [
     url: "https://countdown.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/countdown",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/countdown",
       label: "countdown",
     },
   },
@@ -48,7 +48,7 @@ export const tools: Project[] = [
     url: "https://spotifycomparator.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/spotifycomparator",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/spotifycomparator",
       label: "spotifycomparator",
     },
   },
@@ -58,7 +58,7 @@ export const tools: Project[] = [
     url: "https://teleprompter.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/teleprompter",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/teleprompter",
       label: "teleprompter",
     },
   },
@@ -68,7 +68,7 @@ export const tools: Project[] = [
     url: "https://pomodoro.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/pomodoro",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/pomodoro",
       label: "pomodoro",
     },
   },
@@ -78,7 +78,7 @@ export const tools: Project[] = [
     url: "https://clock.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/clock",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/clock",
       label: "clock",
     },
   },
@@ -88,7 +88,7 @@ export const tools: Project[] = [
     url: "https://hackernews.ephm.app",
     status: "planned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/hackernews",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/hackernews",
       label: "hackernews",
     },
   },
@@ -98,7 +98,7 @@ export const tools: Project[] = [
     url: "https://themes.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/themes",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/themes",
       label: "themes",
     },
   },
@@ -108,7 +108,7 @@ export const tools: Project[] = [
     url: "https://stopwatch.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/stopwatch",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/stopwatch",
       label: "stopwatch",
     },
   },
@@ -118,7 +118,7 @@ export const tools: Project[] = [
     url: "https://tracker.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/tracker",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/tracker",
       label: "tracker",
     },
   },
@@ -128,7 +128,7 @@ export const tools: Project[] = [
     url: "https://weather.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/weather",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/weather",
       label: "weather",
     },
   },
@@ -138,7 +138,7 @@ export const tools: Project[] = [
     url: "https://notes.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/notes",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/notes",
       label: "notes",
     },
   },
@@ -148,7 +148,7 @@ export const tools: Project[] = [
     url: "https://todo.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/todo",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/todo",
       label: "todo",
     },
   },
@@ -158,7 +158,7 @@ export const tools: Project[] = [
     url: "https://calculator.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/calculator",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/calculator",
       label: "calculator",
     },
   },
@@ -168,7 +168,7 @@ export const tools: Project[] = [
     url: "https://spreadsheet.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/spreadsheet",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/spreadsheet",
       label: "spreadsheet",
     },
   },
@@ -178,7 +178,7 @@ export const tools: Project[] = [
     url: "https://bip39.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/bip39",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/bip39",
       label: "bip39",
     },
   },
@@ -188,7 +188,7 @@ export const tools: Project[] = [
     url: "https://speedometer.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/speedometer",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/speedometer",
       label: "speedometer",
     },
   },
@@ -198,7 +198,7 @@ export const tools: Project[] = [
     url: "https://compass.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/compass",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/compass",
       label: "compass",
     },
   },
@@ -208,7 +208,7 @@ export const tools: Project[] = [
     url: "https:/level.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/level",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/level",
       label: "level",
     },
   },
@@ -218,7 +218,7 @@ export const tools: Project[] = [
     url: "https:/dice.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/dice",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/dice",
       label: "dice",
     },
   },
@@ -228,7 +228,7 @@ export const tools: Project[] = [
     url: "https:/calendarevent.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/calendarevent",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/calendarevent",
       label: "calendarevent",
     },
   },
@@ -241,7 +241,7 @@ export const games: Project[] = [
     url: "https://tictactoe.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/tictactoe",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/tictactoe",
       label: "tictactoe",
     },
   },
@@ -251,7 +251,7 @@ export const games: Project[] = [
     url: "https://connect4.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/connect4",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/connect4",
       label: "connect4",
     },
   },
@@ -261,7 +261,7 @@ export const games: Project[] = [
     url: "https://battleship.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/battleship",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/battleship",
       label: "battleship",
     },
   },
@@ -271,7 +271,7 @@ export const games: Project[] = [
     url: "https://foreheadgame.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/foreheadgame",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/foreheadgame",
       label: "foreheadgame",
     },
   },
@@ -281,7 +281,7 @@ export const games: Project[] = [
     url: "https://mastermind.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/mastermind",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/mastermind",
       label: "mastermind",
     },
   },
@@ -291,7 +291,7 @@ export const games: Project[] = [
     url: "https://wordgame.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/wordgame",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/wordgame",
       label: "word_game",
     },
   },
@@ -301,7 +301,7 @@ export const games: Project[] = [
     url: "https://chess.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/chess",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/chess",
       label: "chess",
     },
   },
@@ -311,7 +311,7 @@ export const games: Project[] = [
     url: "https://chessclock.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/chessclock",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/chessclock",
       label: "chessclock",
     },
   },
@@ -321,7 +321,7 @@ export const games: Project[] = [
     url: "https://checkers.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/checkers",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/checkers",
       label: "checkers",
     },
   },
@@ -331,7 +331,7 @@ export const games: Project[] = [
     url: "https://memory.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/memory",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/memory",
       label: "memory",
     },
   },
@@ -341,7 +341,7 @@ export const games: Project[] = [
     url: "https://minesweeper.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/minesweeper",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/minesweeper",
       label: "minesweeper",
     },
   },
@@ -351,7 +351,7 @@ export const games: Project[] = [
     url: "https://minesweeper.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/minesweeper",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/minesweeper",
       label: "minesweeper",
     },
   },
@@ -361,7 +361,7 @@ export const games: Project[] = [
     url: "https://virtualpet.ephm.app",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/virtualpet",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/virtualpet",
       label: "virtualpet",
     },
   },
@@ -373,7 +373,7 @@ export const modules: Project[] = [
     icon: "tabler:database",
     status: "unplanned",
     repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/projects/db",
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/shared/db",
       label: "db",
     },
   },
