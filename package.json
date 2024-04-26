@@ -11,5 +11,8 @@
     "badge": "pnpm --filter ./apps/badge run",
     "counter": "pnpm --filter ./apps/counter run",
     "site": "pnpm --filter ./apps/site run"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
   }
 }
