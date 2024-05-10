@@ -16,8 +16,6 @@
     "deploy": "astro build && wrangler pages deploy ./dist"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^10.2.4",
-    "@astrojs/node": "^8.2.5",
     "@astrojs/svelte": "^5.4.0",
     "@astrojs/tailwind": "^5.1.0",
     "@deno/astro-adapter": "^0.1.2",
@@ -44,6 +42,8 @@
     "vaul-svelte": "^0.3.0"
   },
   "devDependencies": {
+    "@astrojs/cloudflare": "^10.2.4",
+    "@astrojs/node": "^8.2.5",
     "wrangler": "^3.34.2"
   }
 }

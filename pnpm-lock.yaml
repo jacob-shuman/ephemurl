@@ -17,7 +17,7 @@ importers:
     devDependencies:
       '@astrojs/node':
         specifier: ^8.2.5
-        version: 8.2.5(astro@4.7.0)
+        version: 8.2.5(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))
 
   apps/badge:
     dependencies:
@@ -26,16 +26,16 @@ importers:
         version: 0.5.10(typescript@5.4.4)
       '@astrojs/svelte':
         specifier: ^5.3.0
-        version: 5.3.0(astro@4.5.16)(svelte@4.2.12)(typescript@5.4.4)(vite@5.2.10)
+        version: 5.3.0(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))(svelte@4.2.12)(typescript@5.4.4)(vite@5.1.4(@types/node@20.11.26))
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.5.16)(tailwindcss@3.4.3)
+        version: 5.1.0(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))(tailwindcss@3.4.3)
       '@tabler/icons-svelte':
         specifier: ^2.46.0
         version: 2.47.0(svelte@4.2.12)
       astro:
         specifier: ^4.5.16
-        version: 4.5.16(typescript@5.4.4)
+        version: 4.5.16(@types/node@20.11.26)(typescript@5.4.4)
       astro-google-fonts-optimizer:
         specifier: ^0.2.2
         version: 0.2.2
@@ -66,7 +66,7 @@ importers:
     devDependencies:
       wrangler:
         specifier: ^3.34.2
-        version: 3.34.2
+        version: 3.34.2(@cloudflare/workers-types@4.20240423.0)
 
   apps/counter:
     dependencies:
@@ -75,19 +75,22 @@ importers:
         version: 0.5.10(typescript@5.4.4)
       '@astrojs/svelte':
         specifier: ^5.3.0
-        version: 5.3.0(astro@4.5.16)(svelte@4.2.12)(typescript@5.4.4)(vite@5.2.10)
+        version: 5.3.0(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))(svelte@4.2.12)(typescript@5.4.4)(vite@5.1.4(@types/node@20.11.26))
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.5.16)(tailwindcss@3.4.3)
+        version: 5.1.0(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))(tailwindcss@3.4.3)
       '@tabler/icons-svelte':
         specifier: ^2.46.0
         version: 2.47.0(svelte@4.2.12)
       astro:
         specifier: ^4.5.16
-        version: 4.5.16(typescript@5.4.4)
+        version: 4.5.16(@types/node@20.11.26)(typescript@5.4.4)
       astro-google-fonts-optimizer:
         specifier: ^0.2.2
         version: 0.2.2
+      astro-icon:
+        specifier: ^1.0.2
+        version: 1.1.0
       bits-ui:
         specifier: ^0.16.0
         version: 0.16.0(svelte@4.2.12)
@@ -113,27 +116,27 @@ importers:
         specifier: ^5.4.4
         version: 5.4.4
     devDependencies:
+      '@astrojs/cloudflare':
+        specifier: ^10.2.4
+        version: 10.2.4(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))
+      '@astrojs/node':
+        specifier: ^8.2.5
+        version: 8.2.5(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))
       wrangler:
         specifier: ^3.34.2
-        version: 3.34.2
+        version: 3.34.2(@cloudflare/workers-types@4.20240423.0)
 
   apps/site:
     dependencies:
-      '@astrojs/cloudflare':
-        specifier: ^10.2.4
-        version: 10.2.4(astro@4.7.0)
-      '@astrojs/node':
-        specifier: ^8.2.5
-        version: 8.2.5(astro@4.7.0)
       '@astrojs/svelte':
         specifier: ^5.4.0
-        version: 5.4.0(astro@4.7.0)(svelte@4.2.9)(typescript@5.4.4)(vite@5.2.10)
+        version: 5.4.0(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))(svelte@4.2.9)(typescript@5.4.4)(vite@5.2.10(@types/node@20.11.26))
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.7.0)(tailwindcss@3.4.1)
+        version: 5.1.0(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))(tailwindcss@3.4.1)
       '@deno/astro-adapter':
         specifier: ^0.1.2
-        version: 0.1.2(astro@4.7.0)
+        version: 0.1.2(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))
       '@floating-ui/core':
         specifier: ^1.5.3
         version: 1.6.0
@@ -145,7 +148,7 @@ importers:
         version: 2.47.0(svelte@4.2.9)
       astro:
         specifier: ^4.7.0
-        version: 4.7.0(typescript@5.4.4)
+        version: 4.7.0(@types/node@20.11.26)(typescript@5.4.4)
       astro-google-fonts-optimizer:
         specifier: ^0.2.2
         version: 0.2.2
@@ -198,9 +201,15 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0(svelte@4.2.9)
     devDependencies:
+      '@astrojs/cloudflare':
+        specifier: ^10.2.4
+        version: 10.2.4(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))
+      '@astrojs/node':
+        specifier: ^8.2.5
+        version: 8.2.5(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))
       wrangler:
         specifier: ^3.34.2
-        version: 3.34.2
+        version: 3.34.2(@cloudflare/workers-types@4.20240423.0)
 
   apps/template:
     dependencies:
@@ -209,16 +218,16 @@ importers:
         version: 0.5.10(typescript@5.4.4)
       '@astrojs/svelte':
         specifier: ^5.3.0
-        version: 5.3.0(astro@4.5.16)(svelte@4.2.12)(typescript@5.4.4)(vite@5.2.10)
+        version: 5.3.0(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))(svelte@4.2.12)(typescript@5.4.4)(vite@5.1.4(@types/node@20.11.26))
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.5.16)(tailwindcss@3.4.3)
+        version: 5.1.0(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))(tailwindcss@3.4.3)
       '@tabler/icons-svelte':
         specifier: ^2.46.0
         version: 2.47.0(svelte@4.2.12)
       astro:
         specifier: ^4.5.16
-        version: 4.5.16(typescript@5.4.4)
+        version: 4.5.16(@types/node@20.11.26)(typescript@5.4.4)
       astro-google-fonts-optimizer:
         specifier: ^0.2.2
         version: 0.2.2
@@ -252,13 +261,13 @@ importers:
     devDependencies:
       '@astrojs/cloudflare':
         specifier: ^10.2.4
-        version: 10.2.4(astro@4.5.16)
+        version: 10.2.4(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))
       '@astrojs/node':
         specifier: ^8.2.5
-        version: 8.2.5(astro@4.5.16)
+        version: 8.2.5(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))
       wrangler:
         specifier: ^3.34.2
-        version: 3.34.2
+        version: 3.34.2(@cloudflare/workers-types@4.20240423.0)
 
   shared/db:
     dependencies:
@@ -299,16 +308,16 @@ importers:
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.0.0
-        version: 3.2.0(@sveltejs/kit@2.5.5)
+        version: 3.2.0(@sveltejs/kit@2.5.5(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26)))(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26)))
       '@sveltejs/kit':
         specifier: ^2.0.0
-        version: 2.5.5(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.4)
+        version: 2.5.5(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26)))(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))
       '@sveltejs/package':
         specifier: ^2.0.0
         version: 2.3.1(svelte@4.2.12)(typescript@5.4.4)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.0.0
-        version: 3.0.2(svelte@4.2.12)(vite@5.1.4)
+        version: 3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.17(postcss@8.4.35)
@@ -326,7 +335,7 @@ importers:
         version: 4.2.12
       svelte-check:
         specifier: ^3.6.0
-        version: 3.6.9(postcss@8.4.35)(svelte@4.2.12)
+        version: 3.6.9(@babel/core@7.24.4)(postcss-load-config@4.0.2(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.12)
       tailwindcss:
         specifier: ^3.3.6
         version: 3.4.3
@@ -338,7 +347,7 @@ importers:
         version: 5.4.4
       vite:
         specifier: ^5.0.11
-        version: 5.1.4
+        version: 5.1.4(@types/node@20.11.26)
 
 packages:
 
@@ -4029,12 +4038,12 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@10.2.4(astro@4.5.16)':
+  '@astrojs/cloudflare@10.2.4(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))':
     dependencies:
       '@astrojs/internal-helpers': 0.3.0
       '@astrojs/underscore-redirects': 0.3.3
       '@cloudflare/workers-types': 4.20240423.0
-      astro: 4.5.16(typescript@5.4.4)
+      astro: 4.5.16(@types/node@20.11.26)(typescript@5.4.4)
       esbuild: 0.19.12
       estree-walker: 3.0.3
       magic-string: 0.30.10
@@ -4046,12 +4055,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@astrojs/cloudflare@10.2.4(astro@4.7.0)':
+  '@astrojs/cloudflare@10.2.4(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))':
     dependencies:
       '@astrojs/internal-helpers': 0.3.0
       '@astrojs/underscore-redirects': 0.3.3
       '@cloudflare/workers-types': 4.20240423.0
-      astro: 4.7.0(typescript@5.4.4)
+      astro: 4.7.0(@types/node@20.11.26)(typescript@5.4.4)
       esbuild: 0.19.12
       estree-walker: 3.0.3
       magic-string: 0.30.10
@@ -4138,17 +4147,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@8.2.5(astro@4.5.16)':
+  '@astrojs/node@8.2.5(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))':
     dependencies:
-      astro: 4.5.16(typescript@5.4.4)
+      astro: 4.5.16(@types/node@20.11.26)(typescript@5.4.4)
       send: 0.18.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@8.2.5(astro@4.7.0)':
+  '@astrojs/node@8.2.5(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))':
     dependencies:
-      astro: 4.7.0(typescript@5.4.4)
+      astro: 4.7.0(@types/node@20.11.26)(typescript@5.4.4)
       send: 0.18.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -4162,10 +4171,10 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/svelte@5.3.0(astro@4.5.16)(svelte@4.2.12)(typescript@5.4.4)(vite@5.2.10)':
+  '@astrojs/svelte@5.3.0(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))(svelte@4.2.12)(typescript@5.4.4)(vite@5.1.4(@types/node@20.11.26))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.2.10)
-      astro: 4.5.16(typescript@5.4.4)
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))
+      astro: 4.5.16(@types/node@20.11.26)(typescript@5.4.4)
       svelte: 4.2.12
       svelte2tsx: 0.6.27(svelte@4.2.12)(typescript@5.4.4)
       typescript: 5.4.4
@@ -4173,10 +4182,10 @@ snapshots:
       - supports-color
       - vite
 
-  '@astrojs/svelte@5.4.0(astro@4.7.0)(svelte@4.2.9)(typescript@5.4.4)(vite@5.2.10)':
+  '@astrojs/svelte@5.4.0(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))(svelte@4.2.9)(typescript@5.4.4)(vite@5.2.10(@types/node@20.11.26))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.9)(vite@5.2.10)
-      astro: 4.7.0(typescript@5.4.4)
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.9)(vite@5.2.10(@types/node@20.11.26))
+      astro: 4.7.0(@types/node@20.11.26)(typescript@5.4.4)
       svelte: 4.2.9
       svelte2tsx: 0.6.27(svelte@4.2.9)(typescript@5.4.4)
       typescript: 5.4.4
@@ -4184,9 +4193,9 @@ snapshots:
       - supports-color
       - vite
 
-  '@astrojs/tailwind@5.1.0(astro@4.5.16)(tailwindcss@3.4.3)':
+  '@astrojs/tailwind@5.1.0(astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4))(tailwindcss@3.4.3)':
     dependencies:
-      astro: 4.5.16(typescript@5.4.4)
+      astro: 4.5.16(@types/node@20.11.26)(typescript@5.4.4)
       autoprefixer: 10.4.17(postcss@8.4.35)
       postcss: 8.4.35
       postcss-load-config: 4.0.2(postcss@8.4.35)
@@ -4194,9 +4203,9 @@ snapshots:
     transitivePeerDependencies:
       - ts-node
 
-  '@astrojs/tailwind@5.1.0(astro@4.7.0)(tailwindcss@3.4.1)':
+  '@astrojs/tailwind@5.1.0(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))(tailwindcss@3.4.1)':
     dependencies:
-      astro: 4.7.0(typescript@5.4.4)
+      astro: 4.7.0(@types/node@20.11.26)(typescript@5.4.4)
       autoprefixer: 10.4.17(postcss@8.4.35)
       postcss: 8.4.35
       postcss-load-config: 4.0.2(postcss@8.4.35)
@@ -4447,9 +4456,9 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@deno/astro-adapter@0.1.2(astro@4.7.0)':
+  '@deno/astro-adapter@0.1.2(astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4))':
     dependencies:
-      astro: 4.7.0(typescript@5.4.4)
+      astro: 4.7.0(@types/node@20.11.26)(typescript@5.4.4)
       esbuild: 0.19.12
 
   '@emmetio/abbreviation@2.3.3':
@@ -4978,14 +4987,14 @@ snapshots:
 
   '@shikijs/core@1.3.0': {}
 
-  '@sveltejs/adapter-auto@3.2.0(@sveltejs/kit@2.5.5)':
+  '@sveltejs/adapter-auto@3.2.0(@sveltejs/kit@2.5.5(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26)))(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26)))':
     dependencies:
-      '@sveltejs/kit': 2.5.5(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.4)
+      '@sveltejs/kit': 2.5.5(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26)))(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))
       import-meta-resolve: 4.0.0
 
-  '@sveltejs/kit@2.5.5(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.4)':
+  '@sveltejs/kit@2.5.5(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26)))(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.1.4)
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))
       '@types/cookie': 0.6.0
       cookie: 0.6.0
       devalue: 4.3.2
@@ -4999,7 +5008,7 @@ snapshots:
       sirv: 2.0.4
       svelte: 4.2.12
       tiny-glob: 0.2.9
-      vite: 5.1.4
+      vite: 5.1.4(@types/node@20.11.26)
 
   '@sveltejs/package@2.3.1(svelte@4.2.12)(typescript@5.4.4)':
     dependencies:
@@ -5012,72 +5021,49 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.4)':
+  '@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26)))(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.1.4)
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))
       debug: 4.3.4
       svelte: 4.2.12
-      vite: 5.1.4
+      vite: 5.1.4(@types/node@20.11.26)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.10)':
+  '@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.9)(vite@5.2.10(@types/node@20.11.26)))(svelte@4.2.9)(vite@5.2.10(@types/node@20.11.26))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.2.10)
-      debug: 4.3.4
-      svelte: 4.2.12
-      vite: 5.2.10
-    transitivePeerDependencies:
-      - supports-color
-
-  '@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.9)(vite@5.2.10)':
-    dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.9)(vite@5.2.10)
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.9)(vite@5.2.10(@types/node@20.11.26))
       debug: 4.3.4
       svelte: 4.2.9
-      vite: 5.2.10
+      vite: 5.2.10(@types/node@20.11.26)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.1.4)':
+  '@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.4)
+      '@sveltejs/vite-plugin-svelte-inspector': 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26)))(svelte@4.2.12)(vite@5.1.4(@types/node@20.11.26))
       debug: 4.3.4
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.6
       svelte: 4.2.12
       svelte-hmr: 0.15.3(svelte@4.2.12)
-      vite: 5.1.4
-      vitefu: 0.2.5(vite@5.1.4)
+      vite: 5.1.4(@types/node@20.11.26)
+      vitefu: 0.2.5(vite@5.1.4(@types/node@20.11.26))
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.10)':
+  '@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.9)(vite@5.2.10(@types/node@20.11.26))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.10)
-      debug: 4.3.4
-      deepmerge: 4.3.1
-      kleur: 4.1.5
-      magic-string: 0.30.6
-      svelte: 4.2.12
-      svelte-hmr: 0.15.3(svelte@4.2.12)
-      vite: 5.2.10
-      vitefu: 0.2.5(vite@5.2.10)
-    transitivePeerDependencies:
-      - supports-color
-
-  '@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.9)(vite@5.2.10)':
-    dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.9)(vite@5.2.10)
+      '@sveltejs/vite-plugin-svelte-inspector': 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.9)(vite@5.2.10(@types/node@20.11.26)))(svelte@4.2.9)(vite@5.2.10(@types/node@20.11.26))
       debug: 4.3.4
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.6
       svelte: 4.2.9
       svelte-hmr: 0.15.3(svelte@4.2.9)
-      vite: 5.2.10
-      vitefu: 0.2.5(vite@5.2.10)
+      vite: 5.2.10(@types/node@20.11.26)
+      vitefu: 0.2.5(vite@5.2.10(@types/node@20.11.26))
     transitivePeerDependencies:
       - supports-color
 
@@ -5293,7 +5279,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@4.5.16(typescript@5.4.4):
+  astro@4.5.16(@types/node@20.11.26)(typescript@5.4.4):
     dependencies:
       '@astrojs/compiler': 2.7.1
       '@astrojs/internal-helpers': 0.4.0
@@ -5351,8 +5337,8 @@ snapshots:
       tsconfck: 3.0.1(typescript@5.4.4)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.1.4
-      vitefu: 0.2.5(vite@5.1.4)
+      vite: 5.1.4(@types/node@20.11.26)
+      vitefu: 0.2.5(vite@5.1.4(@types/node@20.11.26))
       which-pm: 2.1.1
       yargs-parser: 21.1.1
       zod: 3.22.4
@@ -5370,7 +5356,7 @@ snapshots:
       - terser
       - typescript
 
-  astro@4.7.0(typescript@5.4.4):
+  astro@4.7.0(@types/node@20.11.26)(typescript@5.4.4):
     dependencies:
       '@astrojs/compiler': 2.7.1
       '@astrojs/internal-helpers': 0.4.0
@@ -5429,8 +5415,8 @@ snapshots:
       tsconfck: 3.0.3(typescript@5.4.4)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.2.10
-      vitefu: 0.2.5(vite@5.2.10)
+      vite: 5.2.10(@types/node@20.11.26)
+      vitefu: 0.2.5(vite@5.2.10(@types/node@20.11.26))
       which-pm: 2.1.1
       yargs-parser: 21.1.1
       zod: 3.23.4
@@ -7095,8 +7081,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.35):
     dependencies:
       lilconfig: 3.0.0
-      postcss: 8.4.35
       yaml: 2.3.4
+    optionalDependencies:
+      postcss: 8.4.35
 
   postcss-nested@6.0.1(postcss@8.4.35):
     dependencies:
@@ -7632,7 +7619,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@3.6.9(postcss@8.4.35)(svelte@4.2.12):
+  svelte-check@3.6.9(@babel/core@7.24.4)(postcss-load-config@4.0.2(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.12):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 3.5.3
@@ -7641,7 +7628,7 @@ snapshots:
       picocolors: 1.0.0
       sade: 1.8.1
       svelte: 4.2.12
-      svelte-preprocess: 5.1.3(postcss@8.4.35)(svelte@4.2.12)(typescript@5.4.4)
+      svelte-preprocess: 5.1.3(@babel/core@7.24.4)(postcss-load-config@4.0.2(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.12)(typescript@5.4.4)
       typescript: 5.4.4
     transitivePeerDependencies:
       - '@babel/core'
@@ -7662,15 +7649,18 @@ snapshots:
     dependencies:
       svelte: 4.2.9
 
-  svelte-preprocess@5.1.3(postcss@8.4.35)(svelte@4.2.12)(typescript@5.4.4):
+  svelte-preprocess@5.1.3(@babel/core@7.24.4)(postcss-load-config@4.0.2(postcss@8.4.35))(postcss@8.4.35)(svelte@4.2.12)(typescript@5.4.4):
     dependencies:
       '@types/pug': 2.0.10
       detect-indent: 6.1.0
       magic-string: 0.30.6
-      postcss: 8.4.35
       sorcery: 0.11.0
       strip-indent: 3.0.0
       svelte: 4.2.12
+    optionalDependencies:
+      '@babel/core': 7.24.4
+      postcss: 8.4.35
+      postcss-load-config: 4.0.2(postcss@8.4.35)
       typescript: 5.4.4
 
   svelte-sonner@0.3.11(svelte@4.2.12):
@@ -7879,11 +7869,11 @@ snapshots:
   ts-interface-checker@0.1.13: {}
 
   tsconfck@3.0.1(typescript@5.4.4):
-    dependencies:
+    optionalDependencies:
       typescript: 5.4.4
 
   tsconfck@3.0.3(typescript@5.4.4):
-    dependencies:
+    optionalDependencies:
       typescript: 5.4.4
 
   tslib@2.6.2: {}
@@ -8037,67 +8027,74 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.1.4:
+  vite@5.1.4(@types/node@20.11.26):
     dependencies:
       esbuild: 0.19.12
       postcss: 8.4.35
       rollup: 4.9.6
     optionalDependencies:
+      '@types/node': 20.11.26
       fsevents: 2.3.3
 
-  vite@5.2.10:
+  vite@5.2.10(@types/node@20.11.26):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.16.4
     optionalDependencies:
+      '@types/node': 20.11.26
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.1.4):
-    dependencies:
-      vite: 5.1.4
+  vitefu@0.2.5(vite@5.1.4(@types/node@20.11.26)):
+    optionalDependencies:
+      vite: 5.1.4(@types/node@20.11.26)
 
-  vitefu@0.2.5(vite@5.2.10):
-    dependencies:
-      vite: 5.2.10
+  vitefu@0.2.5(vite@5.2.10(@types/node@20.11.26)):
+    optionalDependencies:
+      vite: 5.2.10(@types/node@20.11.26)
 
   volar-service-css@0.0.34(@volar/language-service@2.1.6):
     dependencies:
-      '@volar/language-service': 2.1.6
       vscode-css-languageservice: 6.2.12
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.1.6
 
   volar-service-emmet@0.0.34(@volar/language-service@2.1.6):
     dependencies:
-      '@volar/language-service': 2.1.6
       '@vscode/emmet-helper': 2.9.2
       vscode-html-languageservice: 5.1.2
+    optionalDependencies:
+      '@volar/language-service': 2.1.6
 
   volar-service-html@0.0.34(@volar/language-service@2.1.6):
     dependencies:
-      '@volar/language-service': 2.1.6
       vscode-html-languageservice: 5.1.2
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.1.6
 
   volar-service-prettier@0.0.34(@volar/language-service@2.1.6):
     dependencies:
-      '@volar/language-service': 2.1.6
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.1.6
 
   volar-service-typescript-twoslash-queries@0.0.34(@volar/language-service@2.1.6):
-    dependencies:
+    optionalDependencies:
       '@volar/language-service': 2.1.6
 
   volar-service-typescript@0.0.34(@volar/language-service@2.1.6):
     dependencies:
-      '@volar/language-service': 2.1.6
       path-browserify: 1.0.1
       semver: 7.5.4
       typescript-auto-import-cache: 0.3.2
       vscode-languageserver-textdocument: 1.0.11
       vscode-nls: 5.2.0
+    optionalDependencies:
+      '@volar/language-service': 2.1.6
 
   vscode-css-languageservice@6.2.12:
     dependencies:
@@ -8172,7 +8169,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20240419.0
       '@cloudflare/workerd-windows-64': 1.20240419.0
 
-  wrangler@3.34.2:
+  wrangler@3.34.2(@cloudflare/workers-types@4.20240423.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.1
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
@@ -8189,6 +8186,7 @@ snapshots:
       source-map: 0.6.1
       xxhash-wasm: 1.0.2
     optionalDependencies:
+      '@cloudflare/workers-types': 4.20240423.0
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
@@ -8198,7 +8196,6 @@ snapshots:
   wrangler@3.52.0(@cloudflare/workers-types@4.20240423.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.2
-      '@cloudflare/workers-types': 4.20240423.0
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
       '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
       blake3-wasm: 2.1.5
@@ -8213,6 +8210,7 @@ snapshots:
       source-map: 0.6.1
       xxhash-wasm: 1.0.2
     optionalDependencies:
+      '@cloudflare/workers-types': 4.20240423.0
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
