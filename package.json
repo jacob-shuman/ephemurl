@@ -10,10 +10,14 @@
   "scripts": {
     "badge": "pnpm --filter ./apps/badge run",
     "counter": "pnpm --filter ./apps/counter run",
-    "site": "pnpm --filter ./apps/site run"
+    "site": "pnpm --filter ./apps/site run",
+    "utils": "pnpm --filter ./shared/utils run"
   },
-  "devDependencies": {
+  "dependencies": {
     "tailwind-scrollbar": "^3.0.5",
     "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {
+    "@astrojs/node": "^8.2.5"
   }
 }

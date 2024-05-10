@@ -1,0 +1,7 @@
+services:
+  ephemurl-APP_ID:
+    image: jacobshuman/ephemurl-APP_ID:latest
+    environment:
+      PORT: DEFAULT_PORT
+    ports:
+      - DEFAULT_PORT:DEFAULT_PORT

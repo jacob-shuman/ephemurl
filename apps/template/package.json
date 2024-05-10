@@ -1,5 +1,5 @@
 {
-  "name": "ephemurl-template",
+  "name": "APP_ID",
   "description": "ephemurl-based template",
   "type": "module",
   "version": "0.0.1",
@@ -19,6 +19,7 @@
     "@tabler/icons-svelte": "^2.46.0",
     "astro": "^4.5.16",
     "astro-google-fonts-optimizer": "^0.2.2",
+    "astro-icon": "^1.0.2",
     "bits-ui": "^0.16.0",
     "clsx": "^2.1.0",
     "ephemurl-db": "workspace:*",
@@ -29,6 +30,8 @@
     "typescript": "^5.4.4"
   },
   "devDependencies": {
+    "@astrojs/cloudflare": "^10.2.4",
+    "@astrojs/node": "^8.2.5",
     "wrangler": "^3.34.2"
   }
 }

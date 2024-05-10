@@ -144,7 +144,7 @@ export interface Database {
   mounted: WritableAtom<boolean>;
 }
 
-export function db(
+export function createDb(
   params: Record<string, string | object>,
   options?: { id?: string }
 ): Database {

@@ -25,7 +25,7 @@ const ssrConfig = createConfig(params);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={packageJson.description} />
-    <title>template</title>
+    <title>APP_NAME</title>
 
     <GoogleFontsOptimizer
       url="https://fonts.bunny.net/css?family=rubik-mono-one:400"
@@ -40,18 +40,6 @@ const ssrConfig = createConfig(params);
   >
     <Utils client:load {params} {ssrConfig} />
 
-    <style is:global>
-      html {
-        @apply bg-bg-500 text-bg-100;
-        @apply scrollbar-thumb-bg-400;
-        @apply selection:bg-bg-300;
-        @apply selection:bg-bg-400;
-      }
-      html.dark {
-        @apply bg-bg-dark-500 text-bg-dark-100;
-        @apply scrollbar-thumb-bg-dark-400;
-        @apply selection:bg-bg-dark-400;
-      }
-    </style>
+    <h1>APP_NAME</h1>
   </body>
 </html>

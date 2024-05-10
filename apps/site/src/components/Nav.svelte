@@ -6,7 +6,7 @@
     IconPrompt,
     IconSun,
   } from "@tabler/icons-svelte";
-  import { db as createDb, type Config, type ThemeMode } from "ephemurl-db";
+  import { createDb, type Config, type ThemeMode } from "ephemurl-db";
   import { onMount } from "svelte";
   import { PALETTE_TOGGLE_EVENT } from "../constants";
   import Button from "./Button.svelte";

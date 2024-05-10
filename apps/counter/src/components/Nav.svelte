@@ -5,10 +5,9 @@
     IconReload,
     IconSun,
   } from "@tabler/icons-svelte";
-  import { db as createDb, type Config, type ThemeMode } from "ephemurl-db";
+  import { createDb, type Config, type ThemeMode } from "ephemurl-db";
   import { Button } from "ephemurl-utils";
   import { onMount } from "svelte";
-  // import Test from "./Test.svelte";
 
   export let params: Record<string, string | object>;
   export let ssrConfig: Config;
@@ -29,7 +28,6 @@
   }
 
   onMount(async () => {
-    // url.set(new URL(window.location.href));
     await mount();
 
     if (
@@ -46,9 +44,11 @@
   });
 </script>
 
-<nav class="flex flex-col justify-between gap-y-2 sm:flex-row sm:gap-y-0">
+<nav
+  class="flex flex-col items-center justify-between gap-y-2 sm:flex-row sm:gap-y-0"
+>
   <div class="flex flex-col gap-y-2">
-    <h1 class="font-rubik-mono text-4xl">untitled counter</h1>
+    <h1 class="font-rubik-mono text-2xl">untitled counter</h1>
     <div class="bg-bg-400 dark:bg-bg-dark-400 h-0.5 rounded"></div>
   </div>
 

@@ -6,6 +6,7 @@
     type ThemeMode,
   } from "ephemurl-db";
   import { onMount } from "svelte";
+  import "../scrollbar.css";
 
   export let ssrConfig: Config;
   export let db: Database;

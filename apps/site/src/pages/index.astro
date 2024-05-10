@@ -2,10 +2,10 @@
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import tw from "clsx";
 import { buildTheme, createConfig } from "ephemurl-db";
+import { Utils } from "ephemurl-utils";
 import packageJson from "../../package.json";
 import Card from "../components/Card.astro";
 import Nav from "../components/Nav.svelte";
-import Utils from "../components/Utils.svelte";
 import { games, modules, tools } from "../constants";
 
 const params = Object.fromEntries(Astro.url.searchParams.entries());
@@ -120,19 +120,5 @@ const ssrConfig = createConfig(params);
         }
       </div>
     </section>
-
-    <style is:global>
-      html {
-        @apply bg-bg-500 text-bg-100;
-        @apply scrollbar-thumb-bg-400;
-        @apply selection:bg-bg-300;
-        @apply selection:bg-bg-400;
-      }
-      html.dark {
-        @apply bg-bg-dark-500 text-bg-dark-100;
-        @apply scrollbar-thumb-bg-dark-400;
-        @apply selection:bg-bg-dark-400;
-      }
-    </style>
   </body>
 </html>

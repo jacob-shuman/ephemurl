@@ -12,7 +12,7 @@
 
 # 🌎 Web Based
 
-**TL;DR: All ephemurl apps are web based and can be installed as progressive web apps. Each app is hosted using Netlify's free plan.**
+**TL;DR: All ephemurl apps are web based and can be installed as progressive web apps. Each app is hosted using Cloudflare page's free plan.**
 
 All ephemurl tools I want to build tools will be web based mainly for 2 reasons:
 
@@ -35,7 +35,7 @@ There is a link to donate here to help me maintain this ecosystem of tools but t
 
 **TL;DR: All ephemurl apps can be self hosted using docker, docker hub has images available, examples are available for each app in the repo.**
 
-All ephemurl apps are hosted using the free plan on netlify. I would love to promise that there will always be a free hosted version available but the reality is netlify and other hosts could start charging significantly more or there could be an unforeseen circumstance I haven't considered that would prevent the hosted versions from continuing. Even if I could guarantee that they would be available 24/7 forever I understand some people (myself included) prefer to self host services for privacy, reliability, etc.
+All ephemurl apps are hosted using the free plan on cloudflare pages. I would love to promise that there will always be a free hosted version available but the reality is cloudflare pages and other hosts could start charging significantly more or there could be an unforeseen circumstance I haven't considered that would prevent the hosted versions from continuing. Even if I could guarantee that they would be available 24/7 forever I understand some people (myself included) prefer to self host services for privacy, reliability, etc.
 
 **All ephemurl apps can be self hosted using docker.** Each app has a docker image located in the app's directory in the ephemurl mono repo and is published to [hub.docker.io](http://hub.docker.io) as soon as updates are available. In the README for each app there are instructions for running it as a single docker container or using docker compose (update so docker compose links to the docker compose docs).
 

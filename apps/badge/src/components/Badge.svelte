@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { db as createDb, type Config } from "ephemurl-db";
+  import { createDb, type Config } from "ephemurl-db";
   import { onMount } from "svelte";
 
   export let params: Record<string, string | object>;

@@ -1,6 +1,7 @@
-version: "3.8"
 services:
   ephemurl-site:
-    build: .
+    image: jacobshuman/ephemurl-site:latest
+    environment:
+      PORT: 7420
     ports:
       - 7420:7420

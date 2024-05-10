@@ -1,0 +1,12 @@
+html {
+  @apply bg-bg-500 text-bg-100;
+  @apply scrollbar-thumb-bg-400;
+  @apply selection:bg-bg-300;
+  @apply selection:bg-bg-400;
+}
+
+html.dark {
+  @apply bg-bg-dark-500 text-bg-dark-100;
+  @apply scrollbar-thumb-bg-dark-400;
+  @apply selection:bg-bg-dark-400;
+}

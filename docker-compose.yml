@@ -1,0 +1,11 @@
+services:
+  site:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        APP: "site"
+    environment:
+      PORT: 7432
+    ports:
+      - 7432:7432
