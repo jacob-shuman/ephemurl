@@ -19,7 +19,7 @@ export const tools: Project[] = [
     status: "unplanned",
     repo: {
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/badge",
-      label: "counter",
+      label: "badge",
     },
   },
   {

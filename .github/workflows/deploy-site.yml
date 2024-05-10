@@ -49,9 +49,6 @@ jobs:
     needs: cloudflare
     runs-on: ubuntu-latest
 
-    env:
-      NODE_OPTIONS: --max_old_space_size=4096
-
     permissions:
       contents: read
       deployments: write
@@ -66,6 +63,7 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v5
         with:
-          build-args: "APP=site"
+          build-args: |
+            APP=site
           push: true
           tags: jacobshuman/ephemurl-site
