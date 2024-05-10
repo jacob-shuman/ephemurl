@@ -22,12 +22,15 @@ jobs:
       - name: Setup pnpm 🏗
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 9
 
       - name: Install dependencies 👨🏻‍💻
         run: pnpm install
 
-      - name: Run build
+      - name: Build utils
+        run: pnpm utils build
+
+      - name: Build site
         run: pnpm site build
 
       - name: Publish
