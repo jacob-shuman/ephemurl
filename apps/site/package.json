@@ -11,8 +11,6 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "server": "astro build && node ./dist/server/entry.mjs",
-    "compose": "docker-compose down && docker-compose up --force-recreate --build",
     "deploy": "astro build && wrangler pages deploy ./dist"
   },
   "dependencies": {
