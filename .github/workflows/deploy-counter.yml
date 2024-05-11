@@ -8,8 +8,11 @@ on:
       - "apps/counter/**"
 
 jobs:
-  publish:
+  cloudflare:
     runs-on: ubuntu-latest
+
+    env:
+      NODE_OPTIONS: --max_old_space_size=4096
 
     permissions:
       contents: read
@@ -30,14 +33,14 @@ jobs:
       - name: Build utils
         run: pnpm utils build
 
-      - name: Build counter
-        run: pnpm counter build
+      - name: Build site
+        run: pnpm site build
 
-      - name: Publish
+      - name: Deploy to cloudflare
         uses: cloudflare/pages-action@1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ephemurl-counter
-          directory: ./apps/counter/dist
+          projectName: ephemurl-site
+          directory: ./apps/site/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -36,7 +36,7 @@ jobs:
       - name: Build site
         run: pnpm site build
 
-      - name: Publish
+      - name: Deploy to cloudflare
         uses: cloudflare/pages-action@1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
