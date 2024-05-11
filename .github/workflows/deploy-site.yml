@@ -24,13 +24,15 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v3
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Setup pnpm 🏗
         uses: pnpm/action-setup@v3
         with:
-          version: 9
-
-      - name: Install dependencies 👨🏻‍💻
-        run: pnpm install
+          run_install: true
 
       - name: Build utils
         run: pnpm utils build
