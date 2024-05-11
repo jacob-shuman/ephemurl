@@ -40,9 +40,6 @@ jobs:
       - name: Build site
         run: pnpm site build
 
-      - name: Print dist
-        run: ls apps/site/dist
-
       - name: Deploy to cloudflare
         uses: cloudflare/pages-action@1
         with:

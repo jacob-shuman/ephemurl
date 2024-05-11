@@ -14,6 +14,7 @@ WORKDIR /monorepo
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --filter "./apps/${APP}"
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --filter ./shared/*
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm utils build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm ${APP} build
 
 FROM node:20-alpine
