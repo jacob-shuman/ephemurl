@@ -1,7 +1,7 @@
 name: Deploy Ephemurl Site
 
 on:
-  workflow_dispatch:  
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -51,6 +51,7 @@ jobs:
           projectName: ephemurl-site
           directory: ./apps/site/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: "3"
 
   docker:
     needs: cloudflare
