@@ -1,0 +1,16 @@
+FROM node:20-alpine
+
+ENV HOST=0.0.0.0
+ENV PORT=7420
+
+ARG APP=site
+
+COPY /shared /shared
+COPY /node_modules /node_modules
+COPY /apps/${APP} /app
+WORKDIR /app
+
+HEALTHCHECK --interval=1s --timeout=1s --start-period=1s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:${PORT}/ || exit 1
+
+CMD node ./dist/server/entry.mjs
