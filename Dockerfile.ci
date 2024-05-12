@@ -5,9 +5,9 @@ ENV PORT=7420
 
 ARG APP=site
 
-COPY /shared /shared
-COPY /node_modules /node_modules
-COPY /apps/${APP} /app
+COPY shared /shared
+COPY node_modules /node_modules
+COPY apps/${APP} /app
 WORKDIR /app
 
 HEALTHCHECK --interval=1s --timeout=1s --start-period=1s --retries=3 \
