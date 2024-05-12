@@ -40,6 +40,12 @@ jobs:
       - name: Build site
         run: pnpm site build
 
+      - name: ls
+        run: ls
+
+      - name: pwd
+        run: pwd
+
       - name: Deploy to cloudflare
         uses: cloudflare/pages-action@1
         with:
