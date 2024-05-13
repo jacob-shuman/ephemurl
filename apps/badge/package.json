@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && wrangler pages deploy ./dist"
+    "upgrade": "pnpx @astrojs/upgrade"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
