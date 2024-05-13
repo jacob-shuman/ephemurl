@@ -68,6 +68,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
+      - name: Remove Docker Images
+        run: docker rmi $(docker images -a -q) || true
+
       - name: Build and push docker image
         uses: docker/build-push-action@v5
         with:
