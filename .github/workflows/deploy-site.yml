@@ -42,23 +42,23 @@ jobs:
         run: pnpm site build
 
       # TODO: disable this once docker deployment is fixed
-      - name: Deploy to cloudflare
-        uses: cloudflare/pages-action@1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ephemurl-site
-          directory: ./apps/site/dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          wranglerVersion: "3"
-
-      # TODO: enable this once docker deployment is fixed
       # - name: Deploy to cloudflare
-      #   uses: cloudflare/wrangler-action@v3
+      #   uses: cloudflare/pages-action@1
       #   with:
       #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      #     command: pages deploy ./apps/site/dist --project-name=ephemurl-site --commit-dirty=true
+      #     projectName: ephemurl-site
+      #     directory: ./apps/site/dist
+      #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      #     wranglerVersion: "3"
+
+      # TODO: enable this once docker deployment is fixed
+      - name: Deploy to cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ./apps/site/dist --project-name=ephemurl-site --commit-dirty=true
       # TODO: switch to this later
       # command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
 
@@ -68,15 +68,18 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-      - name: Remove Docker Images
-        run: docker rmi $(docker images -a -q) || true
+      - name: Build docker image
+        run: docker build . -f ./Dockerfile.ci --build-arg APP=site -t jacobshuman/ephemurl-site:latest
 
-      - name: Build and push docker image
-        uses: docker/build-push-action@v5
-        with:
-          no-cache: true
-          build-args: |
-            APP=site
-          push: true
-          file: Dockerfile.ci
-          tags: jacobshuman/ephemurl-site
+      - name: Push docker image
+        run: docker push jacobshuman/ephemurl-site:latest
+
+      # - name: Build and push docker image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     no-cache: true
+      #     build-args: |
+      #       APP=site
+      #     push: true
+      #     file: Dockerfile.ci
+      #     tags: jacobshuman/ephemurl-site
