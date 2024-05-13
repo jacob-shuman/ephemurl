@@ -30,7 +30,7 @@ jobs:
           node-version: 20
 
       - name: Setup pnpm 🏗
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
 
       - name: Install dependencies
         run: pnpm install --filter ./apps/site --filter ./shared/*
@@ -41,6 +41,7 @@ jobs:
       - name: Build site
         run: pnpm site build
 
+      # TODO: disable this once docker deployment is fixed
       - name: Deploy to cloudflare
         uses: cloudflare/pages-action@1
         with:
@@ -51,6 +52,16 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           wranglerVersion: "3"
 
+      # TODO: enable this once docker deployment is fixed
+      # - name: Deploy to cloudflare
+      #   uses: cloudflare/wrangler-action@v3
+      #   with:
+      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      #     command: pages deploy ./apps/site/dist --project-name=ephemurl-site --commit-dirty=true
+      # TODO: switch to this later
+      # command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
+
       - name: Log in to docker hub
         uses: docker/login-action@v3
         with:
@@ -60,6 +71,7 @@ jobs:
       - name: Build and push docker image
         uses: docker/build-push-action@v5
         with:
+          no-cache: true
           build-args: |
             APP=site
           push: true
