@@ -79,17 +79,17 @@
 
     <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
 
+    <Button tooltip="Command Palette" onclick={togglePalette}>
+      <IconPrompt class="w-6 h-6" />
+    </Button>
+
+    <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
+
     <LinkButton
       tooltip="GitHub Repo"
       href="https://github.com/jacob-shuman/ephemurl-site"
     >
       <IconBrandGithub class="w-6 h-6" />
     </LinkButton>
-
-    <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
-
-    <Button tooltip="Command Palette" onclick={togglePalette}>
-      <IconPrompt class="w-6 h-6" />
-    </Button>
   </div>
 </nav>
