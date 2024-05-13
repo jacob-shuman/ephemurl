@@ -33,3 +33,25 @@ The default port used by the app used in the docker compose example.
 | site      | ephemurl-site      | site        | 7420           |
 | counter   | ephemurl-counter   | counter     | 7421           |
 | tictactoe | ephemurl-tictactoe | tic_tac_toe |                |
+
+## Delete everything above this line
+
+# ephemurl APP_ID
+
+## Selfhosting
+
+This app can be run by building the [Dockerfile](../../Dockerfile) in the monorepos root directory with the `APP` build argument set to `APP_ID`.
+
+Alternatively there is hosted version of that image on Docker Hub at [jacobshuman/FULL_ID](https://hub.docker.com/r/jacobshuman/FULL_ID)
+
+### Docker compose example
+
+```yaml
+services:
+  FULL_ID:
+    image: jacobshuman/FULL_ID:latest
+    environment:
+      PORT: 7420 # optional
+    ports:
+      - 7420:7420
+```
