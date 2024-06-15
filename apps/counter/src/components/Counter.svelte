@@ -3,10 +3,6 @@
 
   let count = 0;
 
-  const onBlur = (e: FocusEvent) => {
-    count = Number((e.target as HTMLInputElement).value);
-  };
-
   export let classes: string | undefined;
   export { classes as class };
 </script>
@@ -18,7 +14,13 @@
     classes
   )}
   bind:value={count}
-  on:blur={onBlur}
+  on:keydown={(event) => {
+    if (event.key === "ArrowUp") {
+      count += event.shiftKey ? 9 : 0;
+    } else if (event.key === "ArrowDown") {
+      count -= event.shiftKey ? 9 : 0;
+    }
+  }}
 />
 
 <style>
