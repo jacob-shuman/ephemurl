@@ -232,6 +232,16 @@ export const tools: Project[] = [
       label: "calendarevent",
     },
   },
+  {
+    name: "chess_clock",
+    icon: "tabler:chess-queen",
+    url: "https://chessclock.ephm.app",
+    status: "unplanned",
+    repo: {
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/chessclock",
+      label: "chessclock",
+    },
+  },
 ];
 
 export const games: Project[] = [
@@ -303,16 +313,6 @@ export const games: Project[] = [
     repo: {
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/chess",
       label: "chess",
-    },
-  },
-  {
-    name: "chess_clock",
-    icon: "tabler:chess-queen",
-    url: "https://chessclock.ephm.app",
-    status: "unplanned",
-    repo: {
-      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/chessclock",
-      label: "chessclock",
     },
   },
   {
