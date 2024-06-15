@@ -2,7 +2,7 @@
   "name": "ephemurl",
   "description": "Collection of FOSS tools",
   "version": "1.0.0",
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.1.2",
   "private": true,
   "author": {
     "name": "Jacob Shuman",
