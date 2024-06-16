@@ -61,7 +61,7 @@ export const tools: Project[] = [
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/golfscorecard",
       label: "golfscorecard",
     },
-  
+  },
   {
     name: "teleprompter",
     icon: "tabler:device-desktop",
