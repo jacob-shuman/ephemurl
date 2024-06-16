@@ -53,6 +53,16 @@ export const tools: Project[] = [
     },
   },
   {
+    name: "golf_scorecard",
+    icon: "tabler:golf",
+    url: "https://golfscorecard.ephm.app",
+    status: "unplanned",
+    repo: {
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/golfscorecard",
+      label: "golfscorecard",
+    },
+  
+  {
     name: "teleprompter",
     icon: "tabler:device-desktop",
     url: "https://teleprompter.ephm.app",
