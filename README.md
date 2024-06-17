@@ -37,7 +37,7 @@ There is a link to donate here to help me maintain this ecosystem of tools but t
 
 All ephemurl apps are hosted using the free plan on cloudflare pages. I would love to promise that there will always be a free hosted version available but the reality is cloudflare pages and other hosts could start charging significantly more or there could be an unforeseen circumstance I haven't considered that would prevent the hosted versions from continuing. Even if I could guarantee that they would be available 24/7 forever I understand some people (myself included) prefer to self host services for privacy, reliability, etc.
 
-**All ephemurl apps can be self hosted using docker.** Each app has a docker image located in the app's directory in the ephemurl mono repo and is published to [hub.docker.io](http://hub.docker.io) as soon as updates are available. In the README for each app there are instructions for running it as a single docker container or using docker compose (update so docker compose links to the docker compose docs).
+**All ephemurl apps can be self hosted using docker.** Each app has a docker image which is automatically published (using github actions located in `.github/workflows/deploy-*.yml`) to [hub.docker.io](http://hub.docker.io) once that app receives an update on the `main` branch. The `README.md` for each app contains instructions for building the app's docker image yourself and starting a container using [docker compose](https://docs.docker.com/compose/).
 
 # 👤 No Authentication
 
