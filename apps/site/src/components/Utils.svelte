@@ -15,7 +15,7 @@
   });
 </script>
 
-<div class="h-0 w-0 absolute">
+<div class="size-0 absolute">
   <Toaster />
   <Palette />
   <Theme {ssrConfig} {db} />

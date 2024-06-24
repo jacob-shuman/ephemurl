@@ -69,10 +69,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
                 : "cursor-not-allowed"
             )}
           >
-            <Icon
-              name="tabler:link"
-              class="min-h-[1rem] min-w-[1rem] w-4 h-4"
-            />
+            <Icon name="tabler:link" class="min-h-[1rem] min-w-[1rem] size-4" />
             <p class="line-clamp-1">{url}</p>
           </a>
         )
@@ -89,7 +86,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
                 : "cursor-not-allowed"
             )}
           >
-            <Icon name="tabler:brand-github" class="min-w-min w-4 h-4" />
+            <Icon name="tabler:brand-github" class="min-w-min size-4" />
             <p class="line-clamp-1">{repo.label}</p>
           </a>
         )

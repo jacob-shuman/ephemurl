@@ -12,6 +12,7 @@
     "badge": "pnpm --filter ./apps/badge run",
     "counter": "pnpm --filter ./apps/counter run",
     "site": "pnpm --filter ./apps/site run",
+    "db": "pnpm --filter ./shared/db run",
     "utils": "pnpm --filter ./shared/utils run"
   },
   "dependencies": {

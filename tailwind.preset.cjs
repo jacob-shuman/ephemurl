@@ -38,7 +38,6 @@ module.exports = {
       },
       fontFamily: {
         rubik: ["Rubik"],
-        "rubik-mono": ["Rubik Mono One"],
       },
     },
   },

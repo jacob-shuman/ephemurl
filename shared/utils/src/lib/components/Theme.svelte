@@ -1,15 +1,15 @@
-<script lang="ts">
+<script lang="ts" generics="Config extends BaseConfig">
   import {
     buildTheme,
-    type Config,
+    type BaseConfig,
     type Database,
     type ThemeMode,
   } from "ephemurl-db";
   import { onMount } from "svelte";
   import "../scrollbar.css";
 
-  export let ssrConfig: Config;
-  export let db: Database;
+  export let ssrConfig: BaseConfig;
+  export let db: Database<Config>;
 
   const { update, config, url, mounted } = db;
 
@@ -31,23 +31,17 @@
     }
   }
 
+  $: if ($mounted) {
+    Object.entries(buildTheme($config)).forEach(([k, v]) =>
+      document.documentElement.style.setProperty(k, v)
+    );
+  }
+
   onMount(() => {
-    mounted.subscribe(() => {
-      const mountedConfig = $config;
-
-      if (mountedConfig) {
-        Object.entries(buildTheme(mountedConfig)).forEach(([k, v]) =>
-          document.documentElement.style.setProperty(k, v)
-        );
-      }
-    });
-
     url.set(new URL(window.location.href));
-
     // TODO:
     // window.addEventListener(PARAM_UPDATE_EVENT, (e) => {
     //   const { detail } = e as CustomEvent<{ url: string; params: Config }>;
-
     //   if (detail.url && !$push) {
     //     url.set(new URL(detail.url));
     //   }
@@ -62,10 +56,8 @@
         ) {
           update({ theme: { mode: matches ? "system-dark" : "system" } });
         }
-
         refreshTheme(($config ?? ssrConfig).theme.mode);
       });
-
     refreshTheme(($config ?? ssrConfig).theme.mode);
   });
 </script>

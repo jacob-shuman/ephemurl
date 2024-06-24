@@ -1,34 +1,25 @@
 <script lang="ts">
+  import { CounterSchema } from "@constants";
   import {
     IconDeviceDesktop,
-    IconMoon,
+    IconMoonFilled,
     IconReload,
-    IconSun,
+    IconSunFilled,
   } from "@tabler/icons-svelte";
-  import { createDb, type Config, type ThemeMode } from "ephemurl-db";
-  import { Button } from "ephemurl-utils";
+  import tw from "clsx";
+  import { createDb, cycleTheme, type BaseConfig } from "ephemurl-db";
+  import { AlertDialog, Button, Utils } from "ephemurl-utils";
   import { onMount } from "svelte";
 
   export let params: Record<string, string | object>;
-  export let ssrConfig: Config;
+  export let ssrConfig: BaseConfig;
 
-  const { config, update, mount } = createDb(params, { id: "nav" });
-
-  function cycleTheme(mode: ThemeMode): ThemeMode {
-    switch (mode) {
-      case "dark":
-        return "light";
-      case "light":
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "system-dark"
-          : "system";
-      default:
-        return "dark";
-    }
-  }
+  const db = createDb(params, CounterSchema, { dbId: ssrConfig.id });
+  $: ({ mounted, config, update, mount } = db);
+  $: title = $config?.counter?.title ?? "counter";
 
   onMount(async () => {
-    await mount();
+    mount();
 
     if (
       ($config ?? ssrConfig).theme.mode === "system" &&
@@ -44,12 +35,34 @@
   });
 </script>
 
+<Utils {ssrConfig} {db} />
+
+<svelte:head>
+  <title>
+    {$config.counter.title ?? "counter"} ({$config.counter.value})
+  </title>
+</svelte:head>
+
 <nav
-  class="flex flex-col items-center justify-between gap-y-2 sm:flex-row sm:gap-y-0"
+  class="flex flex-col sm:items-center justify-between gap-y-2 sm:flex-row sm:gap-y-0 sm:gap-x-3"
 >
-  <div class="flex flex-col gap-y-2">
-    <h1 class="font-rubik-mono text-2xl">untitled counter</h1>
-    <div class="bg-bg-400 dark:bg-bg-dark-400 h-0.5 rounded"></div>
+  <div
+    class={tw(
+      "flex flex-col gap-y-2 grow",
+      "duration-200 transition-opacity ease-out",
+      $mounted ? "opacity-100" : "opacity-0"
+    )}
+  >
+    <input
+      class="font-black text-3xl focus:outline-none bg-transparent"
+      value={title}
+      placeholder="counter"
+      on:keyup={(e) => {
+        update({ counter: { title: e.currentTarget.value ?? "" } });
+      }}
+    />
+
+    <div class="bg-bg-400 max-w-36 dark:bg-bg-dark-400 h-0.5 rounded"></div>
   </div>
 
   <!-- TODO: fix color flashing issue when changing themes -->
@@ -63,23 +76,29 @@
       }}
     >
       {#if ($config ?? ssrConfig).theme.mode === "dark"}
-        <IconMoon class="h-6 w-6" />
+        <IconMoonFilled class="size-6" />
       {:else if ($config ?? ssrConfig).theme.mode === "light"}
-        <IconSun class="h-6 w-6" />
+        <IconSunFilled class="size-6" />
       {:else}
-        <IconDeviceDesktop class="h-6 w-6" />
+        <IconDeviceDesktop class="size-6" />
       {/if}
     </Button>
 
     <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
 
-    <Button
-      tooltip="Reset Counter"
-      onclick={() => {
-        // update({counter: {value:0}})
-      }}
+    <AlertDialog
+      title="Reset Counter?"
+      let:openDialog
+      onConfirm={() => update({ counter: { value: 0 } })}
     >
-      <IconReload class="h-6 w-6" />
-    </Button>
+      <Button
+        tooltip="Reset Counter"
+        onclick={() => {
+          openDialog();
+        }}
+      >
+        <IconReload class="size-6" />
+      </Button>
+    </AlertDialog>
   </div>
 </nav>

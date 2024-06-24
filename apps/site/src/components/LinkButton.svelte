@@ -7,7 +7,7 @@
   export let active: boolean = false;
   export let href: string | undefined = undefined;
   const classes = tw(
-    "cursor-pointer w-12 h-12 flex justify-center items-center rounded",
+    "cursor-pointer size-12 flex justify-center items-center rounded",
     "transition-all duration-100 ease-out",
     "hover:bg-fg-500 hover:dark:bg-fg-dark-500 hover:text-fg-100 hover:dark:text-fg-dark-100",
     "focus:outline-none border-2 border-transparent focus:border-bg-100 dark:focus:border-bg-dark-100",

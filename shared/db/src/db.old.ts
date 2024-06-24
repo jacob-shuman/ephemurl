@@ -127,7 +127,7 @@
 import { get, set } from "idb-keyval";
 import { atom, type WritableAtom } from "nanostores";
 import { assign } from "radash";
-import { Config, PartialConfig, createConfig } from "./config";
+import { Config, PartialConfig, createConfig } from "./config.old";
 import {
   DATABASE_UPDATE_EVENT,
   URL_UPDATE_EVENT,

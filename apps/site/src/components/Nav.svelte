@@ -2,40 +2,28 @@
   import {
     IconBrandGithub,
     IconDeviceDesktop,
-    IconMoon,
+    IconMoonFilled,
     IconPrompt,
-    IconSun,
+    IconSunFilled,
   } from "@tabler/icons-svelte";
-  import { createDb, type Config, type ThemeMode } from "ephemurl-db";
+  import {
+    BaseConfigSchema,
+    createDb,
+    cycleTheme,
+    type BaseConfig,
+  } from "ephemurl-db";
+  import { Button, Utils } from "ephemurl-utils";
   import { onMount } from "svelte";
   import { PALETTE_TOGGLE_EVENT } from "../constants";
-  import Button from "./Button.svelte";
   import LinkButton from "./LinkButton.svelte";
 
   export let params: Record<string, string | object>;
-  export let ssrConfig: Config;
+  export let ssrConfig: BaseConfig;
 
-  const { config, update, mount } = createDb(params, { id: "nav" });
+  const db = createDb(params, BaseConfigSchema, { dbId: ssrConfig.id });
+  $: ({ config, update, mount } = db);
 
-  function cycleTheme(mode: ThemeMode): ThemeMode {
-    switch (mode) {
-      case "dark":
-        return "light";
-      case "light":
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "system-dark"
-          : "system";
-      default:
-        return "dark";
-    }
-  }
-
-  function togglePalette() {
-    window.dispatchEvent(new CustomEvent(PALETTE_TOGGLE_EVENT));
-  }
-
-  onMount(() => {
-    // url.set(new URL(window.location.href));
+  onMount(async () => {
     mount();
 
     if (
@@ -52,9 +40,11 @@
   });
 </script>
 
+<Utils {ssrConfig} {db} />
+
 <nav class="flex flex-col justify-between gap-y-2 sm:flex-row sm:gap-y-0">
   <div class="flex flex-col gap-y-2">
-    <h1 class="font-rubik-mono text-4xl">ephemurl</h1>
+    <h1 class="font-black text-4xl">EPHEMURL</h1>
     <div class="bg-bg-400 dark:bg-bg-dark-400 h-0.5 rounded"></div>
   </div>
 
@@ -69,18 +59,23 @@
       }}
     >
       {#if ($config ?? ssrConfig).theme.mode === "dark"}
-        <IconMoon class="h-6 w-6" />
+        <IconMoonFilled class="size-6" />
       {:else if ($config ?? ssrConfig).theme.mode === "light"}
-        <IconSun class="h-6 w-6" />
+        <IconSunFilled class="size-6" />
       {:else}
-        <IconDeviceDesktop class="h-6 w-6" />
+        <IconDeviceDesktop class="size-6" />
       {/if}
     </Button>
 
     <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
 
-    <Button tooltip="Command Palette" onclick={togglePalette}>
-      <IconPrompt class="w-6 h-6" />
+    <Button
+      tooltip="Command Palette"
+      onclick={() => {
+        window.dispatchEvent(new CustomEvent(PALETTE_TOGGLE_EVENT));
+      }}
+    >
+      <IconPrompt class="size-6" />
     </Button>
 
     <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
@@ -89,7 +84,7 @@
       tooltip="GitHub Repo"
       href="https://github.com/jacob-shuman/ephemurl-site"
     >
-      <IconBrandGithub class="w-6 h-6" />
+      <IconBrandGithub class="size-6" />
     </LinkButton>
   </div>
 </nav>

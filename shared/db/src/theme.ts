@@ -12,7 +12,7 @@ import {
   union,
   type Infer,
 } from "superstruct";
-import { type Config } from "./config";
+import { type Config } from "./config.old";
 
 extend([mixPlugin, a11yPlugin, namesPlugin]);
 
@@ -143,3 +143,16 @@ export function buildTheme(config: Config) {
     "--theme-bg-dark-500": getHsl(config.theme.dark.bg[500]),
   };
 }
+
+export const cycleTheme = (mode: ThemeMode): ThemeMode => {
+  switch (mode) {
+    case "dark":
+      return "light";
+    case "light":
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "system-dark"
+        : "system";
+    default:
+      return "dark";
+  }
+};
