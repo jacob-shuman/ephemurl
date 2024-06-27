@@ -22,17 +22,22 @@ The uri-safe identifier similar to `APP_ID` used for app names on other services
 
 An all lowercase name for the app which does not need to be uri-safe. Words are separated by an underscore `_`.
 
+### `APP_CAPITALIZED_ID`
+
+Same as `APP_ID` but with the first character capitalized. This is used for the name of the custom superstruct schema located in `./src/constants.ts` (you can reference this file using the alias `@constants`).
+
 ### `DEFAULT_PORT`
 
 The default port used by the app used in the docker compose example.
 
 #### Examples
 
-| `APP_ID`  | `FULL_ID`          | `APP_NAME`  | `DEFAULT_PORT` |
-| --------- | ------------------ | ----------- | -------------- |
-| site      | ephemurl-site      | site        | 7420           |
-| counter   | ephemurl-counter   | counter     | 7421           |
-| tictactoe | ephemurl-tictactoe | tic_tac_toe |                |
+| `APP_ID`  | `APP_CAPITALIZED_ID` | `FULL_ID`          | `APP_NAME`  | `DEFAULT_PORT` |
+| --------- | -------------------- | ------------------ | ----------- | -------------- |
+| site      | Site                 | ephemurl-site      | site        | 7420           |
+| counter   | Counter              | ephemurl-counter   | counter     | 7421           |
+| dice      | Dice                 | ephemurl-dice      | dice        | 7421           |
+| tictactoe | Tictactoe            | ephemurl-tictactoe | tic_tac_toe | 7422           |
 
 ## Delete everything above this line
 

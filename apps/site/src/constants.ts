@@ -226,7 +226,7 @@ export const tools: Project[] = [
     name: "dice",
     icon: "tabler:dice",
     url: "https:/dice.ephm.app",
-    status: "unplanned",
+    status: "planned",
     repo: {
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/dice",
       label: "dice",

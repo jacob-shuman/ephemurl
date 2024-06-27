@@ -1,13 +1,12 @@
 <script lang="ts">
-  import tw from "clsx";
+  import { generateButtonClasses } from "$lib";
   import type { HTMLButtonAttributes } from "svelte/elements";
-  import { twMerge } from "tailwind-merge";
   import Tooltip from "./Tooltip.svelte";
 
+  export let active: boolean = false;
   export let tooltip: string | undefined = undefined;
   export let onclick: HTMLButtonAttributes["on:click"] = () => {};
   export let onhold: ((shiftKey: boolean) => void) | undefined = undefined;
-  // TODO: implement on long hold
   export let onlonghold: ((shiftKey: boolean) => void) | undefined = undefined;
   export let holdInterval = 100;
   export let longHoldInterval = 100;
@@ -48,16 +47,7 @@
   let timeoutId: NodeJS.Timeout | undefined = undefined;
   let intervalId: NodeJS.Timeout | undefined = undefined;
 
-  const buttonClass = twMerge(
-    tw(
-      "select-none cursor-pointer size-12 flex justify-center items-center rounded",
-      "transition-all duration-100 ease-out",
-      "hover:bg-fg-500 hover:dark:bg-fg-dark-500 hover:text-fg-100 hover:dark:text-fg-dark-100",
-      "focus:outline-none ring-1 ring-transparent ring-offset-1 ring-offset-transparent focus:ring-bg-100 dark:focus:ring-bg-dark-100",
-      "active:bg-bg-500 active:text-bg-100"
-    ),
-    classes
-  );
+  $: buttonClass = generateButtonClasses({ active, classes });
 </script>
 
 {#if tooltip}

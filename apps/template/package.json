@@ -24,6 +24,7 @@
     "clsx": "^2.1.0",
     "ephemurl-db": "workspace:*",
     "ephemurl-utils": "workspace:*",
+    "superstruct": "^1.0.3",
     "svelte": "^4.2.12",
     "tailwind-scrollbar": "^3.0.5",
     "tailwindcss": "^3.4.3",

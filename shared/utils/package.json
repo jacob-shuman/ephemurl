@@ -45,7 +45,7 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "dependencies": {
-    "@iconify/svelte": "^4.0.2",
+    "@tabler/icons-svelte": "^2.46.0",
     "bits-ui": "^0.16.0",
     "clsx": "^2.1.0",
     "superstruct": "^1.0.3",

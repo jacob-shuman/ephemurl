@@ -1,12 +1,13 @@
 ---
+import { APP_CAPITALIZED_IDSchema } from "@constants";
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import tw from "clsx";
 import { buildTheme, createConfig } from "ephemurl-db";
-import { Utils } from "ephemurl-utils";
 import packageJson from "../../package.json";
+import Nav from "../components/Nav.svelte";
 
 const params = Object.fromEntries(Astro.url.searchParams.entries());
-const ssrConfig = createConfig(params);
+const ssrConfig = createConfig(params, APP_CAPITALIZED_IDSchema);
 ---
 
 <html
@@ -22,7 +23,10 @@ const ssrConfig = createConfig(params);
 >
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={packageJson.description} />
     <title>APP_NAME</title>
@@ -33,9 +37,9 @@ const ssrConfig = createConfig(params);
   </head>
 
   <body
-    class="flex flex-col p-4 transition-all duration-100 ease-out sm:p-8 lg:p-12 gap-y-9 h-screen"
+    class="flex flex-col p-4 transition-all duration-100 ease-out sm:px-8 sm:py-4 lg:px-12 lg:py-8 gap-y-9 h-dvh font-rubik touch-manipulation"
   >
-    <Utils client:load {params} {ssrConfig} />
+    <Nav client:load {ssrConfig} {params} />
 
     <h1>APP_NAME</h1>
   </body>

@@ -1,0 +1,60 @@
+name: Deploy Ephemurl Dice
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/dice/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_OPTIONS: --max_old_space_size=4096
+      ADAPTER: cloudflare
+
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm 🏗
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install --filter ./apps/dice --filter ./shared/*
+
+      - name: Build utils
+        run: pnpm utils build
+
+      - name: Build dice
+        run: pnpm dice build
+
+      - name: Deploy to cloudflare
+        run: pnpx wrangler pages deploy ./apps/dice/dist --project-name=ephemurl-dice --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Log in to docker hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+
+      - name: Build docker image
+        run: docker build . -f ./Dockerfile.ci --build-arg APP=dice -t jacobshuman/ephemurl-dice:latest
+
+      - name: Push docker image
+        run: docker push jacobshuman/ephemurl-dice:latest

@@ -31,7 +31,7 @@
         counter: { value: counter.value - (shiftKey ? 50 : 25) },
       }))}
   >
-    <IconMinus class="size-6" />
+    <IconMinus class="size-12" />
   </Button>
 
   <div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-400" />
@@ -52,6 +52,6 @@
         counter: { value: counter.value + (shiftKey ? 25 : 10) },
       }))}
   >
-    <IconPlus class="size-6" />
+    <IconPlus class="size-12" />
   </Button>
 </div>

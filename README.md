@@ -37,17 +37,25 @@ There is a link to donate here to help me maintain this ecosystem of tools but t
 
 All ephemurl apps are hosted using the free plan on cloudflare pages. I would love to promise that there will always be a free hosted version available but the reality is cloudflare pages and other hosts could start charging significantly more or there could be an unforeseen circumstance I haven't considered that would prevent the hosted versions from continuing. Even if I could guarantee that they would be available 24/7 forever I understand some people (myself included) prefer to self host services for privacy, reliability, etc.
 
-**All ephemurl apps can be self hosted using docker.** Each app has a docker image which is automatically published (using github actions located in `.github/workflows/deploy-*.yml`) to [hub.docker.io](http://hub.docker.io) once that app receives an update on the `main` branch. The `README.md` for each app contains instructions for building the app's docker image yourself and starting a container using [docker compose](https://docs.docker.com/compose/).
+**All ephemurl apps can be self hosted using docker.** Each app has a docker image which is automatically published (using github actions located in `.github/workflows/deploy-APP_NAME.yml`) to [hub.docker.io](http://hub.docker.io) once that app receives an update on the `main` branch. The `README.md` for each app contains instructions for building the app's docker image yourself and starting a container using [docker compose](https://docs.docker.com/compose/).
 
 # 👤 No Authentication
 
 **TL;DR: There are no accounts, you will never have to sign in/up to use any functionality.**
 
+All ephemurl apps can be used without any form of authentication and there are currently no plans to implement any form of user account system. I don't believe accounts should be necessary to access any functionality in all ephemurl apps. The only exceptions I can imagine are:
+
+- **Secure data sync**: Synchronizing ephemurl apps with a custom remote server could be beneficial so data can be shared across devices (you will have a way to self host if the hosted sync server isn't appealing for any reason).
+
+- **Realtime multiplayer sessions**: Allowing other people to access your ephemurl instance could be fantastic (if you're sharing a grocery list with your family or want to play tic tac toe with a friend who isn't geographically close to you). There would need to be an intermediary server to connect and communicate changes to multiple peers (like data sync there will of course be a self hosted option).
+
+Both of which are issues I have not deeply explored yet because of their complexity, time-commitment, and the fact that there are still plenty of higher-priority foundational tasks to work on. **Regardless of how either of those features are implemented you will never be required to create an account**.
+
 # ⚙️ Configurable
 
-**TL;DR: All apps have customizable themes, shortcuts, and app specific options. Configs can be set using URL parameters and are stored using IndexedDB.**
+**TL;DR: All apps have customizable themes, shortcuts, and app specific options. Configs can be set using URL parameters and are stored using localstorage.**
 
-Ephemurl apps are configured using a predictable base structure that is shared across with extensions on a per-app basis. The configuration is validated at runtime using [superstruct](https://github.com/ianstormtaylor/superstruct).
+Ephemurl apps are configured using a predictable base structure that is shared across with extensions on a per-app basis. The base config for all ephemurl apps can be found in [`shared/db/src/config.ts`](./shared/db/src/config.ts). The configuration is validated at runtime on page load using [superstruct](https://github.com/ianstormtaylor/superstruct).
 
 ## Theme
 
