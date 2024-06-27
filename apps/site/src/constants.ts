@@ -96,7 +96,7 @@ export const tools: Project[] = [
     name: "hacker_news",
     icon: "tabler:news",
     url: "https://hackernews.ephm.app",
-    status: "planned",
+    status: "unplanned",
     repo: {
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/hackernews",
       label: "hackernews",
@@ -226,7 +226,7 @@ export const tools: Project[] = [
     name: "dice",
     icon: "tabler:dice",
     url: "https:/dice.ephm.app",
-    status: "planned",
+    status: "ready",
     repo: {
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/dice",
       label: "dice",
