@@ -256,6 +256,16 @@ export const tools: Project[] = [
 
 export const games: Project[] = [
   {
+    name: "rock_paper_scissors",
+    icon: "tabler:scissors",
+    url: "https://rockpaperscissors.ephm.app",
+    status: "unplanned",
+    repo: {
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/rockpaperscissors",
+      label: "rockpaperscissors",
+    },
+  },
+  {
     name: "tic_tac_toe",
     icon: "tabler:grid-3x3",
     url: "https://tictactoe.ephm.app",
