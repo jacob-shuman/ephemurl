@@ -7,17 +7,24 @@
 
   export let dbId: string;
 
-  const { config, mount, update } = createDb({}, DiceSchema, { dbId });
+  const { mounted, config, mount, update } = createDb({}, DiceSchema, { dbId });
 
   const reroll = (max?: number) => {
     update(({ dice }) => {
       const newMax = max !== undefined ? max : dice.max;
+      let newValue = Math.floor(Math.random() * (newMax - 1 + 1)) + 1;
+
+      if ($config.dice.forceUnique) {
+        while (dice.value === newValue) {
+          newValue = Math.floor(Math.random() * (newMax - 1 + 1)) + 1;
+        }
+      }
 
       return {
         dice: {
           rolls: dice.rolls + 1,
           max: newMax,
-          value: Math.floor(Math.random() * (newMax - 1 + 1)) + 1,
+          value: newValue,
         },
       };
     });
@@ -29,7 +36,11 @@
 </script>
 
 <div class="flex flex-col items-center gap-y-4">
-  <div class="flex flex-col sm:flex-row w-full items-center gap-x-4">
+  <div
+    class="flex flex-col sm:flex-row w-full items-center gap-x-4"
+    class:opacity-100={$mounted}
+    class:opacity-0={!$mounted}
+  >
     <Button
       active={$config.dice.max === 4}
       class="w-full flex-1 min-h-8"
@@ -42,7 +53,7 @@
     </Button>
 
     <div
-      class="h-4 w-0.5 rounded rotate-90 sm:rotate-0 bg-bg-400 dark:bg-bg-dark-400"
+      class="h-4 w-full max-w-0.5 rounded rotate-90 sm:rotate-0 bg-bg-400 dark:bg-bg-dark-400"
     />
 
     <Button
@@ -57,7 +68,7 @@
     </Button>
 
     <div
-      class="h-4 w-0.5 rounded rotate-90 sm:rotate-0 bg-bg-400 dark:bg-bg-dark-400"
+      class="h-4 w-full max-w-0.5 rounded rotate-90 sm:rotate-0 bg-bg-400 dark:bg-bg-dark-400"
     />
 
     <Button
@@ -72,7 +83,7 @@
     </Button>
 
     <div
-      class="h-4 w-0.5 rounded rotate-90 sm:rotate-0 bg-bg-400 dark:bg-bg-dark-400"
+      class="h-4 w-full max-w-0.5 rounded rotate-90 sm:rotate-0 bg-bg-400 dark:bg-bg-dark-400"
     />
 
     <Button
@@ -87,8 +98,6 @@
     </Button>
   </div>
 
-  <div class="bg-bg-400 w-full dark:bg-bg-dark-400 h-0.5 rounded"></div>
-
   <Button
     class="w-full h-24 flex items-center justify-center gap-x-2"
     tooltip="Reroll"
@@ -97,6 +106,6 @@
     onlonghold={() => reroll()}
   >
     <span class="text-xl font-bold">Reroll</span>
-    <IconRefresh class="size-12" />
+    <IconRefresh class="size-8" />
   </Button>
 </div>

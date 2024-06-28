@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { generateButtonClasses } from "$lib";
+  import tw from "clsx";
   import type { HTMLButtonAttributes } from "svelte/elements";
+  import { twMerge } from "tailwind-merge";
   import Tooltip from "./Tooltip.svelte";
 
   export let active: boolean = false;
@@ -46,8 +47,6 @@
 
   let timeoutId: NodeJS.Timeout | undefined = undefined;
   let intervalId: NodeJS.Timeout | undefined = undefined;
-
-  $: buttonClass = generateButtonClasses({ active, classes });
 </script>
 
 {#if tooltip}
@@ -55,7 +54,22 @@
     <button
       use:builder.action
       {...builder}
-      class={buttonClass}
+      class={twMerge(
+        tw(
+          "select-none cursor-pointer size-12 flex justify-center items-center rounded",
+          "transition-all duration-100 ease-out",
+          "hover:bg-fg-500 hover:dark:bg-fg-dark-500 hover:text-fg-100 hover:dark:text-fg-dark-100",
+          "focus:outline-none ring-1 ring-transparent ring-offset-2 ring-offset-bg-500 dark:ring-offset-bg-dark-500 focus:ring-bg-100 focus:dark:ring-bg-dark-100",
+          "active:bg-bg-500 active:text-bg-100 active:dark:bg-bg-dark-500 active:dark:text-bg-dark-100",
+          {
+            "bg-fg-500 dark:bg-fg-dark-500 text-fg-100 dark:text-fg-dark-100":
+              active,
+            "hover:bg-fg-500 hover:dark:bg-fg-dark-500 hover:text-fg-100 hover:dark:text-fg-dark-100":
+              !active,
+          }
+        ),
+        classes
+      )}
       on:click={onclick}
       on:touchstart={(event) => startHoldEffect(event.shiftKey)}
       on:touchend={() => stopHoldEffect()}
@@ -68,7 +82,22 @@
   </Tooltip>
 {:else}
   <button
-    class={buttonClass}
+    class={twMerge(
+      tw(
+        "select-none cursor-pointer size-12 flex justify-center items-center rounded",
+        "transition-all duration-100 ease-out",
+        "hover:bg-fg-500 hover:dark:bg-fg-dark-500 hover:text-fg-100 hover:dark:text-fg-dark-100",
+        "focus:outline-none ring-1 ring-transparent ring-offset-2 ring-offset-bg-500 dark:ring-offset-bg-dark-500 focus:ring-bg-100 focus:dark:ring-bg-dark-100",
+        "active:bg-bg-500 active:text-bg-100 active:dark:bg-bg-dark-500 active:dark:text-bg-dark-100",
+        {
+          "bg-fg-500 dark:bg-fg-dark-500 text-fg-100 dark:text-fg-dark-100":
+            active,
+          "hover:bg-fg-500 hover:dark:bg-fg-dark-500 hover:text-fg-100 hover:dark:text-fg-dark-100":
+            !active,
+        }
+      ),
+      classes
+    )}
     on:click={onclick}
     on:touchstart={(event) => startHoldEffect(event.shiftKey)}
     on:touchend={() => stopHoldEffect()}

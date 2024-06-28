@@ -104,8 +104,6 @@ export function createDb<Config extends BaseConfig>(
       );
     }
 
-    mounted.set(true);
-
     const storedConfig = localStorage.getItem(dbId);
     const updatedConfig = createConfig(
       storedConfig ? JSON.parse(storedConfig) : { id: dbId },
@@ -117,6 +115,8 @@ export function createDb<Config extends BaseConfig>(
     if (verbose) {
       console.log(`updated config (${instanceId}): `, updatedConfig);
     }
+
+    mounted.set(true);
   };
 
   function update(
