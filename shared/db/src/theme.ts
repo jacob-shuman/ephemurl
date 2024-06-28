@@ -12,7 +12,7 @@ import {
   union,
   type Infer,
 } from "superstruct";
-import { type Config } from "./config.old";
+import { type BaseConfig } from "./config";
 
 extend([mixPlugin, a11yPlugin, namesPlugin]);
 
@@ -114,7 +114,7 @@ const getHsl = (color: string) => {
   return `${h}deg ${s}% ${l}%`;
 };
 
-export function buildTheme(config: Config) {
+export function buildTheme(config: BaseConfig) {
   return {
     "--theme-radius": config.theme.radius,
 

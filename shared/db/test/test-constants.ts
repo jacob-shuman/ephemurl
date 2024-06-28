@@ -38,3 +38,44 @@ export const DEFAULT_SAFE_CONFIG = {
   },
   params: "hide",
 };
+
+export class MockedBroadcastChannel extends BroadcastChannel {
+  static listeners = new Map<string, any>();
+  name: string;
+
+  constructor(name: string) {
+    super(name);
+
+    this.name = name;
+
+    MockedBroadcastChannel.listeners.set(name, [
+      ...(MockedBroadcastChannel.listeners.get(name) ?? []),
+    ]);
+  }
+
+  postMessage(): void {
+    for (let l of MockedBroadcastChannel.listeners.get(this.name)) {
+      l();
+    }
+  }
+
+  addEventListener(type: string, listener: any) {
+    if (type === "message") {
+      MockedBroadcastChannel.listeners.set(this.name, [
+        ...(MockedBroadcastChannel.listeners.get(this.name) ?? []),
+        listener,
+      ]);
+    }
+  }
+
+  removeEventListener(type: string, listener: any) {
+    if (type === "message") {
+      MockedBroadcastChannel.listeners.set(
+        this.name,
+        (MockedBroadcastChannel.listeners.get(this.name) ?? []).filter(
+          (l: any) => l !== listener
+        )
+      );
+    }
+  }
+}

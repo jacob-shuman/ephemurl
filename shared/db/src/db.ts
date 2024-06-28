@@ -4,11 +4,7 @@ import { type Struct } from "superstruct";
 import { assign as assignObject, isFunction } from "radash";
 import { type ObjectSchema } from "superstruct/dist/utils";
 import { createConfig, type BaseConfig, type PartialConfig } from "./config";
-import {
-  DATABASE_UPDATE_EVENT,
-  URL_UPDATE_EVENT,
-  UrlUpdateEventDetail,
-} from "./constants";
+import { URL_UPDATE_EVENT, UrlUpdateEventDetail } from "./constants";
 import { generateId } from "./utils";
 
 export interface Database<Config extends BaseConfig> {
@@ -28,7 +24,6 @@ export function createDb<Config extends BaseConfig>(
   options?: { dbId?: string; instanceId?: string; verbose?: boolean }
 ): Database<Config> {
   const dbId = options?.dbId ?? generateId();
-  // const dbId = "123";
   const instanceId = options?.instanceId ?? dbId;
   const mounted = atom(false);
   const emitting = atom(false);
@@ -37,6 +32,7 @@ export function createDb<Config extends BaseConfig>(
   );
   const url = atom<URL | undefined>();
   const verbose = options?.verbose ?? false;
+  const databaseUpdateChannel = new BroadcastChannel(dbId);
 
   const mount = () => {
     if (typeof document !== "object") {
@@ -74,10 +70,12 @@ export function createDb<Config extends BaseConfig>(
       }
     });
 
-    document.addEventListener(DATABASE_UPDATE_EVENT, async () => {
+    databaseUpdateChannel.onmessage = async () => {
       if (!emitting.get()) {
         if (verbose) {
-          console.log(`db: "${instanceId}" received DATABASE_UPDATE_EVENT`);
+          console.log(
+            `db: "${instanceId}" received BroadcastChannel update (${dbId})`
+          );
         }
 
         const storedConfig = localStorage.getItem(dbId);
@@ -86,7 +84,7 @@ export function createDb<Config extends BaseConfig>(
           config.set(createConfig(JSON.parse(storedConfig), schema));
         }
       }
-    });
+    };
 
     if (mounted.get()) {
       return;
@@ -110,7 +108,7 @@ export function createDb<Config extends BaseConfig>(
 
     const storedConfig = localStorage.getItem(dbId);
     const updatedConfig = createConfig(
-      storedConfig ? JSON.parse(storedConfig) : {},
+      storedConfig ? JSON.parse(storedConfig) : { id: dbId },
       schema
     );
 
@@ -143,7 +141,7 @@ export function createDb<Config extends BaseConfig>(
 
     if (emit) {
       emitting.set(true);
-      document.dispatchEvent(new CustomEvent(DATABASE_UPDATE_EVENT, {}));
+      databaseUpdateChannel.postMessage(undefined);
       emitting.set(false);
     }
 

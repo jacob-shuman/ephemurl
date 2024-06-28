@@ -1,9 +1,16 @@
 import { assign, defaulted, number, object } from "superstruct";
-import { expect, test } from "vitest";
+import { afterEach, beforeEach, expect, test } from "vitest";
 import { SafeConfigSchema } from "../src/config";
-import { DATABASE_UPDATE_EVENT } from "../src/constants";
 import { createDb } from "../src/db";
-import { DEFAULT_SAFE_CONFIG } from "./test-constants";
+import { DEFAULT_SAFE_CONFIG, MockedBroadcastChannel } from "./test-constants";
+
+beforeEach(() => {
+  global.BroadcastChannel = MockedBroadcastChannel;
+});
+
+afterEach(() => {
+  MockedBroadcastChannel.listeners = new Map();
+});
 
 test("createDb with SafeConfigSchema", () => {
   const dbId = DEFAULT_SAFE_CONFIG.id;
@@ -23,13 +30,14 @@ test("createDb with SafeConfigSchema", () => {
 test("update with SafeConfigSchema", () => {
   let eventCounter = 0;
   const dbId = DEFAULT_SAFE_CONFIG.id;
+  const channel = new BroadcastChannel(dbId);
   const { mount, update, config } = createDb({}, SafeConfigSchema, {
     dbId,
   });
 
-  document.addEventListener(DATABASE_UPDATE_EVENT, () => {
+  channel.onmessage = () => {
     eventCounter++;
-  });
+  };
 
   mount();
 
@@ -78,13 +86,14 @@ test("update with derived schema", () => {
   );
   let eventCounter = 0;
   const dbId = DEFAULT_SAFE_CONFIG.id;
+  const channel = new BroadcastChannel(dbId);
   const { mount, update, config } = createDb({}, CounterSchema, {
     dbId,
   });
 
-  document.addEventListener(DATABASE_UPDATE_EVENT, () => {
+  channel.onmessage = () => {
     eventCounter++;
-  });
+  };
 
   mount();
   expect(config.get()).toEqual({ ...DEFAULT_SAFE_CONFIG, value: 0 });
@@ -117,6 +126,7 @@ test("update with derived schema", () => {
 test("syncing 2 databases with SafeConfigSchema", () => {
   let eventCounter = 0;
   const dbId = DEFAULT_SAFE_CONFIG.id;
+  const channel = new BroadcastChannel(dbId);
   const db1 = createDb({}, SafeConfigSchema, {
     dbId,
   });
@@ -124,9 +134,9 @@ test("syncing 2 databases with SafeConfigSchema", () => {
     dbId,
   });
 
-  document.addEventListener(DATABASE_UPDATE_EVENT, () => {
+  channel.onmessage = () => {
     eventCounter++;
-  });
+  };
 
   db1.mount();
   db2.mount();
