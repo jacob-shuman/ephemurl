@@ -225,7 +225,7 @@ export const tools: Project[] = [
   {
     name: "dice",
     icon: "tabler:dice",
-    url: "https:/dice.ephm.app",
+    url: "https://dice.ephm.app",
     status: "ready",
     repo: {
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/dice",
@@ -235,7 +235,7 @@ export const tools: Project[] = [
   {
     name: "calendar_event",
     icon: "tabler:calendar-event",
-    url: "https:/calendarevent.ephm.app",
+    url: "https://calendarevent.ephm.app",
     status: "unplanned",
     repo: {
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/calendarevent",
