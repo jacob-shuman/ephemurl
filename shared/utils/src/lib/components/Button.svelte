@@ -1,4 +1,6 @@
 <script lang="ts">
+  // TODO: i have no idea why but for some reason the utils module wont build correctly unless there is an import to $lib
+  import {} from "$lib";
   import tw from "clsx";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import { twMerge } from "tailwind-merge";
