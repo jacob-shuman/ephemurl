@@ -67,3 +67,8 @@ All ephemurl apps are styled using a ["theme"](./shared/db/theme.ts) key in thei
 - `dark`: dark color palette will be used
 - `system`: page will load the light color palette and switch to dark if the device's color preference is dark
 - `system-dark`: page will load the dark color palette and switch to light if the device's color preference is light
+
+# Architecture
+
+## Icons
+All icons are provided by the fantastic [tabler icon set](https://tabler.io/icons). If you're looking for a well-designed consistent icon pack I would recommend checking it out and supporting the project.
