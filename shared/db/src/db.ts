@@ -32,12 +32,14 @@ export function createDb<Config extends BaseConfig>(
   );
   const url = atom<URL | undefined>();
   const verbose = options?.verbose ?? false;
-  const databaseUpdateChannel = new BroadcastChannel(dbId);
+  let databaseUpdateChannel: BroadcastChannel | undefined;
 
   const mount = () => {
     if (typeof document !== "object") {
       return mounted.set(true);
     }
+
+    databaseUpdateChannel = new BroadcastChannel(dbId);
 
     config.subscribe(async (updatedConfig) => {
       if (mounted.get() && updatedConfig) {
@@ -141,7 +143,7 @@ export function createDb<Config extends BaseConfig>(
 
     if (emit) {
       emitting.set(true);
-      databaseUpdateChannel.postMessage(undefined);
+      databaseUpdateChannel?.postMessage(undefined);
       emitting.set(false);
     }
 
