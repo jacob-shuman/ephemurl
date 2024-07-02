@@ -60,7 +60,7 @@ export function createDb<Config extends BaseConfig>(
 
     url.subscribe((updatedUrl) => {
       if (mounted.get() && updatedUrl) {
-        window.history.pushState({}, "", updatedUrl);
+        window.history.replaceState({}, "", updatedUrl);
 
         window.dispatchEvent(
           new CustomEvent<UrlUpdateEventDetail>(URL_UPDATE_EVENT, {
