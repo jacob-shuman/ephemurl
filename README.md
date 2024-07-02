@@ -57,6 +57,17 @@ Both of which are issues I have not deeply explored yet because of their complex
 
 Ephemurl apps are configured using a predictable base structure that is shared across with extensions on a per-app basis. The base config for all ephemurl apps can be found in [`shared/db/src/config.ts`](./shared/db/src/config.ts). The configuration is validated at runtime on page load using [superstruct](https://github.com/ianstormtaylor/superstruct).
 
+## Base config
+
+All ephemurl apps support, at minimum, these options:
+
+| name     | type                                        | default                                       | description                                                                                                                                                 |
+| -------- | ------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`     | `string`                                    | `nanoid()`                                    | A unique identifier for a given instance of an app, All data associated with this instance of the app will be stored in localstorage using the id as a key. |
+| `reset`  | `boolean`                                   | `false`                                       | Setting this to true at any point will set all config properties to their default value.                                                                    |
+| `params` | `"show" \| "hide"`                          | `"hide"`                                      | `show` will reveal all params in realtime in the address bar as query parameters. `hide` will only show whats absolutely necessary such as `id`.            |
+| `theme`  | [ThemeSchema](./shared/db/src/theme.ts#L71) | [`ThemeSchema`](./shared/db/src/theme.ts#L71) | Basic theme properties that apply to all elements in an app.                                                                                                |
+
 ## Theme
 
 All ephemurl apps are styled using a ["theme"](./shared/db/theme.ts) key in their config.
@@ -71,4 +82,5 @@ All ephemurl apps are styled using a ["theme"](./shared/db/theme.ts) key in thei
 # Architecture
 
 ## Icons
+
 All icons are provided by the fantastic [tabler icon set](https://tabler.io/icons). If you're looking for a well-designed consistent icon pack I would recommend checking it out and supporting the project.
