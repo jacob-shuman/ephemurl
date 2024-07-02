@@ -33,6 +33,16 @@ export const tools: Project[] = [
     },
   },
   {
+    name: "qr",
+    icon: "tabler:qrcode",
+    url: "https://qr.ephm.app",
+    status: "unplanned",
+    repo: {
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/qr",
+      label: "qr",
+    },
+  },
+  {
     name: "countdown",
     icon: "tabler:time-duration-5",
     url: "https://countdown.ephm.app",
@@ -40,6 +50,16 @@ export const tools: Project[] = [
     repo: {
       url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/countdown",
       label: "countdown",
+    },
+  },
+  {
+    name: "coin_flip",
+    icon: "tabler:coin-filled",
+    url: "https://coinflip.ephm.app",
+    status: "unplanned",
+    repo: {
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/coinflip",
+      label: "coinflip",
     },
   },
   {
