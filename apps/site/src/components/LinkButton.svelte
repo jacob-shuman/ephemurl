@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Tooltip as T } from "bits-ui";
   import tw from "clsx";
-  import { Tooltip, generateButtonClasses } from "ephemurl-utils";
+  import { Tooltip } from "ephemurl-utils";
 
   export let tooltip: string;
   export let active: boolean = false;
@@ -23,12 +23,7 @@
 {#if tooltip}
   <Tooltip message={tooltip}>
     <T.Trigger asChild let:builder>
-      <a
-        use:builder.action
-        {...builder}
-        {href}
-        class={generateButtonClasses({ active })}
-      >
+      <a use:builder.action {...builder} {href} class={classes}>
         <slot />
       </a>
     </T.Trigger>
