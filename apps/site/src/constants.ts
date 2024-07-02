@@ -14,7 +14,7 @@ export interface Project {
 export const tools: Project[] = [
   {
     name: "badge",
-    icon: "tabler:badge",
+    icon: "tabler:badge-filled",
     url: "https://badge.ephm.app",
     status: "unplanned",
     repo: {
@@ -134,7 +134,7 @@ export const tools: Project[] = [
   },
   {
     name: "stopwatch",
-    icon: "tabler:alarm",
+    icon: "tabler:alarm-filled",
     url: "https://stopwatch.ephm.app",
     status: "unplanned",
     repo: {
@@ -154,7 +154,7 @@ export const tools: Project[] = [
   },
   {
     name: "weather",
-    icon: "tabler:cloud",
+    icon: "tabler:cloud-filled",
     url: "https://weather.ephm.app",
     status: "unplanned",
     repo: {
@@ -184,7 +184,7 @@ export const tools: Project[] = [
   },
   {
     name: "calculator",
-    icon: "tabler:calculator",
+    icon: "tabler:calculator-filled",
     url: "https://calculator.ephm.app",
     status: "unplanned",
     repo: {
@@ -224,7 +224,7 @@ export const tools: Project[] = [
   },
   {
     name: "compass",
-    icon: "tabler:compass",
+    icon: "tabler:compass-filled",
     url: "https://compass.ephm.app",
     status: "unplanned",
     repo: {
@@ -244,7 +244,7 @@ export const tools: Project[] = [
   },
   {
     name: "dice",
-    icon: "tabler:dice",
+    icon: "tabler:dice-filled",
     url: "https://dice.ephm.app",
     status: "ready",
     repo: {
@@ -264,7 +264,7 @@ export const tools: Project[] = [
   },
   {
     name: "chess_clock",
-    icon: "tabler:chess-queen",
+    icon: "tabler:chess-queen-filled",
     url: "https://chessclock.ephm.app",
     status: "unplanned",
     repo: {
@@ -297,7 +297,7 @@ export const games: Project[] = [
   },
   {
     name: "connect_4",
-    icon: "tabler:circle",
+    icon: "tabler:circle-filled",
     url: "https://connect4.ephm.app",
     status: "unplanned",
     repo: {
@@ -317,7 +317,7 @@ export const games: Project[] = [
   },
   {
     name: "forehead_game",
-    icon: "tabler:mood-smile",
+    icon: "tabler:mood-smile-filled",
     url: "https://foreheadgame.ephm.app",
     status: "unplanned",
     repo: {
@@ -347,7 +347,7 @@ export const games: Project[] = [
   },
   {
     name: "chess",
-    icon: "tabler:chess-knight",
+    icon: "tabler:chess-knight-filled",
     url: "https://chess.ephm.app",
     status: "unplanned",
     repo: {
@@ -377,7 +377,7 @@ export const games: Project[] = [
   },
   {
     name: "minesweeper",
-    icon: "tabler:bomb",
+    icon: "tabler:bomb-filled",
     url: "https://minesweeper.ephm.app",
     status: "unplanned",
     repo: {

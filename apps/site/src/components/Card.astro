@@ -31,7 +31,7 @@ const { name, status, icon, url, repo } = Astro.props as Project;
       <Icon
         name={icon}
         class={tw(
-          "w-12 h-12",
+          "size-12",
           status === "ready" &&
             "group-hover:text-fg-100 group-hover:dark:text-fg-dark-100 group-focus:text-fg-100 group-focus:dark:text-fg-dark-100"
         )}
