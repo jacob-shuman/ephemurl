@@ -33,6 +33,16 @@ export const tools: Project[] = [
     },
   },
   {
+    name: "qr",
+    icon: "tabler:qrcode",
+    url: "https://qr.ephm.app",
+    status: "unplanned",
+    repo: {
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/qr",
+      label: "qr",
+    },
+  },
+  {
     name: "countdown",
     icon: "tabler:time-duration-5",
     url: "https://countdown.ephm.app",
