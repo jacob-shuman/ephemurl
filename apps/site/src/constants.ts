@@ -53,6 +53,16 @@ export const tools: Project[] = [
     },
   },
   {
+    name: "coin_flip",
+    icon: "tabler:coin-filled",
+    url: "https://coinflip.ephm.app",
+    status: "unplanned",
+    repo: {
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/coinflip",
+      label: "coinflip",
+    },
+  },
+  {
     name: "spotify_comparator",
     icon: "tabler:brand-spotify",
     url: "https://spotifycomparator.ephm.app",
