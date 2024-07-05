@@ -14,7 +14,7 @@
   export let params: Record<string, string | object>;
   export let ssrConfig: BaseConfig;
 
-  const db = createDb(params, CounterSchema, { dbId: ssrConfig.id });
+  const db = createDb(CounterSchema, { params, dbId: ssrConfig.id });
   $: ({ mounted, config, update, mount } = db);
   $: title = $config?.counter?.title ?? "counter";
 

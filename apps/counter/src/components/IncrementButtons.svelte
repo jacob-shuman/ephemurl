@@ -7,7 +7,7 @@
 
   export let dbId: string;
 
-  const { mounted, config, mount, update } = createDb({}, CounterSchema, {
+  const { mounted, config, mount, update } = createDb(CounterSchema, {
     dbId,
   });
 

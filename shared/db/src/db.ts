@@ -19,10 +19,15 @@ export interface Database<Config extends BaseConfig> {
 }
 
 export function createDb<Config extends BaseConfig>(
-  params: PartialConfig<Config>,
   schema: Struct<Config, ObjectSchema>,
-  options?: { dbId?: string; instanceId?: string; verbose?: boolean }
+  options?: {
+    params?: PartialConfig<Config>;
+    dbId?: string;
+    instanceId?: string;
+    verbose?: boolean;
+  }
 ): Database<Config> {
+  const params: PartialConfig<Config> = options?.params ?? {};
   const dbId = options?.dbId ?? generateId();
   const instanceId = options?.instanceId ?? dbId;
   const mounted = atom(false);
@@ -42,19 +47,17 @@ export function createDb<Config extends BaseConfig>(
     databaseUpdateChannel = new BroadcastChannel(dbId);
 
     config.subscribe(async (updatedConfig) => {
-      if (mounted.get() && updatedConfig) {
-        localStorage.setItem(dbId, JSON.stringify(updatedConfig));
+      localStorage.setItem(dbId, JSON.stringify(updatedConfig));
 
-        let updatedUrl = url.get();
+      let updatedUrl = url.get();
 
-        if (updatedUrl) {
-          updatedUrl = new URL(updatedUrl);
-          updatedUrl.search = new URLSearchParams({
-            id: dbId,
-          }).toString();
+      if (updatedUrl) {
+        updatedUrl = new URL(updatedUrl);
+        updatedUrl.search = new URLSearchParams({
+          id: dbId,
+        }).toString();
 
-          url.set(updatedUrl);
-        }
+        url.set(updatedUrl);
       }
     });
 

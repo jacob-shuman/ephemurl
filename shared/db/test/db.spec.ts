@@ -14,7 +14,7 @@ afterEach(() => {
 
 test("createDb with SafeConfigSchema", () => {
   const dbId = DEFAULT_SAFE_CONFIG.id;
-  const { mount, mounted, config } = createDb({}, SafeConfigSchema, {
+  const { mount, mounted, config } = createDb(SafeConfigSchema, {
     dbId,
   });
 
@@ -31,7 +31,7 @@ test("update with SafeConfigSchema", () => {
   let eventCounter = 0;
   const dbId = DEFAULT_SAFE_CONFIG.id;
   const channel = new BroadcastChannel(dbId);
-  const { mount, update, config } = createDb({}, SafeConfigSchema, {
+  const { mount, update, config } = createDb(SafeConfigSchema, {
     dbId,
   });
 
@@ -65,7 +65,7 @@ test("createDb with derived schema", () => {
     );
 
     const dbId = DEFAULT_SAFE_CONFIG.id;
-    const { mount, mounted, config } = createDb({}, CounterSchema, {
+    const { mount, mounted, config } = createDb(CounterSchema, {
       dbId,
     });
 
@@ -87,7 +87,7 @@ test("update with derived schema", () => {
   let eventCounter = 0;
   const dbId = DEFAULT_SAFE_CONFIG.id;
   const channel = new BroadcastChannel(dbId);
-  const { mount, update, config } = createDb({}, CounterSchema, {
+  const { mount, update, config } = createDb(CounterSchema, {
     dbId,
   });
 
@@ -127,10 +127,10 @@ test("syncing 2 databases with SafeConfigSchema", () => {
   let eventCounter = 0;
   const dbId = DEFAULT_SAFE_CONFIG.id;
   const channel = new BroadcastChannel(dbId);
-  const db1 = createDb({}, SafeConfigSchema, {
+  const db1 = createDb(SafeConfigSchema, {
     dbId,
   });
-  const db2 = createDb({}, SafeConfigSchema, {
+  const db2 = createDb(SafeConfigSchema, {
     dbId,
   });
 

@@ -13,7 +13,7 @@
   export let params: Record<string, string | object>;
   export let ssrConfig: BaseConfig;
 
-  const db = createDb(params, DiceSchema, { dbId: ssrConfig.id });
+  const db = createDb(DiceSchema, { params, dbId: ssrConfig.id });
   $: ({ mounted, config, update, mount } = db);
   $: title = $config?.dice?.title ?? "dice";
 

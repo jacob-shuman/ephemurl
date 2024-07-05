@@ -37,9 +37,10 @@ The default port used by the app used in the docker compose example.
 | site      | Site                 | ephemurl-site      | site        | 7420           |
 | counter   | Counter              | ephemurl-counter   | counter     | 7421           |
 | dice      | Dice                 | ephemurl-dice      | dice        | 7421           |
-| tictactoe | Tictactoe            | ephemurl-tictactoe | tic_tac_toe | 7422           |
+| compass   | Compass              | ephemurl-compass   | compass     | 7422           |
+| tictactoe | Tictactoe            | ephemurl-tictactoe | tic_tac_toe | 7423           |
 
-## Delete everything above this line
+## Delete this line and everything above it
 
 # ephemurl APP_ID
 

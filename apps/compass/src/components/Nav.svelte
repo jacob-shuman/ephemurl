@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { APP_CAPITALIZED_IDSchema } from "@constants";
+  import {
+    CompassSchema,
+    permissionState,
+    requestPermission,
+  } from "@constants";
   import { createDb, type BaseConfig } from "ephemurl-db";
   import { Utils } from "ephemurl-utils";
   import { onMount } from "svelte";
@@ -7,8 +11,9 @@
   export let params: Record<string, string | object>;
   export let ssrConfig: BaseConfig;
 
-  const db = createDb(APP_CAPITALIZED_IDSchema, { params, dbId: ssrConfig.id });
+  const db = createDb(CompassSchema, { params, dbId: ssrConfig.id });
   $: ({ config, update, mount } = db);
+
   onMount(async () => {
     mount();
 
@@ -23,6 +28,8 @@
     ) {
       update({ theme: { mode: "system" } });
     }
+
+    permissionState.set(await requestPermission());
   });
 </script>
 

@@ -8,7 +8,7 @@
   export let classes: string | undefined;
   export { classes as class };
 
-  const { mount, update, config, mounted } = createDb({}, CounterSchema, {
+  const { mount, update, config, mounted } = createDb(CounterSchema, {
     dbId,
   });
 

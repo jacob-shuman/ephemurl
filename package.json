@@ -10,6 +10,7 @@
   },
   "scripts": {
     "badge": "pnpm --filter ./apps/badge run",
+    "compass": "pnpm --filter ./apps/compass run",
     "counter": "pnpm --filter ./apps/counter run",
     "dice": "pnpm --filter ./apps/dice run",
     "site": "pnpm --filter ./apps/site run",

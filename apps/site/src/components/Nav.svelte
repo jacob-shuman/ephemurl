@@ -20,7 +20,7 @@
   export let params: Record<string, string | object>;
   export let ssrConfig: BaseConfig;
 
-  const db = createDb(params, BaseConfigSchema, { dbId: ssrConfig.id });
+  const db = createDb(BaseConfigSchema, { params, dbId: ssrConfig.id });
   $: ({ config, update, mount } = db);
 
   onMount(async () => {

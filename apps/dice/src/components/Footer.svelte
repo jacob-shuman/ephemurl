@@ -7,7 +7,7 @@
 
   export let dbId: string;
 
-  const { mounted, config, mount, update } = createDb({}, DiceSchema, { dbId });
+  const { mounted, config, mount, update } = createDb(DiceSchema, { dbId });
 
   const reroll = (max?: number) => {
     update(({ dice }) => {

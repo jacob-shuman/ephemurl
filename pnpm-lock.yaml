@@ -19,6 +19,70 @@ importers:
         specifier: ^8.2.5
         version: 8.2.5(astro@4.8.3(@types/node@20.11.26)(typescript@5.4.4))
 
+  apps/compass:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.5.10
+        version: 0.5.10(typescript@5.4.4)
+      '@astrojs/svelte':
+        specifier: ^5.3.0
+        version: 5.4.0(astro@4.8.3(@types/node@20.11.26)(typescript@5.4.4))(svelte@4.2.12)(typescript@5.4.4)(vite@5.2.11(@types/node@20.11.26))
+      '@astrojs/tailwind':
+        specifier: ^5.1.0
+        version: 5.1.0(astro@4.8.3(@types/node@20.11.26)(typescript@5.4.4))(tailwindcss@3.4.3)
+      '@tabler/icons-svelte':
+        specifier: ^2.46.0
+        version: 2.47.0(svelte@4.2.12)
+      astro:
+        specifier: ^4.5.16
+        version: 4.8.3(@types/node@20.11.26)(typescript@5.4.4)
+      astro-google-fonts-optimizer:
+        specifier: ^0.2.2
+        version: 0.2.2
+      astro-icon:
+        specifier: ^1.0.2
+        version: 1.1.0
+      bits-ui:
+        specifier: ^0.16.0
+        version: 0.16.0(svelte@4.2.12)
+      clsx:
+        specifier: ^2.1.0
+        version: 2.1.1
+      ephemurl-db:
+        specifier: workspace:*
+        version: link:../../shared/db
+      ephemurl-utils:
+        specifier: workspace:*
+        version: link:../../shared/utils
+      superstruct:
+        specifier: ^1.0.3
+        version: 1.0.3
+      svelte:
+        specifier: ^4.2.12
+        version: 4.2.12
+      tailwind-scrollbar:
+        specifier: ^3.0.5
+        version: 3.0.5(tailwindcss@3.4.3)
+      tailwindcss:
+        specifier: ^3.4.3
+        version: 3.4.3
+      typescript:
+        specifier: ^5.4.4
+        version: 5.4.4
+    devDependencies:
+      '@astrojs/cloudflare':
+        specifier: ^10.2.4
+        version: 10.2.6(astro@4.8.3(@types/node@20.11.26)(typescript@5.4.4))
+      '@astrojs/node':
+        specifier: ^8.2.5
+        version: 8.2.5(astro@4.8.3(@types/node@20.11.26)(typescript@5.4.4))
+      '@vitejs/plugin-basic-ssl':
+        specifier: ^1.1.0
+        version: 1.1.0(vite@5.2.11(@types/node@20.11.26))
+      wrangler:
+        specifier: ^3.34.2
+        version: 3.52.0(@cloudflare/workers-types@4.20240423.0)
+
   apps/counter:
     dependencies:
       '@astrojs/check':
@@ -1816,6 +1880,12 @@ packages:
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
+
+  '@vitejs/plugin-basic-ssl@1.1.0':
+    resolution: {integrity: sha512-wO4Dk/rm8u7RNhOf95ZzcEmC9rYOncYgvq4z3duaJrCgjN8BxAnDVyndanfcJZ0O6XZzHz6Q0hTimxTg8Y9g/A==}
+    engines: {node: '>=14.6.0'}
+    peerDependencies:
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
 
   '@vitest/expect@1.6.0':
     resolution: {integrity: sha512-ixEvFVQjycy/oNgHjqsL6AZCDduC+tflRluaHIzKIsdbzkLn2U/iBnVeJwB6HsIjQBdfMR8Z0tRxKUsvFJEeWQ==}
@@ -6049,6 +6119,10 @@ snapshots:
     optional: true
 
   '@ungap/structured-clone@1.2.0': {}
+
+  '@vitejs/plugin-basic-ssl@1.1.0(vite@5.2.11(@types/node@20.11.26))':
+    dependencies:
+      vite: 5.2.11(@types/node@20.11.26)
 
   '@vitest/expect@1.6.0':
     dependencies:

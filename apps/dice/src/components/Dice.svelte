@@ -23,7 +23,7 @@
   export let classes: string | undefined;
   export { classes as class };
 
-  const { mount, config, mounted } = createDb({}, DiceSchema, {
+  const { mount, config, mounted } = createDb(DiceSchema, {
     dbId,
   });
   let currentRolls: number;

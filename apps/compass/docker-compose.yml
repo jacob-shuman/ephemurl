@@ -1,0 +1,7 @@
+services:
+  ephemurl-compass:
+    image: jacobshuman/ephemurl-compass:latest
+    environment:
+      PORT: 7422
+    ports:
+      - 7422:7422
