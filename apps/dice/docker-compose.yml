@@ -1,0 +1,7 @@
+services:
+  ephemurl-dice:
+    image: jacobshuman/ephemurl-dice:latest
+    environment:
+      PORT: 7422
+    ports:
+      - 7422:7422

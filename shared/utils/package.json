@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
+    "watch": "chokidar 'src/**' -c 'pnpm build'",
     "preview": "vite preview",
     "package": "svelte-kit sync && svelte-package && publint",
     "prepublishOnly": "npm run package",
@@ -25,6 +26,7 @@
     "svelte": "^4.0.0"
   },
   "devDependencies": {
+    "@svelte-put/shortcut": "^3.1.1",
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/package": "^2.0.0",
@@ -48,8 +50,10 @@
     "@tabler/icons-svelte": "^2.46.0",
     "bits-ui": "^0.16.0",
     "clsx": "^2.1.0",
+    "flexsearch": "^0.7.43",
     "superstruct": "^1.0.3",
     "svelte-sonner": "^0.3.11",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^2.3.0",
+    "vaul-svelte": "^0.3.0"
   }
 }

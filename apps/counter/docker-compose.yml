@@ -1,0 +1,7 @@
+services:
+  ephemurl-counter:
+    image: jacobshuman/ephemurl-counter:latest
+    environment:
+      PORT: 7421
+    ports:
+      - 7421:7421
