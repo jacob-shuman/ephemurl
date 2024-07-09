@@ -113,6 +113,16 @@ export const tools: Project[] = [
     },
   },
   {
+    name: "password_meter",
+    icon: "tabler:progress-check",
+    url: "https://passwordmeter.ephm.app",
+    status: "unplanned",
+    repo: {
+      url: "https://github.com/jacob-shuman/ephemurl/tree/main/apps/passwordmeter",
+      label: "passwordmeter",
+    },
+  },
+  {
     name: "hacker_news",
     icon: "tabler:news",
     url: "https://hackernews.ephm.app",
