@@ -1,7 +1,9 @@
 import { construct } from "radash";
 import {
+  any,
   boolean,
   coerce,
+  date,
   defaulted,
   enums,
   mask,
@@ -21,6 +23,7 @@ export type PartialConfig<T> = {
 export const BaseConfigSchema = defaulted(
   object({
     id: defaulted(string(), generateId), // TODO: i need to include the id so the database will persist across page reloads, im not sure why its coming through as undefined, run the dev command with --verbose
+    createdAt: coerce(date(), any(), (d) => (d ? new Date(d) : new Date())),
     reset: optional(boolean()),
     params: defaulted(enums(["show", "hide"]), "hide"),
     theme: ThemeSchema,

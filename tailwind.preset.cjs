@@ -37,7 +37,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        rubik: ["Rubik"],
+        rubik: ["Rubik Variable"],
       },
     },
   },

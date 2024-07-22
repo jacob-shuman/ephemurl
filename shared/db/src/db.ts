@@ -18,6 +18,27 @@ export interface Database<Config extends BaseConfig> {
   mounted: WritableAtom<boolean>;
 }
 
+export function getSessions<Config extends BaseConfig>(
+  schema: Struct<Config, ObjectSchema>
+) {
+  const keys = Object.keys(localStorage);
+  const sessions: Config[] = [];
+
+  for (let key of keys) {
+    const item = localStorage.getItem(key);
+
+    if (item) {
+      sessions.push(createConfig(JSON.parse(item), schema));
+    }
+  }
+
+  return sessions;
+}
+
+export function clearSessions() {
+  localStorage.clear();
+}
+
 export function createDb<Config extends BaseConfig>(
   schema: Struct<Config, ObjectSchema>,
   options?: {

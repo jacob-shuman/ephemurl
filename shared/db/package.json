@@ -17,7 +17,6 @@
     "dependencies": {
         "colord": "^2.9.3",
         "idb-keyval": "^6.2.1",
-        "nanoid": "^5.0.7",
         "nanostores": "^0.9.5",
         "radash": "^11.0.0",
         "superstruct": "^1.0.3"

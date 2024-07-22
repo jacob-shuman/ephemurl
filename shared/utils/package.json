@@ -47,7 +47,7 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "dependencies": {
-    "@tabler/icons-svelte": "^2.46.0",
+    "@tabler/icons-svelte": "^3.10.0",
     "bits-ui": "^0.16.0",
     "clsx": "^2.1.0",
     "flexsearch": "^0.7.43",

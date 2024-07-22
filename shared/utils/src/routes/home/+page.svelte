@@ -6,7 +6,7 @@
   <Button>T</Button>
 </div>
 
-<style>
+<style lang="postcss">
   :root {
     --theme-radius: 4px;
   }
