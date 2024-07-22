@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { games, modules, tools } from '$lib';
 	import {
-		IconAppsFilled,
 		IconBrandGithub,
 		IconDeviceDesktop,
 		IconMoonFilled,
@@ -23,25 +22,18 @@
 	export let ssrConfig: BaseConfig;
 
 	let paletteItems: PaletteItemProps[] = [
-		{
-			type: 'menu',
-			icon: IconAppsFilled,
-			label: 'Open App',
-			section: 'Site',
-			children: [
-				...[...tools, ...games, ...modules]
-					.filter((t) => t.url && t.status === 'ready')
-					.map(
-						(t) =>
-							({
-								type: 'link',
-								icon: t.icon,
-								label: t.name.replaceAll('_', ' '),
-								url: t.url
-							}) as PaletteItemProps
-					)
-			]
-		} as PaletteItemProps
+		...[...tools, ...games, ...modules]
+			.filter((t) => t.url && t.status === 'ready')
+			.map(
+				(t, i) =>
+					({
+						type: 'link',
+						icon: t.icon,
+						label: `Open ${t.name.replaceAll('_', ' ')}`,
+						url: t.url,
+						section: i === 0 ? 'Site' : undefined
+					}) as PaletteItemProps
+			)
 	].filter((i) => i !== undefined);
 
 	const db = createDb(BaseConfigSchema, { params, dbId: ssrConfig.id });
@@ -69,7 +61,7 @@
 <nav class="flex flex-col justify-between gap-y-2 sm:flex-row sm:gap-y-0">
 	<div class="flex flex-col gap-y-2">
 		<h1 class="text-4xl font-black">EPHEMURL</h1>
-		<div class="bg-bg-400 dark:bg-bg-dark-400 h-0.5 rounded"></div>
+		<div class="h-0.5 rounded bg-bg-400 dark:bg-bg-dark-400"></div>
 	</div>
 
 	<!-- TODO: fix color flashing issue when changing themes -->
@@ -90,7 +82,7 @@
 			{/if}
 		</Button>
 
-		<div class="bg-bg-400 dark:bg-bg-dark-400 h-4 w-0.5 rounded" />
+		<div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
 
 		<Button
 			tooltip="Command Palette"
@@ -101,7 +93,7 @@
 			<IconPrompt class="size-6" />
 		</Button>
 
-		<div class="bg-bg-400 dark:bg-bg-dark-400 h-4 w-0.5 rounded" />
+		<div class="h-4 w-0.5 rounded bg-bg-400 dark:bg-bg-dark-400" />
 
 		<LinkButton tooltip="GitHub Repo" href="https://github.com/jacob-shuman/ephemurl-site">
 			<IconBrandGithub class="size-6" />

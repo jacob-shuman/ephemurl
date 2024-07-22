@@ -214,94 +214,6 @@ importers:
         specifier: ^3.34.2
         version: 3.52.0(@cloudflare/workers-types@4.20240423.0)
 
-  apps/qr:
-    dependencies:
-      '@fontsource-variable/rubik':
-        specifier: ^5.0.22
-        version: 5.0.22
-      '@tabler/icons-svelte':
-        specifier: ^3.10.0
-        version: 3.10.0(svelte@4.2.12)
-      clsx:
-        specifier: ^2.1.0
-        version: 2.1.1
-      ephemurl-db:
-        specifier: workspace:*
-        version: link:../../shared/db
-      ephemurl-utils:
-        specifier: workspace:*
-        version: link:../../shared/utils
-      superstruct:
-        specifier: ^1.0.3
-        version: 1.0.3
-    devDependencies:
-      '@sveltejs/adapter-cloudflare':
-        specifier: ^4.2.0
-        version: 4.6.1(@sveltejs/kit@2.5.5(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.11(@types/node@20.11.26)))(svelte@4.2.12)(vite@5.2.11(@types/node@20.11.26)))(wrangler@3.52.0(@cloudflare/workers-types@4.20240423.0))
-      '@sveltejs/kit':
-        specifier: ^2.0.0
-        version: 2.5.5(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.11(@types/node@20.11.26)))(svelte@4.2.12)(vite@5.2.11(@types/node@20.11.26))
-      '@sveltejs/vite-plugin-svelte':
-        specifier: ^3.0.0
-        version: 3.0.2(svelte@4.2.12)(vite@5.2.11(@types/node@20.11.26))
-      '@types/eslint':
-        specifier: ^8.56.7
-        version: 8.56.10
-      '@types/node':
-        specifier: ^20.11.26
-        version: 20.11.26
-      autoprefixer:
-        specifier: ^10.4.19
-        version: 10.4.19(postcss@8.4.38)
-      eslint:
-        specifier: ^9.0.0
-        version: 9.6.0
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@9.6.0)
-      eslint-plugin-svelte:
-        specifier: ^2.36.0
-        version: 2.41.0(eslint@9.6.0)(svelte@4.2.12)
-      globals:
-        specifier: ^15.0.0
-        version: 15.8.0
-      postcss:
-        specifier: ^8.4.38
-        version: 8.4.38
-      prettier:
-        specifier: ^3.1.1
-        version: 3.3.2
-      prettier-plugin-svelte:
-        specifier: ^3.1.2
-        version: 3.2.5(prettier@3.3.2)(svelte@4.2.12)
-      prettier-plugin-tailwindcss:
-        specifier: ^0.6.4
-        version: 0.6.5(prettier-plugin-svelte@3.2.5(prettier@3.3.2)(svelte@4.2.12))(prettier@3.3.2)
-      svelte:
-        specifier: ^4.2.7
-        version: 4.2.12
-      svelte-check:
-        specifier: ^3.6.0
-        version: 3.6.9(@babel/core@7.24.5)(postcss-load-config@4.0.2(postcss@8.4.38))(postcss@8.4.38)(svelte@4.2.12)
-      tailwind-scrollbar:
-        specifier: ^3.0.5
-        version: 3.0.5(tailwindcss@3.4.4)
-      tailwindcss:
-        specifier: ^3.4.4
-        version: 3.4.4
-      tslib:
-        specifier: ^2.4.1
-        version: 2.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.4.4
-      typescript-eslint:
-        specifier: ^8.0.0-alpha.20
-        version: 8.0.0-alpha.41(eslint@9.6.0)(typescript@5.4.4)
-      vite:
-        specifier: ^5.0.3
-        version: 5.2.11(@types/node@20.11.26)
-
   apps/site:
     dependencies:
       '@fontsource-variable/rubik':
@@ -481,9 +393,6 @@ importers:
       '@types/eslint':
         specifier: ^8.56.7
         version: 8.56.10
-      '@types/node':
-        specifier: ^20.11.26
-        version: 20.11.26
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
