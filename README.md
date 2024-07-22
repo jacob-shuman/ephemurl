@@ -10,6 +10,8 @@
 
 **TL;DR: There are no accounts, no monetization schemes, no ads, all apps are FOSS.**
 
+# TODO: Motivation
+
 # 🌎 Web Based
 
 **TL;DR: All ephemurl apps are web based and can be installed as progressive web apps. Each app is hosted using Cloudflare page's free plan.**

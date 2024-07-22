@@ -1,0 +1,60 @@
+name: Deploy Ephemurl APP_CAPITALIZED_ID
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/APP_ID/**'
+      - 'shared/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_OPTIONS: --max_old_space_size=4096
+
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm 🏗
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install --filter ./apps/APP_ID --filter ./shared/*
+
+      - name: Build utils
+        run: pnpm utils build
+
+      - name: Build APP_ID
+        run: pnpm APP_ID build
+
+      - name: Deploy to cloudflare
+        run: pnpx wrangler pages deploy ./apps/APP_ID/.svelte-kit/cloudflare --project-name=FULL_ID --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Log in to docker hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+
+      - name: Build docker image
+        run: docker build . -f ./Dockerfile.ci --build-arg APP=APP_ID -t jacobshuman/FULL_ID:latest
+
+      - name: Push docker image
+        run: docker push jacobshuman/FULL_ID:latest

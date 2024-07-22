@@ -1,12 +1,16 @@
-# :page_facing_up: ephemurl template
+# :page_facing_up: ephemurl sveltekit template
 
-This is a template that can be duplicated to create a new ephemurl app.
+This is a [SvelteKit](https://kit.svelte.dev/) template that can be duplicated to create a new ephemurl app.
 
-## Files
+## :gear: Setup
 
-Before use make sure to replace the `favicon-dark.svg` and `favicon-light.svg` files in the [public](./public) directory.
+Before using this template complete the following steps:
 
-## Templated Variables
+1. Replace the `favicon-dark.svg` and `favicon-light.svg` files in the [static](./static) directory.
+2. Rename the [deploy-APP_ID](./deploy-APP_ID.yml) file to include your app's actual id.
+3. Move the [deploy-APP_ID](./deploy-APP_ID.yml) you just renamed to the [.github/workflows](/.github/workflows) directory.
+
+## :abc: Templated Variables
 
 This template contains several templated variables that should be changed before development.
 

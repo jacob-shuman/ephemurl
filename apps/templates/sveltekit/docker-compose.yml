@@ -1,0 +1,7 @@
+services:
+  ephemurl-site:
+    image: jacobshuman/FULL_ID:latest
+    environment:
+      PORT: 7420
+    ports:
+      - 7420:7420

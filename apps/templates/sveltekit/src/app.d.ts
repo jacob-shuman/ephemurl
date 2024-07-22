@@ -12,4 +12,5 @@ declare global {
 	declare const APP_DESCRIPTION: string;
 }
 
-export {};
+export { };
+
